@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta name="description" content="">
+  <meta name="author" content="xsiry">
+  <title>后台管理系统</title>
+  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/chosen/chosen.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/toastr/toastr.min.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/gritter/jquery.gritter.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/sweetalert2/sweetalert2.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap-datepicker/bootstrap-datepicker3.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap-datetimepicker/bootstrap-datetimepicker.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/formValidation/formValidation.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/inspinia/animate.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap-fileinput/css/fileinput.min.css" />
+  <!-- BootstrapDialog -->
+  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap-dialog/bootstrap-dialog.css" />
+  <!-- ligerUI -->
+  <link rel="stylesheet" type="text/css" href="http://www.ligerui.com/lib/ligerUI/skins/Aqua/css/ligerui-all.css" />
+  <link rel="stylesheet" type="text/css" href="http://www.ligerui.com/lib/ligerUI/skins/ligerui-icons.css" />
+  <link rel="stylesheet" type="text/css" href="http://www.ligerui.com/lib/ligerUI/skins/gray2014/css/all.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/inspinia/style.css" />
+  <link rel="stylesheet" type="text/css" href="static/index/style.css" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+      <ul class="nav metismenu" id="side-menu">
+        <!-- <li class="nav-header">
+          <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle profile_img" src="" />
+                             </span>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold profile_name"></strong>
+                             </span> <span class="text-muted text-xs block"><b class="profile_role"></b><b class="caret"></b></span></span>
+            </a>
+            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+              <li>
+                <a href="#app/profile.html">配置信息</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="login_out">退出登录</a>
+              </li>
+            </ul>
+          </div>
+          <div class="logo-element">
+            FGZ
+          </div>
+        </li> -->
+      </ul>
+    </nav>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+      <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+          </div>
+          <ul class="nav navbar-top-links navbar-right">
+            <li>
+              <span class="m-r-sm text-muted welcome-message">欢迎进入 后台管理系统</span>
+            </li>
+            <li>
+              <a class="login_out">
+                <i class="fa fa-sign-out"></i> 退出登录
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!--主体显示开始-->
+      <!--显示菜单路径-->
+      <div id="ribbon" class="row wrapper border-bottom white-bg">
+        <span class="ribbon-button-alignment pull-left">
+                        <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> 确认刷新当前页？" data-html="true" data-reset-msg="当前页未保存的数据将会丢失！"><i class="fa fa-refresh"></i></span>
+        </span>
+        <ol class="breadcrumb"></ol>
+      </div>
+      <!--显示路径结束-->
+      <!--显示列表开始-->
+      <div id="main" role="main">
+        <div id="content">
+        </div>
+      </div>
+      <!--显示列表结束-->
+      <div id="footer" class="footer">
+        <div class="pull-right">
+          <strong>XX有限公司</strong> 版权所有
+        </div>
+        <div>
+          &copy;<strong>Shanghai Netho</strong> Culture Communication Co., Ltd.
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="sea-modules/jquery/jquery-3.1.1.js"></script>
+  <script type="text/javascript" src="sea-modules/bootstrap/bootstrap.js"></script>
+  <script type="text/javascript" src="sea-modules/metisMenu/jquery.metisMenu.js"></script>
+  <script type="text/javascript" src="sea-modules/slimscroll/jquery.slimscroll.js"></script>
+  <script type="text/javascript" src="sea-modules/bootstrap-fileinput/js/fileinput.min.js"></script>
+  <script type="text/javascript" src="sea-modules/bootstrap-fileinput/js/locales/zh.js"></script>
+  <!-- 表单验证插件 -->
+  <script type="text/javascript" src="sea-modules/formValidation/formValidation.js"></script>
+  <script type="text/javascript" src="sea-modules/formValidation/framework/bootstrap.js"></script>
+  <script type="text/javascript" src="sea-modules/formValidation/language/zh_CN.js"></script>
+  <!-- inspinia开源框架 -->
+  <script type="text/javascript" src="sea-modules/inspinia/inspinia.js"></script>
+  <!-- 确认提示框 -->
+  <script type="text/javascript" src="sea-modules/sweetalert2/sweetalert2.js"></script>
+  <!-- 页面进度条 -->
+  <script type="text/javascript" src="sea-modules/pace/pace.min.js"></script>
+  <!-- 高级下拉列表 -->
+  <script type="text/javascript" src="sea-modules/chosen/chosen.jquery.js"></script>
+  <!-- 消息提示 -->
+  <script type="text/javascript" src="sea-modules/gritter/jquery.gritter.min.js"></script>
+  <!-- 消息通知插件 -->
+  <script type="text/javascript" src="sea-modules/toastr/toastr.min.js"></script>
+  <!-- ligerUI -->
+  <script type="text/javascript" src="sea-modules/ligerUI/core/base.js"></script>
+  <script type="text/javascript" src="sea-modules/ligerUI/ligerui.all.js"></script>
+  <script type="text/javascript" src="sea-modules/ligerUI/ligerDateEditor.js"></script>
+  <!-- modal窗口 -->
+  <script type="text/javascript" src="sea-modules/bootstrap-dialog/bootstrap-dialog.js"></script>
+  <!-- moment.js -->
+  <script type="text/javascript" src="sea-modules/moment/moment.min.js"></script>
+  <script type="text/javascript" src="sea-modules/moment/loacle/zh_cn.js"></script>
+  <!-- 日期插件 -->
+  <script type="text/javascript" src="sea-modules/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+  <!-- 时间插件 -->
+  <script type="text/javascript" src="sea-modules/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+  <!-- CMD模块化插件 -->
+  <script type="text/javascript" src="sea-modules/seajs/sea.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    seajs.config({
+      base: "./sea-modules/",
+      alias: {
+        "menusAction": "menusAction/menusAction.js"
+      }
+    });
+    // 加载入口模块
+    seajs.use("./static/index/src/main");
+  });
+  </script>
+</body>
+
+</html>

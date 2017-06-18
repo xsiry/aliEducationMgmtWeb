@@ -1,0 +1,31 @@
+.l-panel-bar {
+  line-height: 19px;
+}
+
+.wrapper-content {
+  padding: 12px 10px 40px;
+}
+
+.ibox {
+  clear: both;
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding: 0;
+}
+
+.inmodal .modal-header {
+  padding: 5px 15px;
+  text-align: center;
+}
+
+.inmodal .modal-title {
+  font-size: 20px;
+}
+
+.row-btn {
+  margin-top: 2%;
+}
+
+.tooltip {
+  z-index: 2100 !important;
+}

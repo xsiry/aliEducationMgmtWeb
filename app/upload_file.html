@@ -1,0 +1,23 @@
+<input id="x_file" type="file" multiple>
+<script>
+var options = {
+  language: "zh",
+  showClose: false,
+  uploadAsync: $('.img_upload').data('async'),
+  showCaption: false,
+  dropZoneEnabled: false,
+  fileActionSettings: {
+    showUpload: false
+  },
+  uploadUrl: $('.img_upload').data('url'), // you must set a valid URL here else you will get an error
+  overwriteInitial: true,
+  minFileCount: $('.img_upload').data('mincount') || 1,
+  maxFileCount: $('.img_upload').data('maxcount') || 20,
+  allowedFileTypes: ($('.img_upload').data('types') && $('.img_upload').data('types') != "") ? $('.img_upload').data('types').split(',') : []//,
+  // slugCallback: function(filename) {
+  //   return filename.replace('(', '_').replace(']', '_');
+  // }
+}
+
+$("#x_file").fileinput(options);
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/chosen/chosen.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/toastr/toastr.min.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/gritter/jquery.gritter.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/sweetalert2/sweetalert2.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap-datepicker/bootstrap-datepicker3.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap-datetimepicker/bootstrap-datetimepicker.css"/>
+  <link rel="stylesheet" type="text/css" href="sea-modules/formValidation/formValidation.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/inspinia/animate.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap-fileinput/css/fileinput.min.css" />
+  <!-- BootstrapDialog -->
+  <link rel="stylesheet" type="text/css" href="sea-modules/bootstrap-dialog/bootstrap-dialog.css" />
+  <!-- ligerUI -->
+  <link rel="stylesheet" type="text/css" href="sea-modules/ligerUI/skins/Aqua/css/ligerui-all.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/ligerUI/skins/ligerui-icons.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/ligerUI/skins/Gray2014/css/all.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
+  <link rel="stylesheet" type="text/css" href="sea-modules/inspinia/style.css" />
+  <link rel="stylesheet" type="text/css" href="static/index/style.css" />
+	<body>
+
+	</body>
+ <script type="text/javascript" src="sea-modules/jquery/jquery-3.1.1.js"></script>
+  <script type="text/javascript" src="sea-modules/bootstrap/bootstrap.js"></script>
+  <script type="text/javascript" src="sea-modules/bootstrap-dialog/bootstrap-dialog.js"></script>
+  <script type="text/javascript" src="sea-modules/bootstrap-fileinput/js/fileinput.min.js"></script>
+  <script type="text/javascript" src="sea-modules/bootstrap-fileinput/js/locales/zh.js"></script>
+  
+  <!--fileUpload-->
+ <script type="text/javascript">
+ $(document).ready(function() {
+	BootstrapDialog.show({
+	  title: '文件上传',
+	  size: 'BootstrapDialog.SIZE_WIDE',
+	  closeByBackdrop: false,
+	  message: $('<div class="img_upload" data-url="file/upload" data-mincount=1 data-maxcount=3 data-types="image, flash" data-async=false></div>')
+	    .load('app/upload_file.html'),
+	  onshown: function(dialogRef) {
+	  	console.log("dialog show!!!")
+	  	console.log($("#x_file"))
+	    $('#x_file').on('fileuploaded', function(event, data, previewId, index) {
+	        console.log('============File uploaded triggered');
+	        console.log(event);
+	        console.log(data);
+	        console.log(previewId);
+	        console.log(index); 
+	    })
+	    $('#x_file').on('fileuploaderror', function(event, data, msg) {
+	      console.log('=================File upload error===================');
+	      console.log(event);
+	      console.log(data);
+	      console.log(msg); 
+	    });
+	    $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
+	       console.log('============File batch upload success===============');
+	       console.log(event);
+	       console.log(data);
+	       console.log(previewId);
+	       console.log(index);
+	          
+	    })
+	    $('#x_file').on('filebatchuploaderror', function(event, data, msg) {
+	       console.log('=================File batch upload error=======================');
+	       console.log(event);
+	       console.log(data);
+	       console.log(msg);  
+	    })
+	  }
+	});
+ });
+ 
+ </script>
+</html>
