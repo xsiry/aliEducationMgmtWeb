@@ -75,6 +75,7 @@ define(function(require, exports, module) {
                   $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 })
                 $('#newModalForm input[name="imgs"]').val(imgs.join(';'));
+                dialogRef.close();
               }
             })
             $('#x_file').on('filebatchuploaderror', function(event, data, msg) {
@@ -186,7 +187,7 @@ define(function(require, exports, module) {
   function delRow(id, name) {
     swal({
       title: '确定删除?',
-      text: '删除后，新闻《“' + name + '”》将无法恢复！',
+      text: '删除后，新闻《' + name + '》将无法恢复！',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: '删除',
@@ -204,8 +205,8 @@ define(function(require, exports, module) {
           if (data.success) {
             manager.reload();
             swal(
-              '删除成功!',
-              '新闻《“' + name + '”》已被删除.',
+              '删除成功:)',
+              '新闻《' + name + '》已被删除.',
               'success'
             )
           }else{
@@ -226,11 +227,11 @@ define(function(require, exports, module) {
       });
     }, function(dismiss) {
       if (dismiss === 'cancel') {
-        swal(
-          '已取消',
-          '新闻《“' + name + '”》未删除 :)',
-          'error'
-        )
+        // swal(
+        //   '已取消',
+        //   '新闻《' + name + '》未删除 :)',
+        //   'error'
+        // )
       }
     })
   };

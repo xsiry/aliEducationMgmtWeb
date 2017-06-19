@@ -89,3 +89,7 @@ pre {
 .preview_conten>div:last-child {
   border-bottom: 0;
 }
+
+.img_list_show {
+  text-align: center;
+}
