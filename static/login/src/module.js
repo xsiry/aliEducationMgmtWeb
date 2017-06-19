@@ -57,7 +57,7 @@ define(function(require, exports, module) {
         $.get('system/userLogin', $form.serialize(), function(result) {
           if (result.success) {
             saveUserInfo();
-            location.href = "index.html";
+            location.href = "index.html#app/main_mgmt.html";
             $.gritter.add({
               title: '登录成功',
               sticky: false,
