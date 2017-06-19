@@ -17,7 +17,10 @@ define([{
   display: '导读',
   name: 'introduction',
   minWidth: 140,
-  width: '10%'
+  width: '10%',
+  render: function(rowdata, rowindex, value) {
+    return rowdata.content.substr(0, 50);
+  }
 }, {
   display: '图片',
   name: 'imgs',
@@ -35,7 +38,10 @@ define([{
   display: '内容',
   name: 'content',
   minWidth: 60,
-  width: '15%'
+  width: '15%',
+  render: function(rowdata, rowindex, value) {
+    return rowdata.content.substr(0, 50);
+  }
 }, {
   display: '发表时间',
   name: 'times',
@@ -51,6 +57,7 @@ define([{
   name: 'Apply',
   render: function(rowdata, rowindex, value) {
     var h = "";
+    h += "<button type='button' rowid='" + rowindex + "' name='" + rowdata.title + "' class='btn btn-outline btn-danger btn-xs row-btn row_btn_preview'>预览</button> ";
     h += "<button type='button' id='" + rowdata.news_id + "' class='btn btn-outline btn-info btn-xs row-btn row_btn_edit'>修改</button> ";
     h += "<button type='button' id='" + rowdata.news_id + "' name='" + rowdata.title + "' class='btn btn-outline btn-danger btn-xs row-btn row_btn_del'>删除</button> ";
     return h;

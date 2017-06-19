@@ -35,14 +35,36 @@ define(function(require, exports, module) {
         newModal('添加新闻', fun);
       })
 
+      $.root_.on("click", '.row_btn_preview', function(e) {
+        var rowid = $(e.currentTarget).attr('rowid');
+        var fun = function(dialogRef) {
+          var row = manager.getRow(rowid);
+          $('.new_title h3').text(row.title);
+          $('.new_author').text(row.author);
+          $('.new_introduction p').text(row.introduction);
+          $('.new_conten').text(row.content);
+          $('.new_source').text(row.source);
+          $('.new_times').text(row.times);
+          $.each(row.imgs.split(';'), function(i , url) {
+            if (url != "") $('.new_picture').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+          });
+        }
+        previewModal(name, fun);
+      })
+
+
+
       $('body').on("click", '.upload_new_imgs', function(e) {
         BootstrapDialog.show({
           title: '文件上传',
-          size: 'BootstrapDialog.SIZE_WIDE',
+          type: 'BootstrapDialog.TYPE_SUCCESS',
+          size: 'size-wide',
           closeByBackdrop: false,
           message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount=3 data-types="image, flash" data-async=false></div>')
             .load('app/upload_file.html'),
           onshown: function(dialogRef) {
+            $('#newModal').hide();
+            $('#previewModal').hide();
             $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
               var reData = data.response;
               if (reData.success) {
@@ -58,6 +80,10 @@ define(function(require, exports, module) {
             $('#x_file').on('filebatchuploaderror', function(event, data, msg) {
                consol.log("服务器内部错误，请联系管理员！")
             })
+          },
+          onhidden: function(dialogRef){
+            $('#newModal').show();
+            $('#previewModal').show();
           }
         });
       })
@@ -138,6 +164,10 @@ define(function(require, exports, module) {
               $('#newModalForm input[name="'+ key +'"]').val(val);
               if (key == 'imgs') {
                 imgs = val.split(';');
+              }else if (key == 'content') {
+                $('pre.flex.x-content').text(val);
+              }else if (key == 'introduction') {
+                $('pre.flex.x-introduction').text(val);
               }
             })
             $.each(imgs, function(i , url) {
@@ -209,6 +239,7 @@ define(function(require, exports, module) {
     var modal = BootstrapDialog.show({
       id: 'newModal',
       title: title,
+      size: 'size-wide',
       message: $('<div></div>').load('app/new_mgmt_modal.html'),
       cssClass: 'modal inmodal fade',
       buttons: [{
@@ -223,6 +254,26 @@ define(function(require, exports, module) {
       }, {
         id: 'newModalClose',
         label: '取消',
+        cssClass: 'btn btn-white',
+        autospin: false,
+        action: function(dialogRef) {
+          dialogRef.close();
+        }
+      }],
+      onshown: onshowFun
+    });
+  };
+
+  function previewModal(title, onshowFun) {
+    var modal = BootstrapDialog.show({
+      id: 'previewModal',
+      title: title,
+      size:  'size-wide',
+      message: $('<div></div>').load('app/new_mgmt_preview.html'),
+      cssClass: 'modal inmodal fade',
+      buttons: [{
+        id: 'previewModalClose',
+        label: '关闭',
         cssClass: 'btn btn-white',
         autospin: false,
         action: function(dialogRef) {
@@ -287,7 +338,7 @@ define(function(require, exports, module) {
         var bv = $form.data('formValidation');
 
         // Use Ajax to submit form data
-        var formVals = {};
+        var formVals = {times: dateFactory ('', new Date(), true), content: $('pre.flex.x-content').text(), introduction: $('pre.flex.x-introduction').text()};
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
         });
@@ -316,4 +367,29 @@ define(function(require, exports, module) {
         }, 'json');
       });
   };
+
+  function dateFactory (str, date, yearBool) {
+    function p(s) {
+      return s < 10 ? '0' + s : s;
+    }
+
+    var d = date ? date : string2date(str);
+    //获取当前年
+    var year = d.getFullYear();
+    //获取当前月
+    var month = d.getMonth() + 1;
+    //获取当前日
+    var date = d.getDate();
+
+    var h = d.getHours(); //获取当前小时数(0-23)
+    var m = d.getMinutes(); //获取当前分钟数(0-59)
+    var s = d.getSeconds();
+    var mydatetime = yearBool ? [year, p(month), p(date), p(h), p(m), p(s)] : [p(month), p(date)];
+    var now = mydatetime.join('-');
+    return now;
+  }
+
+  function string2date(str) {
+    return new Date(Date.parse(str.replace(/-/g, "/")) -24*60*60*1000);
+  }
 })
