@@ -22,5 +22,5 @@ define([{
 }, {
   icon: 'fa fa-th-large',
   title: '美女直播',
-  href: '#'
+  href: '#app/lv_mgmt.html'
 }]);
