@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
   $.root_ = $('div.ibox-content');
-  var manager, g, g_tabs, manager_tabs;
+  var manager, g;
   module.exports = {
 
     init: function() {
@@ -9,10 +9,9 @@ define(function(require, exports, module) {
       this._bindUI();
     },
     _configText() {
-      $('div h5.mgmt_title').text('直播列表');
-      $('div button font.mgmt_new_btn').text('添加直播');
-      $('div button font.tabs_mgmt_btn').text('管理标签');
-      $('div input.name_search').prop('placeholder', '输入直播标题');
+      $('div h5.mgmt_title').text('战队网吧列表');
+      $('div button font.mgmt_new_btn').text('添加网吧');
+      $('div input.name_search').prop('placeholder', '输入名称');
       $('div button.name_search_btn').text('搜索');
     },
     _bindUI: function() {
@@ -31,45 +30,21 @@ define(function(require, exports, module) {
         // bind .v_mnt_new_modal_btn
       $.root_.on("click", '.new_modal_btn', function(e) {
         var fun = function(dialogRef) {
-          tabSelCombo();
+          selCombo();
           newModalValidation();
         }
-        newModal('添加直播', fun);
+        newModal('添加网吧', fun);
       })
-
-      $.root_.on("click", '.tabs_mgmt_modal_btn', function(e) {
-        var fun = function(dialogRef) {
-          f_initTabsGrid();
-        }
-        tabsModal('标签管理', fun);
-      })
-
-      $.root_.on("click", '.row_btn_preview', function(e) {
-        var rowid = $(e.currentTarget).attr('rowid');
-        var fun = function(dialogRef) {
-          var row = manager.getRow(rowid);
-          $('.new_title h3').text(row.title);
-          $('.new_author').text(row.author);
-          $('.new_introduction p').text(row.introduction);
-          $('.new_conten').text(row.content);
-          $('.new_source').text(row.source);
-          $('.new_times').text(row.times);
-          $.each(row.imgs.split(';'), function(i , url) {
-            if (url != "") $('.new_picture').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
-          });
-        }
-        previewModal(name, fun);
-      })
-
-
 
       $('body').on("click", '.upload_new_imgs', function(e) {
+        var type = $(e.currentTarget).data("type");
+        var number = type == 0 ? 4 : 1;
         BootstrapDialog.show({
           title: '文件上传',
           type: 'BootstrapDialog.TYPE_SUCCESS',
           size: 'size-wide',
           closeByBackdrop: false,
-          message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount=3 data-types="image, flash" data-async=false></div>')
+          message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount='+ number +' data-types="image" data-async=false></div>')
             .load('app/upload_file.html'),
           onshown: function(dialogRef) {
             $('#newModal').hide();
@@ -108,31 +83,9 @@ define(function(require, exports, module) {
         var name = $(e.currentTarget).attr('name');
         delRow(id, name);
       })
-
-      // 标签管理bind
-      $('body').on("click", '.add_tabs', function(e) {
-        addTabsNewRow();
-      })
-      $('body').on("click", '.tabs_row_btn_edit', function(e) {
-        var rowid = $(e.currentTarget).attr('rowid');
-        beginTabsEdit(rowid);
-      })
-      $('body').on("click", '.tabs_row_btn_cancel', function(e) {
-        var rowid = $(e.currentTarget).attr('rowid');
-        cancelTabsEdit(rowid);
-      })
-      $('body').on("click", '.tabs_row_btn_end', function(e) {
-        var rowid = $(e.currentTarget).attr('rowid');
-        var id = $(e.currentTarget).attr('id');
-        endTabsEdit(rowid, id);
-      })
-      $('body').on("click", '.tabs_row_btn_del', function(e) {
-        var rowid = $(e.currentTarget).attr('rowid');
-        var id = $(e.currentTarget).attr('id');
-        delTabsRow(rowid, id);
-      })
     }
   };
+
   // Helpers
   /*
    * 生成Grid
@@ -145,7 +98,7 @@ define(function(require, exports, module) {
         $("#txtrowindex").val(rowindex);
       },
       url: 'query/table',
-      parms: { source: 'lv_beauty_info' },
+      parms: { source: 'clan_wangba' },
       method: "get",
       dataAction: 'server',
       usePager: true,
@@ -153,67 +106,10 @@ define(function(require, exports, module) {
       clickToEdit: false,
       width: '100%',
       height: '91%',
-      sortName: 'nickname',
+      sortName: 'wangba',
       sortOrder: 'ASC'
     });
   };
-
-  function f_initTabsGrid() {
-    var c = require('./columns_tabs');
-    g_tabs = manager_tabs = $("div.tabsListDiv").ligerGrid({
-      columns: c,
-      onSelectRow: function(rowdata, rowindex) {
-        $("#txtrowindex").val(rowindex);
-      },
-      url: 'query/table',
-      parms: { source: 'lv_tabs' },
-      method: "get",
-      dataAction: 'server',
-      usePager: true,
-      enabledEdit: true,
-      clickToEdit: false,
-      width: '100%',
-      height: '91%',
-      sortName: 'tab_name',
-      sortOrder: 'ASC',
-      onAfterEdit: function(e) {
-        var tab_id = e.record.tab_id;
-        var tab_name = e.record.tab_name;
-        var queue = e.record.queue;
-        var top = e.record.top;
-        if (!tab_name) {
-          $.ligerDialog.error("标签名称不能为空！");
-          return false;
-        }
-        var params = {tab_id: tab_id, tab_name: tab_name, queue: queue, top: top};
-        $.ajax({
-        type : 'POST',
-        url : 'save/table',
-        dataType : 'json',
-        data : {
-          actionname: 'lv_tabs',
-          datajson: JSON.stringify(params)
-        },
-        success : function(result) {
-            toastr.options = {
-              closeButton: true,
-              progressBar: true,
-              showMethod: 'slideDown',
-              timeOut: 4000
-            };
-            if (result.success) {
-              msg = "标签列表操作成功！";
-              manager_tabs.reload();
-              toastr.success(msg);
-            } else {
-              msg = "标签列表操作失败！";
-              toastr.error(msg);
-            };
-          }
-        });
-      }
-    });
-  }
 
   /*
    * 搜索
@@ -235,37 +131,94 @@ define(function(require, exports, module) {
   /*
    * 功能操作
    */
+
+  function applyRow(id, name) {
+    var applyVals = {hvr_id: id, status: 1};
+    swal({
+      title: '是否应用?',
+      text: '应用后，资源“' + name + '”将在推荐位展示！',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '应用',
+      cancelButtonText: '取消'
+    }).then(function() {
+      $.ajax({
+        type : 'POST',
+        url : 'save/table',
+        dataType : 'json',
+        data : {
+          actionname: 'home_videorec',
+          datajson: JSON.stringify(applyVals)
+        },
+        success : function(result) {
+          toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            showMethod: 'slideDown',
+            timeOut: 4000
+          };
+          if (result.success) {
+            swal(
+              '应用成功 :)',
+              '资源“' + name + '” :)已应用到推荐位',
+              'success'
+            );
+            manager.reload();
+          }else{
+            swal(
+              '应用失败！',
+              '未知错误，请联系管理员或查看日志',
+              'error'
+            )
+          }
+        },
+        error : function(e) {
+          console.log(e);
+        }
+      });
+    }, function(dismiss) {
+      if (dismiss === 'cancel') {
+        // swal(
+        //   '已取消',
+        //   '资源《“' + name + '”》未删除！',
+        //   'error'
+        // )
+      }
+    })
+  };
+
   function editRow(id) {
     $.ajax({
       type : 'GET',
       url : 'query/table',
       dataType : 'json',
       data : {
-        source: 'lv_beauty_info',
+        source: 'clan_wangba',
         sourceid: id
       },
       success : function(data) {
         if (data) {
           var fun = function() {
+            newModalValidation();
             var imgs = [];
             var selectedVal = '';
+            var type = parseInt(data.type);
+            $('input[name="type"][value='+ type +']').click();
             $.each(data, function(key, val) {
               $('#newModalForm input[name="'+ key +'"]').val(val);
               if (key == 'imgs') {
                 imgs = val.split(';');
-              }else if ((key == 'mark' && val == 1) || (key == 'live' && val == 1)) {
-                $('#newModalForm input[name="'+ key +'"]').prop('checked','checked');
-              }else if (key == 'tab_id') {
+              }else if (key == 'cln_id') {
                 selectedVal = val;
               }
             })
-            tabSelCombo(selectedVal);
+            selCombo(selectedVal);
             newModalValidation();
             $.each(imgs, function(i , url) {
               if (url != "") $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
             })
           }
-          newModal('修改直播', fun);
+          newModal('修改网吧', fun);
         }
       },
       error : function(e) {
@@ -277,7 +230,7 @@ define(function(require, exports, module) {
   function delRow(id, name) {
     swal({
       title: '确定删除?',
-      text: '删除后，直播“' + name + '”将无法恢复！',
+      text: '删除后，资源“' + name + '”将无法恢复！',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: '删除',
@@ -288,7 +241,7 @@ define(function(require, exports, module) {
         url : 'system/del',
         dataType : 'json',
         data : {
-          tname: 'lv_beauty_info',
+          tname: 'clan_wangba',
           tid: id
         },
         success : function(data) {
@@ -296,7 +249,7 @@ define(function(require, exports, module) {
             manager.reload();
             swal(
               '删除成功:)',
-              '直播“' + name + '”已被删除.',
+              '资源“' + name + '”已被删除.',
               'success'
             )
           }else{
@@ -319,7 +272,7 @@ define(function(require, exports, module) {
       if (dismiss === 'cancel') {
         // swal(
         //   '已取消',
-        //   '直播“' + name + '”未删除 :)',
+        //   '新闻“' + name + '”未删除 :)',
         //   'error'
         // )
       }
@@ -331,7 +284,7 @@ define(function(require, exports, module) {
       id: 'newModal',
       title: title,
       size: 'size-wide',
-      message: $('<div></div>').load('app/lv_mgmt_modal.html'),
+      message: $('<div></div>').load('app/clan_netbar_mgmt_modal.html'),
       cssClass: 'modal inmodal fade',
       buttons: [{
         type: 'submit',
@@ -345,26 +298,6 @@ define(function(require, exports, module) {
       }, {
         id: 'newModalClose',
         label: '取消',
-        cssClass: 'btn btn-white',
-        autospin: false,
-        action: function(dialogRef) {
-          dialogRef.close();
-        }
-      }],
-      onshown: onshowFun
-    });
-  };
-
-  function tabsModal(title, onshowFun) {
-    var modal = BootstrapDialog.show({
-      id: 'tabsModal',
-      title: title,
-      size:  'size-normal',
-      message: $('<div></div>').load('app/lv_tabs_modal.html'),
-      cssClass: 'modal inmodal fade',
-      buttons: [{
-        id: 'previewModalClose',
-        label: '关闭',
         cssClass: 'btn btn-white',
         autospin: false,
         action: function(dialogRef) {
@@ -432,13 +365,10 @@ define(function(require, exports, module) {
         var formVals = {};
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
-
-          if (o.name == "lv_tab_val") formVals["tab_id"] = o.value;
-          formVals["mark"] = (o.name == "mark" && o.value == "on") ? 1 : 0;
-          formVals["live"] = (o.name == "live" && o.value == "on") ? 1 : 0;
         });
+
         var data = {
-          actionname: 'lv_beauty_info',
+          actionname: 'clan_wangba',
           datajson: JSON.stringify(formVals)
         };
         $.post('save/table', data, function(result) {
@@ -450,11 +380,11 @@ define(function(require, exports, module) {
             showMethod: 'slideDown',
             timeOut: 4000
           };
-          if (result.success) {
-            msg = "直播添加成功！";
+          if (result.success == true) {
+            msg = "添加成功！";
             toastr.success(msg);
           } else {
-            msg = "直播添加失败！";
+            msg = "添加失败！";
             toastr.error(msg);
           };
 
@@ -487,20 +417,20 @@ define(function(require, exports, module) {
     }
   };
 
-  function tabSelCombo(selectedVal) {
+  function selCombo(selectedVal) {
     $.ajax({
       type : 'GET',
       url : 'query/table',
       dataType : 'json',
       data : {
-        source: 'lv_tabs',
+        source: 'clan_name',
         qtype: 'select'
       },
       success : function(data) {
         if (data) {
-          $('select.tab_sel').empty();
+          $('select.clan_list').empty();
           $.each(data, function(i, o) {
-            $('select.tab_sel').append('<option value="'+ o.tab_id +'" ' + (selectedVal == o.tab_id ? 'selected="selected"' : '') + '>'+ o.tab_name +'</option>');
+            $('select.clan_list').append('<option value="'+ o.cln_id +'" ' + (selectedVal == o.cln_id ? 'selected="selected"' : '') + '>'+ o.clan_name +'</option>');
           })
         }
         initCombo();
@@ -511,76 +441,6 @@ define(function(require, exports, module) {
     });
   }
 
-  // 标签管理功能
-  function addTabsNewRow() {
-    manager_tabs.addEditRow();
-  }
-
-  function beginTabsEdit(rowid) {
-    manager_tabs.beginEdit(rowid);
-  };
-
-  function cancelTabsEdit(rowid) {
-    manager_tabs.cancelEdit(rowid);
-  };
-
-  function endTabsEdit(rowid) {
-    manager_tabs.endEdit(rowid);
-  };
-
-  function delTabsRow(rowid) {
-    var row = manager_tabs.getRow(rowid);
-    swal({
-      title: '确定删除?',
-      text: '删除后，标签“' + row.tab_name + '”将无法恢复！',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '删除',
-      cancelButtonText: '取消'
-    }).then(function() {
-      $.ajax({
-        type : 'GET',
-        url : 'system/del',
-        dataType : 'json',
-        data : {
-          tname: 'lv_tabs',
-          tid: row.tab_id
-        },
-        success : function(data) {
-          if (data.success) {
-            manager_tabs.deleteRow(rowid);
-            swal(
-              '删除成功:)',
-              '标签“' + row.tab_name + '”已被删除.',
-              'success'
-            )
-            manager_tabs.reload();
-          }else{
-            swal(
-              '删除失败!',
-              '未知错误，请联系管理员或查看日志',
-              'error'
-            )
-          }
-        },
-        error : function(e) {
-          swal(
-            '删除失败!',
-            '未知错误，请联系管理员或查看日志',
-            'error'
-          )
-        }
-      });
-    }, function(dismiss) {
-      if (dismiss === 'cancel') {
-        // swal(
-        //   '已取消',
-        //   '直播“' + name + '”未删除 :)',
-        //   'error'
-        // )
-      }
-    })
-  };
   function dateFactory (str, date, yearBool) {
     function p(s) {
       return s < 10 ? '0' + s : s;
