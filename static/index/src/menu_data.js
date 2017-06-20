@@ -6,9 +6,10 @@ define([{
   icon: 'fa fa-book',
   title: 'E³联赛',
   href: '#',
-  childrens: [{
-    title: '新闻业务',
-    href: '#app/new_mgmt.html'
+  childrens: [
+  {
+    title: '首页',
+    href: '#app/e3_index_mgmt.html'
   }, {
     title: '总赛程',
     href: '#'
@@ -16,8 +17,14 @@ define([{
     title: '分省赛程',
     href: '#'
   }, {
+    title: '战队网吧',
+    href: '#app/clan_netbar_mgmt.html'
+  }, {
     title: '战队管理',
-    href: '#'
+    href: '#app/clan_mgmt.html'
+  }, {
+    title: '新闻业务',
+    href: '#app/new_mgmt.html'
   }]
 }, {
   icon: 'fa fa-th-large',

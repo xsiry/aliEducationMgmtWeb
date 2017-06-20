@@ -1,0 +1,11 @@
+div.video_block {
+  display: none;
+}
+
+div.img_block {
+  display: none;
+}
+
+.img_list_show {
+  text-align: center;
+}

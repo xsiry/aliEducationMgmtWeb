@@ -1,0 +1,91 @@
+<form class="form-horizontal" id="newModalForm" role="form">
+  <input type="hidden" name="gp_id" value="">
+  <input type="hidden" name="imgs" value="">
+  <div class="form-group">
+    <label class="col-sm-3 control-label">标题</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="title" autofocus>
+    </div>
+  </div>
+  <!-- <div class="form-group">
+    <label class="col-sm-3 control-label">所属标签</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <select data-placeholder="请选择.." class="chosen-select tab_sel" name="lv_tab_val" style="width:250px;" tabindex="2">
+        </select>
+      </div>
+    </div>
+  </div> -->
+  <div class="hr-line-dashed"></div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">资源类型</label>
+    <div class="col-sm-9">
+      <div class="radio radio-info radio-inline">
+        <input type="radio" name="type" value="0" checked>
+        <label for="type1">
+          轮播图片
+        </label>
+      </div>
+      <div class="radio radio-info radio-inline">
+        <input type="radio" name="type" value="1">
+        <label for="type1">
+          静态图片
+        </label>
+      </div>
+      <div class="radio radio-info radio-inline">
+        <input type="radio" name="type" value="2">
+        <label for="type2">
+          视频
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="imgs_block">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">轮播图片</label>
+      <div class="col-sm-9">
+        <a class="btn btn-primary upload_new_imgs" data-type=0>添加</a>
+        <span class="help-block m-b-none">（请一次性添加所需图片，最多四张，应用于E3联赛推广位）</span>
+      </div>
+    </div>
+    <div class="form-group img_list_show">
+    </div>
+  </div>
+  <div class="img_block">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">静态图片</label>
+      <div class="col-sm-9">
+        <a class="btn btn-primary upload_new_imgs" data-type=1>添加</a>
+        <span class="help-block m-b-none">（请一次性添加所需图片，最多一张，应用于总赛程推广位）</span>
+      </div>
+    </div>
+    <div class="form-group img_list_show">
+    </div>
+  </div>
+  <div class="video_block">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">视频</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control video_url" name="video_url">
+        <span class="help-block m-b-none">（请填写视频地址，应用于E3联赛推广位）</span>
+      </div>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">点击数</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="click">
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label"></label>
+    <div class="col-sm-9">
+      <div class="checkbox checkbox-success checkbox-inline">
+        <input type="checkbox" id="c-status" name="status">
+        <label for="c-status">是否应用</label>
+      </div>
+    </div>
+  </div>
+</form>

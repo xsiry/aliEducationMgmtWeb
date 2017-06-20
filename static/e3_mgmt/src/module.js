@@ -9,10 +9,9 @@ define(function(require, exports, module) {
       this._bindUI();
     },
     _configText() {
-      $('div h5.mgmt_title').text('主页管理');
-      $('div button font.set_coupons_btn').text('秒杀活动设置');
-      $('div button font.mgmt_new_btn').text('添加推荐位资源');
-      $('div input.name_search').prop('placeholder', '输入资源标题');
+      $('div h5.mgmt_title').text('动态推广资源列表');
+      $('div button font.mgmt_new_btn').text('添加推广');
+      $('div input.name_search').prop('placeholder', '输入推广资源标题');
       $('div button.name_search_btn').text('搜索');
     },
     _bindUI: function() {
@@ -33,57 +32,52 @@ define(function(require, exports, module) {
         var fun = function(dialogRef) {
           newModalValidation();
         }
-        newModal('添加推荐位资源', fun);
+        newModal('添加推广资源', fun);
       })
 
-      $.root_.on("click", '.set_coupons_btn', function(e) {
-        var fun = function(dialogRef) {
-          $.ajax({
-            type : 'GET',
-            url : 'query/table',
-            dataType : 'json',
-            data : {
-              source: 'member_coupons',
-              sourceid: 1
-            },
-            success : function(data) {
-              if (data) {
-                $('#couponsModalForm .mc_number').val(data.number);
-                $('#couponsModalForm .mc_price').val(data.price);
-                $.each(data.imgs.split(';'), function(i , url) {
-                  if (url != "") $('#couponsModalForm .img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
-                });
-              }
-            },
-            error : function(e) {
-              console.log(e);
-            }
-          });
-          couponsModalValidation();
+      $('body').on("change", 'input[name="type"]', function(e) {
+        var type = $(e.currentTarget).val();
+        $('.video_block').hide();
+        $('.imgs_block').hide();
+        $('.img_block').hide();
+        if (type == 0) {
+          $('.imgs_block').show();
+        }else if(type == 1){
+          $('.img_block').show();
+        }else {
+          $('.video_block').show();
         }
-        couponsModal('秒杀活动设置', fun);
       })
 
-      $('body').on("click", '.upload_coupons_imgs', function(e) {
+      $.root_.on("click", '.row_btn_apply', function(e) {
+        var id = $(e.currentTarget).attr('id');
+        var name = $(e.currentTarget).attr('name');
+        applyRow(id, name);
+      })
+
+      $('body').on("click", '.upload_new_imgs', function(e) {
+        var type = $(e.currentTarget).data("type");
+        var number = type == 0 ? 4 : 1;
         BootstrapDialog.show({
           title: '文件上传',
           type: 'BootstrapDialog.TYPE_SUCCESS',
           size: 'size-wide',
           closeByBackdrop: false,
-          message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount=1 data-types="image, flash" data-async=false></div>')
+          message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount='+ number +' data-types="image" data-async=false></div>')
             .load('app/upload_file.html'),
           onshown: function(dialogRef) {
-            $('#couponsModal').hide();
+            $('#newModal').hide();
+            $('#previewModal').hide();
             $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
               var reData = data.response;
               if (reData.success) {
                 var imgs = [];
-                $('#couponsModalForm div.img_list_show').empty();
+                $('#newModalForm div.img_list_show').empty().css('text-align', 'center');
                 $.each(reData.result, function(i, url) {
                   imgs.push(url);
-                  $('#couponsModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                  $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 })
-                $('#couponsModalForm input[name="imgs"]').val(imgs.join(';'));
+                $('#newModalForm input[name="imgs"]').val(imgs.join(';'));
                 dialogRef.close();
               }
             })
@@ -92,16 +86,16 @@ define(function(require, exports, module) {
             })
           },
           onhidden: function(dialogRef){
-            $('#couponsModal').show();
+            $('#newModal').show();
+            $('#previewModal').show();
           }
         });
       })
 
       // bind grid edit
-      $.root_.on("click", '.row_btn_apply', function(e) {
+      $.root_.on("click", '.row_btn_edit', function(e) {
         var id = $(e.currentTarget).attr('id');
-        var name = $(e.currentTarget).attr('name');
-        applyRow(id, name);
+        editRow(id);
       })
       $.root_.on("click", '.row_btn_del', function(e) {
         var id = $(e.currentTarget).attr('id');
@@ -116,14 +110,14 @@ define(function(require, exports, module) {
    * 生成Grid
    */
   function f_initGrid() {
-    var c = require('./columns_video');
+    var c = require('./columns');
     g = manager = $("div.listDiv").ligerGrid({
       columns: c,
       onSelectRow: function(rowdata, rowindex) {
         $("#txtrowindex").val(rowindex);
       },
       url: 'query/table',
-      parms: { source: 'home_videorec' },
+      parms: { source: 'gm_promotion' },
       method: "get",
       dataAction: 'server',
       usePager: true,
@@ -131,7 +125,7 @@ define(function(require, exports, module) {
       clickToEdit: false,
       width: '100%',
       height: '91%',
-      sortName: 'hvr_name',
+      sortName: 'dtpr_id',
       sortOrder: 'ASC'
     });
   };
@@ -156,6 +150,7 @@ define(function(require, exports, module) {
   /*
    * 功能操作
    */
+
   function applyRow(id, name) {
     var applyVals = {hvr_id: id, status: 1};
     swal({
@@ -211,6 +206,45 @@ define(function(require, exports, module) {
     })
   };
 
+  function editRow(id) {
+    $.ajax({
+      type : 'GET',
+      url : 'query/table',
+      dataType : 'json',
+      data : {
+        source: 'gm_promotion',
+        sourceid: id
+      },
+      success : function(data) {
+        if (data) {
+          var fun = function() {
+            newModalValidation();
+            var imgs = [];
+            var type = parseInt(data.type);
+            $('input[name="type"][value='+ type +']').click();
+            $.each(data, function(key, val) {
+              $('#newModalForm input[name="'+ key +'"]').val(val);
+              if (key == 'imgurl' && type != 2) {
+                imgs = val.split(';');
+              }else if (key == 'status' && val == 1) {
+                $('#newModalForm input[name="'+ key +'"]').prop('checked','checked');
+              }else if (key == 'imgurl' && type == 2) {
+                $('input[name="video_url"]').val(val);
+              }
+            })
+            $.each(imgs, function(i , url) {
+              if (url != "") $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+            })
+          }
+          newModal('修改推广', fun);
+        }
+      },
+      error : function(e) {
+        console.log(e);
+      }
+    });
+  };
+
   function delRow(id, name) {
     swal({
       title: '确定删除?',
@@ -225,15 +259,15 @@ define(function(require, exports, module) {
         url : 'system/del',
         dataType : 'json',
         data : {
-          tname: 'home_videorec',
+          tname: 'gm_promotion',
           tid: id
         },
         success : function(data) {
           if (data.success) {
             manager.reload();
             swal(
-              '删除成功!',
-              '资源“' + name + '”已被删除 :)',
+              '删除成功:)',
+              '资源“' + name + '”已被删除.',
               'success'
             )
           }else{
@@ -256,7 +290,7 @@ define(function(require, exports, module) {
       if (dismiss === 'cancel') {
         // swal(
         //   '已取消',
-        //   '资源《“' + name + '”》未删除！',
+        //   '新闻“' + name + '”未删除 :)',
         //   'error'
         // )
       }
@@ -268,7 +302,7 @@ define(function(require, exports, module) {
       id: 'newModal',
       title: title,
       size: 'size-wide',
-      message: $('<div></div>').load('app/main_mgmt_modal.html'),
+      message: $('<div></div>').load('app/e3_index_mgmt_modal.html'),
       cssClass: 'modal inmodal fade',
       buttons: [{
         type: 'submit',
@@ -282,35 +316,6 @@ define(function(require, exports, module) {
       }, {
         id: 'newModalClose',
         label: '取消',
-        cssClass: 'btn btn-white',
-        autospin: false,
-        action: function(dialogRef) {
-          dialogRef.close();
-        }
-      }],
-      onshown: onshowFun
-    });
-  };
-
-  function couponsModal(title, onshowFun) {
-    var modal = BootstrapDialog.show({
-      id: 'couponsModal',
-      title: title,
-      size:  'size-wide',
-      message: $('<div></div>').load('app/main_coupons_modal.html'),
-      cssClass: 'modal inmodal fade',
-      buttons: [{
-        type: 'submit',
-        icon: 'glyphicon glyphicon-check',
-        label: '设置',
-        cssClass: 'btn btn-primary',
-        autospin: false,
-        action: function(dialogRef) {
-          $('#couponsModalForm').submit();
-        }
-      }, {
-        id: 'previewModalClose',
-        label: '关闭',
         cssClass: 'btn btn-white',
         autospin: false,
         action: function(dialogRef) {
@@ -380,8 +385,17 @@ define(function(require, exports, module) {
           formVals[o.name] = o.value;
           formVals["status"] = (o.name == "status" && o.value == "on") ? 1 : 0;
         });
+
+        var imgurl = '';
+        if (formVals['type'] == 2) {
+          imgurl = formVals['video_url'];
+        }else {
+          imgurl = formVals['imgs'];
+        }
+        formVals['imgurl'] = imgurl;
+
         var data = {
-          actionname: 'home_videorec',
+          actionname: 'gm_promotion',
           datajson: JSON.stringify(formVals)
         };
         $.post('save/table', data, function(result) {
@@ -394,97 +408,14 @@ define(function(require, exports, module) {
             timeOut: 4000
           };
           if (result.success == true) {
-            msg = "资源添加成功！";
+            msg = "添加成功！";
             toastr.success(msg);
           } else {
-            msg = "资源添加失败！";
+            msg = "添加失败！";
             toastr.error(msg);
           };
 
           $('#newModalClose').click();
-        }, 'json');
-      });
-  };
-
-  function couponsModalValidation() {
-    $('#couponsModalForm').formValidation({
-        autoFocus: true,
-        locale: 'zh_CN',
-        message: '该值无效，请重新输入',
-        err: {
-          container: 'tooltip'
-        },
-        icon: {
-          valid: 'glyphicon glyphicon-ok',
-          invalid: 'glyphicon glyphicon-remove',
-          validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-          // Name: {
-          //   validators: {
-          //     notEmpty: {}
-          //   }
-          // },
-          // BusinessFirm: {
-          //   validators: {
-          //     notEmpty: {}
-          //   }
-          // },
-          // BusinessContact: {
-          //   validators: {
-          //     notEmpty: {}
-          //   }
-          // },
-          // PhoneNumber: {
-          //   validators: {
-          //     notEmpty: {},
-          //     digits: {},
-          //     phone: {
-          //       country: 'CN'
-          //     }
-          //   }
-          // }
-        }
-      })
-      .on('success.form.fv', function(e) {
-        // Prevent form submission
-        e.preventDefault();
-
-        // Get the form instance
-        var $form = $(e.target);
-
-        // Get the FormValidation instance
-        var bv = $form.data('formValidation');
-
-        // Use Ajax to submit form data
-        var formVals = {};
-        $.each($form.serializeArray(), function(i, o) {
-          formVals[o.name] = o.value;
-          // formVals["status"] = (o.name == "status" && o.value == "on") ? 1 : 0;
-        });
-        var data = {
-          actionname: 'member_coupons',
-          datajson: JSON.stringify(formVals)
-        };
-
-        $.post('save/table', data, function(result) {
-          var msg;
-          manager.reload();
-          toastr.options = {
-            closeButton: true,
-            progressBar: true,
-            showMethod: 'slideDown',
-            timeOut: 4000
-          };
-          if (result.success == true) {
-            msg = "秒杀活动设置成功！";
-            toastr.success(msg);
-          } else {
-            msg = "秒杀活动设置失败！";
-            toastr.error(msg);
-          };
-
-          $('#couponsModal').click();
         }, 'json');
       });
   };
