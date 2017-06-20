@@ -1,0 +1,67 @@
+<form class="form-horizontal" id="newModalForm" role="form">
+  <input type="hidden" name="ms_id" value="">
+  <div class="form-group">
+    <label class="col-sm-3 control-label">比赛时间</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="times" autofocus>
+      <span class="help-block m-b-none">（时间格式：YYYY-MM-DD HH:SS:MM）</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">比赛省会</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <select data-placeholder="请选择.." class="chosen-select dtpr_list" name="dtpr_id" style="width:250px;" tabindex="2">
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">战队A</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <select data-placeholder="请选择.." class="chosen-select clan_list_a" name="clan_id_a" style="width:250px;" tabindex="2">
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">战队A比分</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="a_score" autofocus>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">战队B</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <select data-placeholder="请选择.." class="chosen-select clan_list_b" name="clan_id_b" style="width:250px;" tabindex="2">
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">战队B比分</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="b_score" autofocus>
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">直播地址</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="live_url">
+    </div>
+  </div>
+  <div class="hr-line-dashed"></div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label"></label>
+    <div class="col-sm-9">
+      <div class="checkbox checkbox-success checkbox-inline">
+        <input type="checkbox" id="c-status" name="status">
+        <label for="c-status">是否统计</label>
+      </div>
+      <span class="help-block m-b-none">（勾选将自动统计战队胜负场及其积分）</span>
+    </div>
+  </div>
+</form>

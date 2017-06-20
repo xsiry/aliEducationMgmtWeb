@@ -1,0 +1,46 @@
+<link rel="stylesheet" type="text/css" href="static/clan_schedule_mgmt/style.css" />
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5 class="mgmt_title"></h5>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-sm-5 m-b-xs">
+              <button class="btn btn-primary new_modal_btn" type="button"><i class="fa fa-paste"></i>
+                <font class="mgmt_new_btn"></font>
+              </button>
+              <button class="btn btn-primary set_gm_intr_notice_modal_btn" type="button"><i class="fa fa-paste"></i>
+                <font class="set_gm_intr_notice_btn"></font>
+              </button>
+            </div>
+            <div class="col-sm-3 col-md-offset-4">
+              <div class="input-group">
+                <input type="text" class="input-sm form-control name_search">
+                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-sm btn-primary name_search_btn"></button>
+                                </span>
+              </div>
+            </div>
+          </div>
+          <div class="listDiv" style="margin:0; padding:0">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--CMD模块化插件-->
+<script type="text/javascript" src="sea-modules/seajs/sea.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  seajs.config({
+    base: "./sea-modules/",
+    alias: {}
+  });
+  // 加载入口模块
+  seajs.use("./static/clan_schedule_mgmt/src/main")
+});
+</script>

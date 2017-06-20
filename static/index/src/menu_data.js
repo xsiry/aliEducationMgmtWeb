@@ -11,11 +11,8 @@ define([{
     title: '首页',
     href: '#app/e3_index_mgmt.html'
   }, {
-    title: '总赛程',
-    href: '#'
-  }, {
-    title: '分省赛程',
-    href: '#'
+    title: '赛程管理',
+    href: '#app/clan_schedule_mgmt.html'
   }, {
     title: '战队网吧',
     href: '#app/clan_netbar_mgmt.html'
