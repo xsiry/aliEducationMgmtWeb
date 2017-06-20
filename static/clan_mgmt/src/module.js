@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
   $.root_ = $('div.ibox-content');
-  var manager, g;
+  var manager, g, g_member, manager_member;
   module.exports = {
 
     init: function() {
@@ -11,6 +11,7 @@ define(function(require, exports, module) {
     _configText() {
       $('div h5.mgmt_title').text('战队列表');
       $('div button font.mgmt_new_btn').text('添加战队');
+      $('div button font.mgmt_member_btn').text('成员管理');
       $('div input.name_search').prop('placeholder', '输入名称');
       $('div button.name_search_btn').text('搜索');
     },
@@ -29,11 +30,22 @@ define(function(require, exports, module) {
         })
         // bind .v_mnt_new_modal_btn
       $.root_.on("click", '.new_modal_btn', function(e) {
+        var url = 'app/clan_mgmt_modal.html';
         var fun = function(dialogRef) {
           selCombo();
           newModalValidation();
         }
-        newModal('添加战队', fun);
+        newModal('添加战队', url, fun);
+      })
+
+      $.root_.on("click", '.mgmt_member_modal_btn', function(e) {
+        var row = manager.getSelectedRow();
+        if (!row) { alert('请选择一个战队'); return; }
+        var url = 'app/clan_member_mgmt_modal.html';
+        var fun = function(dialogRef) {
+          f_initMemberGrid(row.cln_id)
+        }
+        newModal(row.clan_name + ' 战队成员管理', url, fun, 'memModal', '', '', true);
       })
 
       $('body').on("click", '.upload_new_imgs', function(e) {
@@ -45,6 +57,10 @@ define(function(require, exports, module) {
           number = 1;
         }else if (type == 3) {
           number = 3;
+        }else if (type == 4) {
+          number = 1;
+        }else if (type == 5) {
+          number = 1;
         }
 
         BootstrapDialog.show({
@@ -56,15 +72,19 @@ define(function(require, exports, module) {
             .load('app/upload_file.html'),
           onshown: function(dialogRef) {
             $('#newModal').hide();
-            $('#previewModal').hide();
+            $('#memModal').hide();
+            $('#addMemModal').hide();
             $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
               var reData = data.response;
               if (reData.success) {
                 var imgs = [];
-                $('#newModalForm div.img_list_show_' + type).empty().css('text-align', 'center');
+                var formId = 'newModalForm';
+                if (type > 3) formId = 'memberModalForm';
+
+                $('#'+ formId +' div.img_list_show_' + type).empty().css('text-align', 'center');
                 $.each(reData.result, function(i, url) {
                   imgs.push(url);
-                  $('#newModalForm div.img_list_show_' + type).append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                  $('#'+ formId +' div.img_list_show_' + type).append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 });
 
                 if (type == 1) {
@@ -73,6 +93,10 @@ define(function(require, exports, module) {
                   $('#newModalForm input[name="clan_img"]').val(imgs.join(';'));
                 }else if (type == 3) {
                   $('#newModalForm input[name="imgurl"]').val(imgs.join(';'));
+                }else if (type == 4) {
+                  $('#memberModalForm input[name="photo"]').val(imgs.join(';'));
+                }else if (type == 5) {
+                  $('#memberModalForm input[name="avatar"]').val(imgs.join(';'));
                 }
 
                 dialogRef.close();
@@ -84,7 +108,8 @@ define(function(require, exports, module) {
           },
           onhidden: function(dialogRef){
             $('#newModal').show();
-            $('#previewModal').show();
+            $('#addMemModal').show();
+            $('#memModal').show();
           }
         });
       })
@@ -98,6 +123,26 @@ define(function(require, exports, module) {
         var id = $(e.currentTarget).attr('id');
         var name = $(e.currentTarget).attr('name');
         delRow(id, name);
+      })
+
+      // 战队成员管理bind
+      $('body').on("click", '.add_member', function(e) {
+        var url = 'app/clan_member_mgmt_new_modal.html';
+        var formId = 'memberModalForm';
+        var closeId = 'memModalClose';
+        var fun = function(dialogRef) {
+          memModalValidation();
+        }
+        newModal('添加成员信息', url, fun, 'addMemModal', formId, closeId);
+      })
+      $('body').on("click", '.edit_member', function(e) {
+        var id = $(e.currentTarget).attr('id');
+        editMem(id);
+      })
+      $('body').on("click", '.del_member', function(e) {
+        var id = $(e.currentTarget).attr('id');
+        var name = $(e.currentTarget).attr('name');
+        delMem(id, name);
       })
     }
   };
@@ -127,6 +172,26 @@ define(function(require, exports, module) {
     });
   };
 
+  function f_initMemberGrid(cln_id) {
+    var c = require('./columns_member');
+    g_member = manager_member = $("div.memberListDiv").ligerGrid({
+      columns: c,
+      onSelectRow: function(rowdata, rowindex) {
+        $("#txtrowindex").val(rowindex);
+      },
+      url: 'query/table',
+      parms: { source: 'clan_member', qhstr: JSON.stringify({qjson: [{cln_id: cln_id}]})},
+      method: "get",
+      dataAction: 'server',
+      usePager: true,
+      enabledEdit: true,
+      clickToEdit: false,
+      width: '100%',
+      height: '91%',
+      sortName: 'nickname',
+      sortOrder: 'ASC'
+    });
+  }
   /*
    * 搜索
    */
@@ -186,7 +251,8 @@ define(function(require, exports, module) {
             selCombo(selectedVal);
             newModalValidation();
           }
-          newModal('修改战队', fun);
+          var url = 'app/clan_mgmt_modal.html';
+          newModal('修改战队', url, fun);
         }
       },
       error : function(e) {
@@ -247,31 +313,40 @@ define(function(require, exports, module) {
     })
   };
 
-  function newModal(title, onshowFun) {
-    var modal = BootstrapDialog.show({
-      id: 'newModal',
-      title: title,
-      size: 'size-wide',
-      message: $('<div></div>').load('app/clan_mgmt_modal.html'),
-      cssClass: 'modal inmodal fade',
-      buttons: [{
+  function newModal(title, url, onshowFun, modalId, formId, closeId, noBtn) {
+    var mId = 'newModal';
+    if (modalId) mId = modalId;
+    var id = 'newModalForm';
+    if (formId) id = formId;
+    var cId = 'newModalClose';
+    if (closeId) cId = closeId;
+
+    var btn = [{
         type: 'submit',
         icon: 'glyphicon glyphicon-check',
         label: '保存',
         cssClass: 'btn btn-primary',
         autospin: false,
         action: function(dialogRef) {
-          $('#newModalForm').submit();
+          $('#'+ id).submit();
         }
       }, {
-        id: 'newModalClose',
+        id: cId,
         label: '取消',
         cssClass: 'btn btn-white',
         autospin: false,
         action: function(dialogRef) {
           dialogRef.close();
         }
-      }],
+      }];
+    if (noBtn) btn = [];
+    var modal = BootstrapDialog.show({
+      id: mId,
+      title: title,
+      size: 'size-wide',
+      message: $('<div></div>').load(url),
+      cssClass: 'modal inmodal fade',
+      buttons: btn,
       onshown: onshowFun
     });
   };
@@ -361,6 +436,88 @@ define(function(require, exports, module) {
       });
   };
 
+  function memModalValidation() {
+    $('#memberModalForm').formValidation({
+        autoFocus: true,
+        locale: 'zh_CN',
+        message: '该值无效，请重新输入',
+        err: {
+          container: 'tooltip'
+        },
+        icon: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+          // Name: {
+          //   validators: {
+          //     notEmpty: {}
+          //   }
+          // },
+          // BusinessFirm: {
+          //   validators: {
+          //     notEmpty: {}
+          //   }
+          // },
+          // BusinessContact: {
+          //   validators: {
+          //     notEmpty: {}
+          //   }
+          // },
+          // PhoneNumber: {
+          //   validators: {
+          //     notEmpty: {},
+          //     digits: {},
+          //     phone: {
+          //       country: 'CN'
+          //     }
+          //   }
+          // }
+        }
+      })
+      .on('success.form.fv', function(e) {
+        // Prevent form submission
+        e.preventDefault();
+
+        // Get the form instance
+        var $form = $(e.target);
+
+        // Get the FormValidation instance
+        var bv = $form.data('formValidation');
+
+        // Use Ajax to submit form data
+        var formVals = {};
+        $.each($form.serializeArray(), function(i, o) {
+          formVals[o.name] = o.value;
+        });
+
+        var data = {
+          actionname: 'clan_member',
+          datajson: JSON.stringify(formVals)
+        };
+        $.post('save/table', data, function(result) {
+          var msg;
+          manager_member.reload();
+          toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            showMethod: 'slideDown',
+            timeOut: 4000
+          };
+          if (result.success == true) {
+            msg = "操作成功！";
+            toastr.success(msg);
+          } else {
+            msg = "操作失败！";
+            toastr.error(msg);
+          };
+
+          $('#memModalClose').click();
+        }, 'json');
+      });
+  };
+
   /*
    * 初始化Combo
    */
@@ -408,6 +565,101 @@ define(function(require, exports, module) {
       }
     });
   }
+
+  // 成员管理操作
+  function editMem(id) {
+    $.ajax({
+      type : 'GET',
+      url : 'query/table',
+      dataType : 'json',
+      data : {
+        source: 'clan_member',
+        sourceid: id
+      },
+      success : function(data) {
+        if (data) {
+          var fun = function() {
+            var selectedVal = '';
+            $.each(data, function(key, val) {
+              var imgs = [];
+              $('#memberModalForm input[name="'+ key +'"]').val(val);
+              if (key == 'photo') {
+                imgs = val.split(';');
+                $.each(imgs, function(i , url) {
+                  if (url != "") $('#memberModalForm div.img_list_show_4').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                })
+              }else if (key == 'avatar') {
+                imgs = val.split(';');
+                $.each(imgs, function(i , url) {
+                  if (url != "") $('#memberModalForm div.img_list_show_5').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                })
+              }
+            })
+            memModalValidation();
+          }
+          var url = 'app/clan_member_mgmt_new_modal.html';
+          var formId = 'memberModalForm';
+          var closeId = 'memModalClose';
+          newModal('修改成员信息', url, fun, 'addMemModal', formId, closeId);
+        }
+      },
+      error : function(e) {
+        console.log(e);
+      }
+    });
+  };
+
+  function delMem(id, name) {
+    swal({
+      title: '确定删除?',
+      text: '删除后，战队成员“' + name + '”将无法恢复！',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '删除',
+      cancelButtonText: '取消'
+    }).then(function() {
+      $.ajax({
+        type : 'GET',
+        url : 'system/del',
+        dataType : 'json',
+        data : {
+          tname: 'clan_member',
+          tid: id
+        },
+        success : function(data) {
+          if (data.success) {
+            manager_member.reload();
+            swal(
+              '删除成功:)',
+              '战队成员“' + name + '”已被删除.',
+              'success'
+            )
+          }else{
+            swal(
+              '删除失败!',
+              '未知错误，请联系管理员或查看日志',
+              'error'
+            )
+          }
+        },
+        error : function(e) {
+          swal(
+            '删除失败!',
+            '未知错误，请联系管理员或查看日志',
+            'error'
+          )
+        }
+      });
+    }, function(dismiss) {
+      if (dismiss === 'cancel') {
+        // swal(
+        //   '已取消',
+        //   '新闻“' + name + '”未删除 :)',
+        //   'error'
+        // )
+      }
+    })
+  };
 
   function dateFactory (str, date, yearBool) {
     function p(s) {
