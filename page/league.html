@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta name="description" content="">
+  <meta name="author" content="xsiry">
+  <title></title>
+  <!-- Bootstrap core CSS -->
+  <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <!-- Fullcalendar core CSS -->
+  <link href="lib/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+  <link href="lib/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media='print' />
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="league.css">
+  <link rel="stylesheet" type="text/css" href="h5_video.css">
+</head>
+<svg class="txp_svg_sprite txp_svg_sprite_head" display="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="arrow_svg">
+    <path d="M384 556l0-64 64 0 0 64-64 0zM448 620l0-64 64 0 0 64-64 0zM512 684l0-64 64 0 0 64-64 0zM576 748l0-64 64 0 0 64-64 0zM576 364l0-64 64 0 0 64-64 0zM448 492l0-64 64 0 0 64-64 0zM512 428l0-64 64 0 0 64-64 0z" p-id="7225" fill="#ffffff"></path>
+  </symbol>
+  <symbol id="video_fullscreen_svg">
+    <path d="M79.068993 65.73412c-3.917377 0.044002-7.834753 1.531889-10.81065 4.551666-2.997387 2.975774-4.485335 6.91448-4.485335 10.853186l0.152479 318.693366c0 1.968841 1.181967 3.894703 3.151912 4.726651 1.968922 0.787946 4.157863 0.305969 5.580317-1.137916l107.730927-107.223047 144.439448 143.810337c2.7569 2.756787 6.608782 4.463662 10.85363 4.463662 4.200844 0 8.052726-1.706875 10.809626-4.463662l98.079731-97.638761c2.800904-2.756787 4.507849-6.608511 4.507849-10.897188 0-4.244674-1.706945-8.096399-4.507849-10.897188L300.230897 176.85187l104.688513-104.247272c1.443944-1.399883 1.925941-3.588735 1.093959-5.601578-0.787978-1.968841-2.713919-3.15076-4.726845-3.15076L79.068993 65.73412z" p-id="2382" fill="#ffffff"></path>
+    <path d="M79.178491 960.14774c-3.938867 0.044002-7.877734-1.487887-10.876144-4.463662-3.0199-3.018753-4.529339-6.958482-4.529339-10.896164l0.152479-321.363172c0-2.012843 1.181967-3.938706 3.151912-4.725628 1.968922-0.831948 4.157863-0.306992 5.580317 1.093914l107.730927 107.266026 144.439448-143.853315c2.7569-2.756787 6.608782-4.463662 10.85363-4.463662 4.200844 0 8.052726 1.706875 10.809626 4.463662l98.079731 97.637738c2.800904 2.800789 4.507849 6.652514 4.507849 10.897188s-1.706945 8.140401-4.507849 10.897188L300.230897 846.360184l104.776521 104.334253c1.444968 1.443885 1.925941 3.632737 1.137963 5.602601-0.831982 1.968841-2.713919 3.15076-4.726845 3.194762L79.178491 960.14774z" p-id="2383" fill="#ffffff"></path>
+    <path d="M944.90747 65.73412c3.938867 0.044002 7.83373 1.531889 10.809626 4.551666 3.0199 2.975774 4.507849 6.91448 4.507849 10.853186l-0.174993 318.693366c0 1.968841-1.181967 3.894703-3.151912 4.726651-1.968922 0.787946-4.157863 0.305969-5.557804-1.137916L843.588842 296.197002 699.159627 440.007339c-2.800904 2.756787-6.608782 4.463662-10.85363 4.463662s-8.052726-1.706875-10.85363-4.463662l-98.036751-97.638761c-2.800904-2.756787-4.507849-6.608511-4.507849-10.897188 0-4.244674 1.706945-8.096399 4.507849-10.853186l144.385211-143.766334L619.068309 72.604598c-1.444968-1.399883-1.925941-3.588735-1.093959-5.601578 0.787978-1.968841 2.712896-3.15076 4.726845-3.15076L944.90747 65.73412z" p-id="2384" fill="#ffffff"></path>
+    <path d="M944.819462 960.14774c3.93989 0.044002 7.877734-1.487887 10.85363-4.463662 3.0199-3.018753 4.551852-6.958482 4.551852-10.896164l-0.174993-321.363172c0-2.012843-1.181967-3.938706-3.151912-4.725628-1.968922-0.831948-4.157863-0.306992-5.557804 1.093914L843.588842 727.058031 699.159627 583.204715c-2.800904-2.756787-6.608782-4.463662-10.85363-4.463662s-8.052726 1.706875-10.85363 4.463662l-98.036751 97.637738c-2.800904 2.800789-4.507849 6.652514-4.507849 10.897188s1.706945 8.140401 4.507849 10.897188l144.385211 143.722332L618.980302 950.694437c-1.443944 1.443885-1.925941 3.632737-1.137963 5.602601 0.831982 1.968841 2.713919 3.15076 4.726845 3.194762L944.819462 960.14774z" p-id="2385" fill="#ffffff"></path>
+  </symbol>
+  <symbol id="play_svg">
+    <path d="M380.224768 697.142697c0.098237-0.205685 0.12996-0.022513 0.228197-0.340761-0.174985-0.623193-0.282433-0.542352-0.407276-0.748037L380.224768 697.142697 380.224768 697.142697zM511.802502 63.987337c-247.421112 0-448.01164 200.586434-448.01164 448.01164 0 247.421112 200.590528 448.01164 448.01164 448.01164 247.426229 0 448.02085-200.590528 448.02085-448.01164C959.823352 264.573771 759.228731 63.987337 511.802502 63.987337L511.802502 63.987337zM511.806595 915.210271c-222.690872 0-403.214365-180.5194-403.214365-403.210271S289.115724 108.789729 511.806595 108.789729s403.214365 180.5194 403.214365 403.210271S734.49849 915.210271 511.806595 915.210271L511.806595 915.210271zM725.013465 484.553904l0.233314 0.161682c4.619204 2.978844 7.41897 4.977361 7.840572 5.627161l-7.840572-5.627161c-48.578392-31.410384-308.683385-180.214455-317.191152-180.214455-8.095375 0-15.044648 3.937682-19.815301 9.743922-3.194762 3.140527-7.28901 12.038174-8.53949 16.683984-1.420349 5.214768-0.904603 361.15034 0.734734 365.872898 3.705392 13.852496 22.01541 24.743544 35.867906 21.039175 3.243881-1.088798 6.124488-2.746554 8.664334-4.954849l300.878628-172.71976c12.060687-3.238764 19.318998-14.547321 18.641569-26.536376C745.165434 501.597069 737.070059 487.797785 725.013465 484.553904L725.013465 484.553904zM433.991322 649.858788 433.991322 377.303228l237.385549 136.304386L433.991322 649.858788 433.991322 649.858788zM433.991322 649.858788" p-id="4152" fill="#ffffff"></path>
+  </symbol>
+  <symbol id="pause_svg">
+    <path d="M410.393 309.487c-21.593 0-39.156 17.565-39.156 39.156l0 309.72c0 21.592 17.563 39.156 39.156 39.156 21.591 0 39.155-17.564 39.155-39.156l0-309.72C449.548 327.053 431.982 309.487 410.393 309.487z" p-id="3340" fill="#ffffff"></path>
+    <path d="M945.896 323.869c-23.246-54.956-56.522-104.31-98.903-146.691-42.382-42.381-91.735-75.657-146.691-98.903-56.903-24.07-117.341-36.274-179.635-36.274-62.29 0-122.728 12.204-179.629 36.274-54.956 23.246-104.31 56.522-146.692 98.903-42.382 42.382-75.657 91.736-98.905 146.691C71.37 380.772 59.165 441.21 59.165 503.504c0 62.293 12.204 122.73 36.273 179.635 23.246 54.955 56.521 104.31 98.903 146.691 42.382 42.381 91.734 75.656 146.69 98.902 56.903 24.069 117.341 36.272 179.635 36.272s122.731-12.203 179.636-36.272c54.955-23.246 104.311-56.521 146.69-98.902 42.381-42.383 75.657-91.736 98.903-146.691 24.068-56.903 36.272-117.342 36.272-179.635C982.169 441.21 969.965 380.772 945.896 323.869zM675.302 869.557c-48.971 20.713-100.998 31.216-154.636 31.216-53.635 0-105.659-10.503-154.63-31.216-47.305-20.008-89.791-48.653-126.279-85.143-36.487-36.489-65.135-78.975-85.144-126.279-20.713-48.971-31.217-100.996-31.217-154.631s10.504-105.66 31.217-154.63c20.009-47.305 48.654-89.792 85.144-126.28 36.489-36.488 78.976-65.135 126.279-85.143 48.971-20.713 100.995-31.215 154.63-31.215s105.66 10.502 154.63 31.215c47.305 20.008 89.792 48.655 126.28 85.143 36.488 36.488 65.135 78.975 85.144 126.28 20.713 48.97 31.216 100.995 31.216 154.63s-10.502 105.66-31.215 154.631c-20.008 47.306-48.652 89.791-85.14 126.279S722.605 849.549 675.302 869.557z" p-id="3341" fill="#ffffff"></path>
+    <path d="M630.955 309.487c-21.591 0-39.156 17.565-39.156 39.156l0 309.72c0 21.592 17.565 39.156 39.156 39.156s39.156-17.564 39.156-39.156l0-309.72C670.111 327.053 652.546 309.487 630.955 309.487z" p-id="3342" fill="#ffffff"></path>
+  </symbol>
+</svg>
+
+<body>
+  <section>
+    <div class="left_conten">
+      <nav class="x-navbar">
+        <div class="x-menus">
+          <ul>
+            <li class="active"><a href="league.html">E<sup>3</sup>联赛</a></li>
+            <li><a href="beauty_live.html">美女直播</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="right_conten">
+      <div class="row row_block league">
+        <div class="col-md-6 league_images">
+          <div class="top_popup">
+            <div class="left_btn">
+              <svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow_svg"></use>
+              </svg>
+            </div>
+            <div class="right_btn">
+              <svg class="svg_icon right_svg" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow_svg"></use>
+              </svg>
+            </div>
+            <div class="focus-num"><span class="current">1</span>/<span class="num">0</span></div>
+            <div class="img_list">
+              <a class="up_a img_a img_a_0" href="{{obj.url}}" style="z-index: 1;opacity: 1;-webkit-animation: img_act 1s linear forwards;" target="_self">
+                <img class="up_img  img_0" src="http://image.gamersky.com/gameshd/2017/20170613_lmh_241_2.jpg" alt="0">
+                <div class="i_title">天蝎座版《极限竞速7》体验：画面简直6爆！</div>
+              </a>
+              <a class="up_a img_a img_a_1" href="{{obj.url}}" target="_self">
+                <img class="up_img  img_1" src="http://image.gamersky.com/gameshd/2017/20170611xtn_162_11.jpg" alt="1">
+                <div class="i_title">《COD14》战场漫游指南 深入树篱地狱</div>
+              </a>
+              <a class="up_a img_a img_a_2" href="{{obj.url}}" target="_self">
+                <img class="up_img  img_2" src="http://image.gamersky.com/gameshd/2017/20170614_cks_170_2.jpg" alt="2">
+                <div class="i_title">《神舞幻想》新宣传片 画面效果惊艳</div>
+              </a>
+              <a class="up_a img_a img_a_3" href="{{obj.url}}" target="_self">
+                <img class="up_img  img_3" src="http://image.gamersky.com/gameshd/2017/20170614_lmh_241_4.jpg" alt="3">
+                <div class="i_title">《超级马里奥：奥德赛》10月27日发售！</div>
+              </a>
+            </div>
+          </div>
+          <div class="progress_bottom_win"></div>
+        </div>
+        <div class="col-md-6 league_schedule">
+          <div id='calendar'></div>
+          <div class="league_btn center-block">
+            <a href="">赛程安排</a>
+          </div>
+        </div>
+      </div>
+      <div class="row row_block" style="z-index: 3;">
+        <div class="col-md-12">
+          <div class="center-block">
+            <div class="pull-left">总赛程</div>
+            <div class="pull-right">
+              <a href="league_provincial.html" class="x-btn">分省赛程》</a>
+            </div>
+          </div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="text-center">比赛时间</th>
+                <th class="text-right">战队</th>
+                <th class="text-center">比分</th>
+                <th class="text-left">战队</th>
+                <th class="text-center">比赛视频</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">6月15日 17：00</td>
+                <td class="text-right">Snake</td>
+                <td class="text-center">0-0</td>
+                <td class="text-left">DNA</td>
+                <td class="text-center">观看直播</td>
+              </tr>
+              <tr>
+                <td class="text-center">6月15日 17：00</td>
+                <td class="text-right">Snake</td>
+                <td class="text-center">0-0</td>
+                <td class="text-left">DNA</td>
+                <td class="text-center">观看直播</td>
+              </tr>
+              <tr>
+                <td class="text-center">6月15日 17：00</td>
+                <td class="text-right">Snake</td>
+                <td class="text-center">0-0</td>
+                <td class="text-left">DNA</td>
+                <td class="text-center">观看直播</td>
+              </tr>
+              <tr>
+                <td class="text-center">6月15日 17：00</td>
+                <td class="text-right">Snake</td>
+                <td class="text-center">0-0</td>
+                <td class="text-left">DNA</td>
+                <td class="text-center">观看直播</td>
+              </tr>
+              <tr>
+                <td class="text-center">6月15日 17：00</td>
+                <td class="text-right">Snake</td>
+                <td class="text-center">0-0</td>
+                <td class="text-left">DNA</td>
+                <td class="text-center">观看直播</td>
+              </tr>
+              <tr>
+                <td class="text-center">6月15日 17：00</td>
+                <td class="text-right">Snake</td>
+                <td class="text-center">0-0</td>
+                <td class="text-left">DNA</td>
+                <td class="text-center">观看直播</td>
+              </tr>
+            </tbody>
+          </table>
+          <nav aria-label="Page navigation" class="x-page">
+            <ul class="pagination">
+              <li>
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="row row_block">
+        <div class="col-md-12">
+          <div id="videobox" class="pull-left" style="width:50%;">
+            <video preload="preload" id="video">
+              <source src="http://www.runoob.com/try/demo_source/mov_bbb.mp4" type="video/mp4" />
+              <span style="color: red;">您的浏览器不支持html5 video播放</span>
+            </video>
+            <a href="javascript:void(0);" class="play_video">
+              <svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg>
+            </a>
+            <a href="javascript:void(0);" id="fullScreenBtn">
+              <svg class="svg_icon fullscreen_svg" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#video_fullscreen_svg"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="pull-right" style="width: 50%;">
+            <div class="pull-right"><a href="league_corps.html" class="x-btn">参赛战队》</a></div>
+            <div style="margin-left: 40px;"><img style="height: 300px;" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1148966974,1682250033&fm=80&w=179&h=119&img.JPEG"></div>
+            <div class="pull-right"><a href="javascript:void(0);" class="x-btn">支持</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script type="text/javascript" src="lib/fullcalendar/moment.min.js"></script>
+<!-- JQuery core JS -->
+<script src="lib/jquery/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap core JS -->
+<script src="lib/bootstrap/bootstrap.min.js"></script>
+<!-- Fullcalendar core JS -->
+<script src="lib/fullcalendar/fullcalendar.min.js"></script>
+<script src="lib/fullcalendar/locale/zh-cn.js"></script>
+<script type="text/javascript" src="h5_video.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#calendar').fullCalendar({
+    header: false,
+    firstDay: 0,
+    height: 300,
+    contentHeight: 300,
+    defaultDate: '2017-05-12',
+    navLinks: false, // can click day/week names to navigate views
+    editable: false,
+    eventLimit: true, // allow "more" link when too many events
+    events: [{
+      title: 'All Day Event',
+      start: '2017-05-01',
+      end: '2017-05-01'
+    }, {
+      title: 'Long Event',
+      start: '2017-05-07',
+      end: '2017-05-10'
+    }, {
+      id: 999,
+      title: 'Repeating Event',
+      start: '2017-05-09T16:00:00'
+    }, {
+      id: 999,
+      title: 'Repeating Event',
+      start: '2017-05-16T16:00:00'
+    }, {
+      title: 'Conference',
+      start: '2017-05-11',
+      end: '2017-05-13'
+    }, {
+      title: 'Meeting',
+      start: '2017-05-12T10:30:00',
+      end: '2017-05-12T12:30:00'
+    }, {
+      title: 'Lunch',
+      start: '2017-05-12T12:00:00'
+    }, {
+      title: 'Meeting',
+      start: '2017-05-12T14:30:00'
+    }, {
+      title: 'Happy Hour',
+      start: '2017-05-12T17:30:00'
+    }, {
+      title: 'Dinner',
+      start: '2017-05-12T20:00:00'
+    }, {
+      title: 'Birthday Party',
+      start: '2017-05-13T07:00:00'
+    }, {
+      title: 'Click for Google',
+      url: 'http://google.com/',
+      start: '2017-05-28'
+    }]
+  });
+
+});
+var sec = 3;
+var num = 0;
+var numTotal = 4;
+var interval;
+$('.num').text(numTotal);
+interval = setInterval(queueingArr, sec * 1000);
+
+$('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+$('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+$('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+$('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+$('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
+
+$('.top_popup').hover(function() {
+  clearInterval(interval);
+  $('.left_btn').css('transform', 'translate(0px,0px)');
+  $('.right_btn').css('transform', 'translate(0px,0px)');
+  $('.progress_bottom_win').css('-webkit-animation', '');
+  $('.progress_bottom_win').css('-moz-animation', '');
+  $('.progress_bottom_win').css('-o-animation', '');
+  $('.progress_bottom_win').css('-ms-animation', '');
+  $('.progress_bottom_win').css('animation', '');
+}, function() {
+  interval = setInterval(queueingArr, sec * 1000);
+  $('.left_btn').css('transform', 'translate(-60px,0px)');
+  $('.right_btn').css('transform', 'translate(60px,0px)');
+  $('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+  $('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+  $('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+  $('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+  $('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
+});
+
+$('.left_btn').on('click', function() {
+  num = num - 1;
+  if (num < 0) num = numTotal - 1;
+  choseImg(num, true);
+})
+
+$('.right_btn').on('click', function() {
+  num = num + 1;
+  if (num >= numTotal) num = 0;
+  choseImg(num);
+})
+
+function queueingArr() {
+  num++;
+  if (num >= numTotal) num = 0;
+  choseImg(num, false);
+}
+
+function choseImg(num, bool) {
+  var upNum = bool ? num + 1 : num - 1;
+  if (upNum < 0) upNum = numTotal - 1;
+  if (upNum >= numTotal) upNum = 0;
+  $('.img_a_' + upNum).css('z-index', 0);
+  $('.img_a_' + upNum).css('opacity', 0);
+  $('.img_a_' + upNum).css('-webkit-animation', '');
+  $('.img_a_' + upNum).css('-moz-animation', '');
+  $('.img_a_' + upNum).css('-o-animation', '');
+  $('.img_a_' + upNum).css('-ms-animation', '');
+  $('.img_a_' + upNum).css('animation', '');
+  $('.img_a_' + num).css('z-index', 1);
+  $('.img_a_' + num).css('opacity', 1);
+  $('.img_a_' + num).css('-webkit-animation', 'img_act 1s linear forwards');
+  $('.img_a_' + num).css('-moz-animation', 'img_act 1s linear forwards');
+  $('.img_a_' + num).css('-o-animation', 'img_act 1s linear forwards');
+  $('.img_a_' + num).css('-ms-animation', 'img_act 1s linear forwards');
+  $('.img_a_' + num).css('animation', 'img_act 1s linear forwards');
+  $('.current').text(num + 1);
+}
+</script>
+
+</html>

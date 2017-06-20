@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta name="description" content="">
+  <meta name="author" content="xsiry">
+  <title></title>
+  <!-- Bootstrap core CSS -->
+  <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="beauty_live.css">
+</head>
+<svg class="txp_svg_sprite txp_svg_sprite_head" display="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="play_svg">
+    <path d="M512 0C229.248 0 0 229.248 0 512s229.248 512 512 512 512-229.248 512-512S794.752 0 512 0zM512 960c-247.424 0-448-200.576-448-448s200.576-448 448-448 448 200.576 448 448S759.424 960 512 960z" p-id="2374" fill="#ffffff"></path>
+    <path d="M384 256 768 512 384 768Z" p-id="2375" fill="#ffffff"></path>
+  </symbol>
+  <symbol id="user_svg">
+    <path d="M149.990594 958.716134c-0.533143-7.267521-0.808412-14.59644-0.808412-21.982664 0-181.139523 162.758897-328.506872 362.817306-328.506872 200.057385 0 362.818329 147.368372 362.818329 328.506872 0 7.387247-0.276293 14.716166-0.808412 21.982664l61.743226 0c0.436952-7.29515 0.663102-14.623046 0.663102-21.982664 0-53.088102-11.375072-104.572684-33.81413-153.023162-21.564132-46.563502-52.374858-88.326675-91.572602-124.129088-62.09115-56.70856-139.940193-93.641727-224.406956-107.349937 100.768031-31.966039 174.040848-126.878712 174.040848-238.695381 0-137.967258-111.549585-250.212692-248.663406-250.212692-137.112798 0-248.663406 112.245434-248.663406 250.212692 0 111.816668 73.27384 206.729342 174.040848 238.695381-84.466764 13.70821-162.316829 50.641377-224.406956 107.349937-39.198767 35.801391-70.00847 77.565587-91.572602 124.129088-22.437012 48.450479-33.81413 99.93506-33.81413 153.023162 0 7.359618 0.227174 14.688537 0.663102 21.982664L149.990594 958.716134zM326.770833 313.534879c0-102.771665 83.093487-186.381921 185.228655-186.381921s185.228655 83.610256 185.228655 186.381921c0 102.772688-83.092463 186.382944-185.228655 186.382944S326.770833 416.307567 326.770833 313.534879z" p-id="3185" fill="#8a8a8a"></path>
+  </symbol>
+  <symbol id="focus_svg">
+    <path d="M628.927571 355.907942 515.311931 469.526653c-1.985214-0.264013-4.016477-0.415462-6.072299-0.415462-24.739451 0-44.841278 20.071128-44.841278 44.830021 0 2.055822 0.172939 4.066619 0.446162 6.05081l-0.343831 0.344854 0.434905 0.440022c2.946099 19.297508 18.176988 34.528398 37.493939 37.483706l0.429789 0.430812 0.324388-0.329505c1.981121 0.264013 4.015454 0.420579 6.055926 0.420579 24.7548 0 44.856627-20.076244 44.856627-44.841278 0-2.050706-0.161682-4.075829-0.446162-6.054903l113.626897-113.632013 131.784442 20.071128 158.514223-158.498874L791.796986 232.084822l-34.101679 33.939997 122.818233 16.754592-95.257527 88.243787L665.455509 357.034603l-17.513886-122.590036 88.969311-84.765569 20.322861 116.275213 35.256992-35.281551L767.3809 65.615417 608.857467 224.12043 628.927571 355.907942z" p-id="4833" fill="#8a8a8a"></path>
+    <path d="M509.240655 312.202535c14.456247 0 28.506241 1.518586 42.107003 4.399193l-7.119141-46.780443c-11.4334-1.610684-23.109324-2.476401-34.987862-2.476401-136.183635 0-246.579955 110.411669-246.579955 246.596328 0 136.184659 110.396319 246.576885 246.579955 246.576885 136.189775 0 246.596328-110.38711 246.596328-246.576885 0-11.863189-0.860601-23.550369-2.487657-34.977629l-46.76407-7.124258c2.89084 13.589506 4.405333 27.672246 4.405333 42.101887 0 111.416556-90.325192 201.750957-201.749934 201.750957-111.430882 0-201.740724-90.334401-201.740724-201.750957C307.499931 402.518516 397.804656 312.202535 509.240655 312.202535z" p-id="4834" fill="#8a8a8a"></path>
+    <path d="M902.710075 424.169629c6.571672 28.870538 10.045797 58.922994 10.045797 89.772606 0 222.841298-180.656523 403.504984-403.51624 403.504984-222.844368 0-403.499867-180.664709-403.499867-403.504984 0-222.844368 180.656523-403.494751 403.499867-403.494751 30.860868 0 60.908208 3.467985 89.783863 10.034541l36.749996-36.754089c-40.138162-11.787464-82.588997-18.111496-126.533858-18.111496-247.618611 0-448.320679 200.717418-448.320679 448.325795 0 247.610424 200.702068 448.347285 448.320679 448.347285 247.609401 0 448.337051-200.73686 448.337051-448.347285 0-43.943838-6.344498-86.396719-18.10638-126.527718L902.710075 424.169629z" p-id="4835" fill="#8a8a8a"></path>
+  </symbol>
+  <symbol id="hot_svg">
+    <path d="M836.019974 594.350591c-110.877267-234.537714-39.291459-309.891196-38.61866-310.563994 1.211038-1.211038 1.345598-3.229435 0.403679-4.709593-1.076478-1.480158-2.960315-2.018397-4.575032-1.345598-1.614717 0.672799-155.820237 63.377661-136.443627 202.647043-42.386334-37.138502-240.054665-227.809724-119.085414-451.986333 0.672799-1.345598 0.538239-3.094875-0.672799-4.171354-1.076478-1.211038-2.825756-1.480158-4.171354-0.941918-2.556636 1.076478-64.31958 26.777398-113.433902 91.904336-45.346649 59.879106-87.463863 165.912221-30.679632 329.940604 20.722208 77.237319-18.300131 139.807622-39.156899 166.315901 5.113272-18.300131 11.572142-49.248883 10.495663-84.907228-1.614717-52.074639-20.856767-124.064126-103.072799-170.621813-1.211038-0.672799-2.960315-0.672799-4.171353 0.269119-1.211038 0.941919-1.749277 2.422076-1.480158 3.902234 0.26912 1.345598 31.083311 138.462024-22.875164 201.839685-46.557687 54.765834-92.173456 149.899606-67.549014 238.170828 20.722208 73.738765 85.310907 130.119317 192.151379 167.257819 27.450197 8.208147 53.689356 14.532457 82.619711 19.780289 1.883837 0.403679 3.767674-0.672799 4.305913-2.422077 0.538239-1.883837-0.26912-3.767674-2.018396-4.575032-54.900394-23.278844-111.550066-71.585808-69.432852-169.949015 40.098817-84.772668 32.832589-128.370039 24.893561-147.20841 20.722208 11.437582 61.762943 40.906176 51.5364 92.980815-0.26912 1.480158 0.403679 3.094875 1.749277 3.902234 1.480158 0.807359 3.094875 0.672799 4.305913-0.26912 1.345598-0.941919 124.871485-100.381603 68.760053-222.023653 27.719317 15.608936 101.054402 70.10565 57.860709 195.380815-14.397898 53.823916 24.893561 92.577135 26.508279 94.191853 1.345598 1.211038 3.229435 1.480158 4.844152 0.403679 1.480158-0.941919 2.018397-2.825756 1.480158-4.440473-1.211038-3.363995-30.545072-80.466754 32.967149-122.987648-3.363995 19.780289-8.746386 68.760053 13.994218 95.402891 20.453088 24.086202 40.098817 63.377661 34.178186 101.861761-4.305913 27.046518-20.587648 49.921682-48.845203 67.683574-1.614717 1.076478-2.152957 3.094875-1.345598 4.709593 0.807359 1.749277 2.825756 2.556636 4.575033 1.883837 69.701971-22.606045 161.202628-67.279895 201.166885-152.725362 29.334034-63.243101 25.70092-138.596583-11.168462-224.580289z" fill="#D71E06" p-id="5940"></path>
+  </symbol>
+</svg>
+
+<body>
+  <section>
+    <div class="left_conten">
+      <nav class="x-navbar">
+        <div class="x-menus">
+          <ul>
+            <li><a href="league.html">E<sup>3</sup>联赛</a></li>
+            <li class="active"><a href="beauty_live.html">美女直播</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="right_conten">
+      <div class="row row_block">
+        <ul>
+          <li><a href="#">主播推荐</a></li>
+        </ul>
+      </div>
+      <ul>
+        <li class="serach_lastli" data-ranktype="7" data-cid="1" data-rid="664810" data-is-on="1" data-rpos="0" data-sub_rt="0">
+          <a class="play-list-link" data-rid="664810" data-tid="1" data-sid="37" data-rpos="0" data-sub_rt="0" href="/lspl" title="LSPL夏季赛YG VS DS" target="_blank">
+            <span class="imgbox">
+              <span class="imgbox-corner-mark"></span>
+            <b><svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg></b>
+            <i class="black"></i>
+            <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" style="display: block;">
+            </span>
+            <div class="mes">
+              <div class="mes-tit">
+                <h3 class="ellipsis">
+                  <svg class="svg_icon hot_svg" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot_svg"></use>
+                  </svg>
+                  <span>LSPL夏季赛YG VS DS</span></h3>
+                <span class="tag ellipsis">英雄联盟</span>
+              </div>
+              <p>
+                <span class="dy-name ellipsis fl">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user_svg"></use>
+                  </svg>
+                  赛事专用直播间
+                </span>
+                <span class="dy-num fr">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#focus_svg"></use>
+                  </svg>
+                  6.5万
+                </span>
+              </p>
+            </div>
+          </a>
+        </li>
+        <li class="serach_lastli" data-ranktype="7" data-cid="1" data-rid="664810" data-is-on="1" data-rpos="0" data-sub_rt="0">
+          <a class="play-list-link" data-rid="664810" data-tid="1" data-sid="37" data-rpos="0" data-sub_rt="0" href="/lspl" title="LSPL夏季赛YG VS DS" target="_blank">
+            <span class="imgbox">
+              <span class="imgbox-corner-mark"></span>
+            <b><svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg></b>
+            <i class="black"></i>
+            <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" width="283" height="163" style="display: block;">
+            </span>
+            <div class="mes">
+              <div class="mes-tit">
+                <h3 class="ellipsis">
+                  <svg class="svg_icon hot_svg" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot_svg"></use>
+                  </svg>
+                  <span>LSPL夏季赛YG VS DS</span></h3>
+                <span class="tag ellipsis">英雄联盟</span>
+              </div>
+              <p>
+                <span class="dy-name ellipsis fl">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user_svg"></use>
+                  </svg>
+                  赛事专用直播间
+                </span>
+                <span class="dy-num fr">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#focus_svg"></use>
+                  </svg>
+                  6.5万
+                </span>
+              </p>
+            </div>
+          </a>
+        </li><li class="serach_lastli" data-ranktype="7" data-cid="1" data-rid="664810" data-is-on="1" data-rpos="0" data-sub_rt="0">
+          <a class="play-list-link" data-rid="664810" data-tid="1" data-sid="37" data-rpos="0" data-sub_rt="0" href="/lspl" title="LSPL夏季赛YG VS DS" target="_blank">
+            <span class="imgbox">
+              <span class="imgbox-corner-mark"></span>
+            <b><svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg></b>
+            <i class="black"></i>
+            <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" width="283" height="163" style="display: block;">
+            </span>
+            <div class="mes">
+              <div class="mes-tit">
+                <h3 class="ellipsis">
+                  <svg class="svg_icon hot_svg" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot_svg"></use>
+                  </svg>
+                  <span>LSPL夏季赛YG VS DS</span></h3>
+                <span class="tag ellipsis">英雄联盟</span>
+              </div>
+              <p>
+                <span class="dy-name ellipsis fl">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user_svg"></use>
+                  </svg>
+                  赛事专用直播间
+                </span>
+                <span class="dy-num fr">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#focus_svg"></use>
+                  </svg>
+                  6.5万
+                </span>
+              </p>
+            </div>
+          </a>
+        </li><li class="serach_lastli" data-ranktype="7" data-cid="1" data-rid="664810" data-is-on="1" data-rpos="0" data-sub_rt="0">
+          <a class="play-list-link" data-rid="664810" data-tid="1" data-sid="37" data-rpos="0" data-sub_rt="0" href="/lspl" title="LSPL夏季赛YG VS DS" target="_blank">
+            <span class="imgbox">
+              <span class="imgbox-corner-mark"></span>
+            <b><svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg></b>
+            <i class="black"></i>
+            <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" width="283" height="163" style="display: block;">
+            </span>
+            <div class="mes">
+              <div class="mes-tit">
+                <h3 class="ellipsis">
+                  <svg class="svg_icon hot_svg" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot_svg"></use>
+                  </svg>
+                  <span>LSPL夏季赛YG VS DS</span></h3>
+                <span class="tag ellipsis">英雄联盟</span>
+              </div>
+              <p>
+                <span class="dy-name ellipsis fl">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user_svg"></use>
+                  </svg>
+                  赛事专用直播间
+                </span>
+                <span class="dy-num fr">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#focus_svg"></use>
+                  </svg>
+                  6.5万
+                </span>
+              </p>
+            </div>
+          </a>
+        </li><li class="serach_lastli" data-ranktype="7" data-cid="1" data-rid="664810" data-is-on="1" data-rpos="0" data-sub_rt="0">
+          <a class="play-list-link" data-rid="664810" data-tid="1" data-sid="37" data-rpos="0" data-sub_rt="0" href="/lspl" title="LSPL夏季赛YG VS DS" target="_blank">
+            <span class="imgbox">
+              <span class="imgbox-corner-mark"></span>
+            <b><svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg></b>
+            <i class="black"></i>
+            <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" width="283" height="163" style="display: block;">
+            </span>
+            <div class="mes">
+              <div class="mes-tit">
+                <h3 class="ellipsis">
+                  <svg class="svg_icon hot_svg" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot_svg"></use>
+                  </svg>
+                  <span>LSPL夏季赛YG VS DS</span></h3>
+                <span class="tag ellipsis">英雄联盟</span>
+              </div>
+              <p>
+                <span class="dy-name ellipsis fl">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user_svg"></use>
+                  </svg>
+                  赛事专用直播间
+                </span>
+                <span class="dy-num fr">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#focus_svg"></use>
+                  </svg>
+                  6.5万
+                </span>
+              </p>
+            </div>
+          </a>
+        </li><li class="serach_lastli" data-ranktype="7" data-cid="1" data-rid="664810" data-is-on="1" data-rpos="0" data-sub_rt="0">
+          <a class="play-list-link" data-rid="664810" data-tid="1" data-sid="37" data-rpos="0" data-sub_rt="0" href="/lspl" title="LSPL夏季赛YG VS DS" target="_blank">
+            <span class="imgbox">
+              <span class="imgbox-corner-mark"></span>
+            <b><svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg></b>
+            <i class="black"></i>
+            <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" width="283" height="163" style="display: block;">
+            </span>
+            <div class="mes">
+              <div class="mes-tit">
+                <h3 class="ellipsis">
+                  <svg class="svg_icon hot_svg" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot_svg"></use>
+                  </svg>
+                  <span>LSPL夏季赛YG VS DS</span></h3>
+                <span class="tag ellipsis">英雄联盟</span>
+              </div>
+              <p>
+                <span class="dy-name ellipsis fl">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user_svg"></use>
+                  </svg>
+                  赛事专用直播间
+                </span>
+                <span class="dy-num fr">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#focus_svg"></use>
+                  </svg>
+                  6.5万
+                </span>
+              </p>
+            </div>
+          </a>
+        </li><li class="serach_lastli" data-ranktype="7" data-cid="1" data-rid="664810" data-is-on="1" data-rpos="0" data-sub_rt="0">
+          <a class="play-list-link" data-rid="664810" data-tid="1" data-sid="37" data-rpos="0" data-sub_rt="0" href="/lspl" title="LSPL夏季赛YG VS DS" target="_blank">
+            <span class="imgbox">
+              <span class="imgbox-corner-mark"></span>
+            <b><svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg></b>
+            <i class="black"></i>
+            <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" width="283" height="163" style="display: block;">
+            </span>
+            <div class="mes">
+              <div class="mes-tit">
+                <h3 class="ellipsis">
+                  <svg class="svg_icon hot_svg" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot_svg"></use>
+                  </svg>
+                  <span>LSPL夏季赛YG VS DS</span></h3>
+                <span class="tag ellipsis">英雄联盟</span>
+              </div>
+              <p>
+                <span class="dy-name ellipsis fl">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user_svg"></use>
+                  </svg>
+                  赛事专用直播间
+                </span>
+                <span class="dy-num fr">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#focus_svg"></use>
+                  </svg>
+                  6.5万
+                </span>
+              </p>
+            </div>
+          </a>
+        </li><li class="serach_lastli" data-ranktype="7" data-cid="1" data-rid="664810" data-is-on="1" data-rpos="0" data-sub_rt="0">
+          <a class="play-list-link" data-rid="664810" data-tid="1" data-sid="37" data-rpos="0" data-sub_rt="0" href="/lspl" title="LSPL夏季赛YG VS DS" target="_blank">
+            <span class="imgbox">
+              <span class="imgbox-corner-mark"></span>
+            <b><svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg></b>
+            <i class="black"></i>
+            <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" width="283" height="163" style="display: block;">
+            </span>
+            <div class="mes">
+              <div class="mes-tit">
+                <h3 class="ellipsis">
+                  <svg class="svg_icon hot_svg" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot_svg"></use>
+                  </svg>
+                  <span>LSPL夏季赛YG VS DS</span></h3>
+                <span class="tag ellipsis">英雄联盟</span>
+              </div>
+              <p>
+                <span class="dy-name ellipsis fl">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user_svg"></use>
+                  </svg>
+                  赛事专用直播间
+                </span>
+                <span class="dy-num fr">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#focus_svg"></use>
+                  </svg>
+                  6.5万
+                </span>
+              </p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</body>
+<script type="text/javascript" src="lib/fullcalendar/moment.min.js"></script>
+<!-- JQuery core JS -->
+<script src="lib/jquery/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap core JS -->
+<script src="lib/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {})
+</script>
+
+</html>

@@ -1,0 +1,228 @@
+/*赛事图片轮播*/
+
+.league_images {
+  position: relative;
+  overflow: hidden;
+}
+
+a.img_a {
+  width: 100%;
+  height: 450px;
+  position: absolute;
+  left: 0;
+  z-index: 0;
+  opacity: 0;
+  top: 0;
+}
+
+a.img_a>img {
+  width: 100%;
+  height: 450px;
+}
+
+.svg_icon {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  vertical-align: -6px;
+  pointer-events: none;
+  fill: currentColor
+}
+
+.progress_bottom_win {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #FF0000;
+  height: 2px;
+  width: 0;
+  z-index: 1;
+}
+
+.left_btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -30px;
+  border-radius: 0 5px 5px 0;
+  z-index: 2;
+  transition: transform 1s;
+  transform: translate(-60px, 0px);
+  cursor: pointer;
+}
+
+.right_btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -30px;
+  border-radius: 5px 0 0 5px;
+  z-index: 2;
+  transition: transform 1s;
+  transform: translate(60px, 0px);
+  cursor: pointer;
+}
+
+.right_svg {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.focus-num {
+  padding-right: 10px;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  line-height: 40px;
+  color: #f2f2f3;
+  font-size: 24px;
+  font-style: italic;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.focus-num .current {
+  color: #e13703;
+  font-size: 40px;
+}
+
+.i_title {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: 80%;
+  height: 30px;
+  line-height: 36px;
+  color: #f2f2f3;
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.my_img {
+  display: block;
+}
+
+@-webkit-keyframes img_act {
+  0% {
+    -webkit-opacity: 0;
+    -webkit-filter: saturate(1) contrast(1) brightness(1);
+  }
+  50% {
+    -webkit-opacity: 0.5;
+    -webkit-filter: saturate(1.1) contrast(1.1) brightness(1.1);
+  }
+  100% {
+    -webkit-opacity: 1;
+    -webkit-filter: saturate(1.2) contrast(1.2) brightness(1.2);
+  }
+}
+
+@-moz-keyframes img_act {
+  0% {
+    -moz-opacity: 0;
+    -moz-filter: saturate(1) contrast(1) brightness(1);
+  }
+  50% {
+    -moz-opacity: 0.5;
+    -moz-filter: saturate(1.1) contrast(1.1) brightness(1.1);
+  }
+  100% {
+    -moz-opacity: 1;
+    -moz-filter: saturate(1.2) contrast(1.2) brightness(1.2);
+  }
+}
+
+@-o-keyframes img_act {
+  0% {
+    -o-opacity: 0;
+    -o-filter: saturate(1) contrast(1) brightness(1);
+  }
+  50% {
+    -o-opacity: 0.5;
+    -o-filter: saturate(1.1) contrast(1.1) brightness(1.1);
+  }
+  100% {
+    -o-opacity: 1;
+    -o-filter: saturate(1.2) contrast(1.2) brightness(1.2);
+  }
+}
+
+@-ms-keyframes img_act {
+  0% {
+    -ms-opacity: 0;
+    -ms-filter: saturate(1) contrast(1) brightness(1);
+  }
+  50% {
+    -ms-opacity: 0.5;
+    -ms-filter: saturate(1.1) contrast(1.1) brightness(1.1);
+  }
+  100% {
+    -ms-opacity: 1;
+    -ms-filter: saturate(1.2) contrast(1.2) brightness(1.2);
+  }
+}
+
+@keyframes img_act {
+  0% {
+    opacity: 0;
+    filter: saturate(1) contrast(1) brightness(1);
+  }
+  50% {
+    opacity: 0.5;
+    filter: saturate(1.1) contrast(1.1) brightness(1.1);
+  }
+  100% {
+    opacity: 1;
+    filter: saturate(1.2) contrast(1.2) brightness(1.2);
+  }
+}
+
+@-webkit-keyframes progress_bottom_act {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@-moz-keyframes progress_bottom_act {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@-o-keyframes progress_bottom_act {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@-ms-keyframes progress_bottom_act {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes progress_bottom_act {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

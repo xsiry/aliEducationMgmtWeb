@@ -1,0 +1,32 @@
+.right_conten>div:first-child>ul>li {
+  float: left;
+  margin-left: 20px;
+}
+
+.right_conten>div:last-child {
+  padding: 0 40px 40px 0;
+  position: relative;
+}
+
+.right_conten>div:last-child>ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.right_conten>div:last-child>ul>li {
+  float: left;
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.right_conten>div:last-child>ul>li>a>div {
+  display: block;
+  width: 450px;
+  height: 400px;
+}
+
+.right_conten>div:last-child>ul>li>a>div img {
+  width: 450px;
+}
+
+

@@ -1,0 +1,173 @@
+.right_conten {
+  padding: 20px;
+}
+
+.right_conten>div:first-child{
+  border: 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.right_conten>div:first-child>ul>li {
+  float: left;
+  margin-left: 20px;
+}
+
+.right_conten>ul>li {
+  float: left;
+  display: inline-block;
+  margin: 50px;
+}
+
+.right_conten>ul>li a {
+  background: #fff;
+  display: block;
+  border-bottom: 3px solid transparent;
+  transition: all .3s ease-in;
+  font-size: 0;
+  padding-bottom: 3px;
+}
+
+.imgbox {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.imgbox-corner-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.right_conten>ul>li .imgbox>b {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -25px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transition: all .3s ease;
+}
+
+.right_conten>ul>li .imgbox>img {
+  width: 400px;
+  height: 300px;
+}
+
+.right_conten>ul>li .mes {
+  background: #fff;
+  padding: 5px 5px 3px;
+  line-height: 20px;
+  font-size: 12px;
+  height: 48px;
+  overflow: hidden;
+}
+
+.right_conten>ul>li .mes-tit {
+  color: #313131;
+  position: relative;
+}
+
+.right_conten>ul>li .mes-tit h3 {
+  width: 70%;
+  font-size: 14px;
+  color: #313131;
+  margin: 0;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  word-break: keep-all;
+}
+
+.mes-tit h3 .room-list-icon {
+  width: auto;
+  height: auto;
+  max-width: 17px;
+  max-height: 17px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -3px;
+}
+
+.mes-tit .tag {
+  display: block;
+  width: 60px;
+  font-size: 12px;
+  text-align: right;
+  color: #f60;
+  position: absolute;
+  right: 0;
+  top: 6px;
+}
+
+.right_conten>ul>li p {
+  height: 20px;
+  padding-top: 5px;
+  overflow: hidden;
+}
+
+.right_conten>ul>li p span.dy-name {
+  background-position: -2px 4px;
+  max-width: 180px;
+}
+
+.right_conten>ul>li p span {
+  display: block;
+  font-size: 12px;
+  margin-left: 5px;
+  color: #797979;
+}
+
+.fl {
+  float: left;
+}
+
+.right_conten>ul>li p span.dy-num {
+  background-position: 0 -30px;
+}
+
+.fr {
+  float: right;
+}
+
+.right_conten>ul>li a:hover {
+  border-bottom-color: #d2d2d2;
+}
+
+.right_conten>ul>li a:hover .imgbox>b {
+  top: 50%;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  z-index: 1;
+}
+
+.right_conten>ul>li a:hover h3 {
+  color: #f70;
+}
+
+.svg_icon {
+  display: inline-block;
+  vertical-align: -1px;
+  pointer-events: none;
+  fill: currentColor
+}
+
+.svg_min {
+  width: 14px;
+  height: 14px;
+}
+
+.hot_svg {
+  width: 22px;
+  height: 22px;
+}
