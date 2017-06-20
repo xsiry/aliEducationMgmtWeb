@@ -394,10 +394,10 @@ define(function(require, exports, module) {
             timeOut: 4000
           };
           if (result.success == true) {
-            msg = "资源添加成功！";
+            msg = "资源操作成功！";
             toastr.success(msg);
           } else {
-            msg = "资源添加失败！";
+            msg = "资源操作失败！";
             toastr.error(msg);
           };
 

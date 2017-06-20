@@ -357,10 +357,10 @@ define(function(require, exports, module) {
             timeOut: 4000
           };
           if (result.success == true) {
-            msg = "广告业务添加成功！";
+            msg = "广告业务操作成功！";
             toastr.success(msg);
           } else {
-            msg = "广告业务添加失败！";
+            msg = "广告业务操作失败！";
             toastr.error(msg);
           };
 

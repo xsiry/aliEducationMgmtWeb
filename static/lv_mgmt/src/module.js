@@ -451,10 +451,10 @@ define(function(require, exports, module) {
             timeOut: 4000
           };
           if (result.success) {
-            msg = "直播添加成功！";
+            msg = "直播操作成功！";
             toastr.success(msg);
           } else {
-            msg = "直播添加失败！";
+            msg = "直播操作失败！";
             toastr.error(msg);
           };
 

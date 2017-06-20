@@ -9,9 +9,9 @@ define(function(require, exports, module) {
       this._bindUI();
     },
     _configText() {
-      $('div h5.mgmt_title').text('动态推广资源列表');
-      $('div button font.mgmt_new_btn').text('添加推广');
-      $('div input.name_search').prop('placeholder', '输入推广资源标题');
+      $('div h5.mgmt_title').text('战队列表');
+      $('div button font.mgmt_new_btn').text('添加战队');
+      $('div input.name_search').prop('placeholder', '输入名称');
       $('div button.name_search_btn').text('搜索');
     },
     _bindUI: function() {
@@ -30,34 +30,23 @@ define(function(require, exports, module) {
         // bind .v_mnt_new_modal_btn
       $.root_.on("click", '.new_modal_btn', function(e) {
         var fun = function(dialogRef) {
+          selCombo();
           newModalValidation();
         }
-        newModal('添加推广资源', fun);
-      })
-
-      $('body').on("change", 'input[name="type"]', function(e) {
-        var type = $(e.currentTarget).val();
-        $('.video_block').hide();
-        $('.imgs_block').hide();
-        $('.img_block').hide();
-        if (type == 0) {
-          $('.imgs_block').show();
-        }else if(type == 1){
-          $('.img_block').show();
-        }else {
-          $('.video_block').show();
-        }
-      })
-
-      $.root_.on("click", '.row_btn_apply', function(e) {
-        var id = $(e.currentTarget).attr('id');
-        var name = $(e.currentTarget).attr('name');
-        applyRow(id, name);
+        newModal('添加战队', fun);
       })
 
       $('body').on("click", '.upload_new_imgs', function(e) {
         var type = $(e.currentTarget).data("type");
-        var number = type == 0 ? 4 : 1;
+        var number = 0;
+        if (type == 1) {
+          number = 1;
+        }else if (type == 2) {
+          number = 1;
+        }else if (type == 3) {
+          number = 3;
+        }
+
         BootstrapDialog.show({
           title: '文件上传',
           type: 'BootstrapDialog.TYPE_SUCCESS',
@@ -72,12 +61,20 @@ define(function(require, exports, module) {
               var reData = data.response;
               if (reData.success) {
                 var imgs = [];
-                $('#newModalForm div.img_list_show').empty().css('text-align', 'center');
+                $('#newModalForm div.img_list_show_' + type).empty().css('text-align', 'center');
                 $.each(reData.result, function(i, url) {
                   imgs.push(url);
-                  $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
-                })
-                $('#newModalForm input[name="imgs"]').val(imgs.join(';'));
+                  $('#newModalForm div.img_list_show_' + type).append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                });
+
+                if (type == 1) {
+                  $('#newModalForm input[name="clan_logo"]').val(imgs.join(';'));
+                }else if (type == 2) {
+                  $('#newModalForm input[name="clan_img"]').val(imgs.join(';'));
+                }else if (type == 3) {
+                  $('#newModalForm input[name="imgurl"]').val(imgs.join(';'));
+                }
+
                 dialogRef.close();
               }
             })
@@ -117,7 +114,7 @@ define(function(require, exports, module) {
         $("#txtrowindex").val(rowindex);
       },
       url: 'query/table',
-      parms: { source: 'gm_promotion' },
+      parms: { source: 'clan_name' },
       method: "get",
       dataAction: 'server',
       usePager: true,
@@ -125,7 +122,7 @@ define(function(require, exports, module) {
       clickToEdit: false,
       width: '100%',
       height: '91%',
-      sortName: 'dtpr_id',
+      sortName: 'clan_name',
       sortOrder: 'ASC'
     });
   };
@@ -151,92 +148,45 @@ define(function(require, exports, module) {
    * 功能操作
    */
 
-  function applyRow(id, name) {
-    var applyVals = {hvr_id: id, status: 1};
-    swal({
-      title: '是否应用?',
-      text: '应用后，资源“' + name + '”将在推荐位展示！',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '应用',
-      cancelButtonText: '取消'
-    }).then(function() {
-      $.ajax({
-        type : 'POST',
-        url : 'save/table',
-        dataType : 'json',
-        data : {
-          actionname: 'home_videorec',
-          datajson: JSON.stringify(applyVals)
-        },
-        success : function(result) {
-          toastr.options = {
-            closeButton: true,
-            progressBar: true,
-            showMethod: 'slideDown',
-            timeOut: 4000
-          };
-          if (result.success) {
-            swal(
-              '应用成功 :)',
-              '资源“' + name + '” :)已应用到推荐位',
-              'success'
-            );
-            manager.reload();
-          }else{
-            swal(
-              '应用失败！',
-              '未知错误，请联系管理员或查看日志',
-              'error'
-            )
-          }
-        },
-        error : function(e) {
-          console.log(e);
-        }
-      });
-    }, function(dismiss) {
-      if (dismiss === 'cancel') {
-        // swal(
-        //   '已取消',
-        //   '资源《“' + name + '”》未删除！',
-        //   'error'
-        // )
-      }
-    })
-  };
-
   function editRow(id) {
     $.ajax({
       type : 'GET',
       url : 'query/table',
       dataType : 'json',
       data : {
-        source: 'gm_promotion',
+        source: 'clan_name',
         sourceid: id
       },
       success : function(data) {
         if (data) {
           var fun = function() {
-            newModalValidation();
-            var imgs = [];
-            var type = parseInt(data.type);
-            $('input[name="type"][value='+ type +']').click();
+            var selectedVal = '';
             $.each(data, function(key, val) {
+              var imgs = [];
               $('#newModalForm input[name="'+ key +'"]').val(val);
-              if (key == 'imgurl' && type != 2) {
+              if (key == 'clan_logo') {
                 imgs = val.split(';');
-              }else if (key == 'status' && val == 1) {
-                $('#newModalForm input[name="'+ key +'"]').prop('checked','checked');
-              }else if (key == 'imgurl' && type == 2) {
-                $('input[name="video_url"]').val(val);
+                $.each(imgs, function(i , url) {
+                  if (url != "") $('#newModalForm div.img_list_show_1').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                })
+              }else if (key == 'clan_img') {
+                imgs = val.split(';');
+                $.each(imgs, function(i , url) {
+                  if (url != "") $('#newModalForm div.img_list_show_2').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                })
+              }else if (key == 'imgurl') {
+                imgs = val.split(';');
+                $.each(imgs, function(i , url) {
+                  if (url != "") $('#newModalForm div.img_list_show_3').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                })
+              }else if (key == 'cln_grp_id') {
+                selectedVal = val;
               }
             })
-            $.each(imgs, function(i , url) {
-              if (url != "") $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
-            })
+            selCombo(selectedVal);
+            newModalValidation();
           }
-          newModal('修改推广', fun);
+          newModal('修改战队', fun);
         }
       },
       error : function(e) {
@@ -248,7 +198,7 @@ define(function(require, exports, module) {
   function delRow(id, name) {
     swal({
       title: '确定删除?',
-      text: '删除后，资源“' + name + '”将无法恢复！',
+      text: '删除后，战队“' + name + '”将无法恢复！',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: '删除',
@@ -259,7 +209,7 @@ define(function(require, exports, module) {
         url : 'system/del',
         dataType : 'json',
         data : {
-          tname: 'gm_promotion',
+          tname: 'clan_name',
           tid: id
         },
         success : function(data) {
@@ -267,7 +217,7 @@ define(function(require, exports, module) {
             manager.reload();
             swal(
               '删除成功:)',
-              '资源“' + name + '”已被删除.',
+              '战队“' + name + '”已被删除.',
               'success'
             )
           }else{
@@ -302,7 +252,7 @@ define(function(require, exports, module) {
       id: 'newModal',
       title: title,
       size: 'size-wide',
-      message: $('<div></div>').load('app/e3_index_mgmt_modal.html'),
+      message: $('<div></div>').load('app/clan_mgmt_modal.html'),
       cssClass: 'modal inmodal fade',
       buttons: [{
         type: 'submit',
@@ -383,19 +333,10 @@ define(function(require, exports, module) {
         var formVals = {};
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
-          formVals["status"] = (o.name == "status" && o.value == "on") ? 1 : 0;
         });
 
-        var imgurl = '';
-        if (formVals['type'] == 2) {
-          imgurl = formVals['video_url'];
-        }else {
-          imgurl = formVals['imgs'];
-        }
-        formVals['imgurl'] = imgurl;
-
         var data = {
-          actionname: 'gm_promotion',
+          actionname: 'clan_name',
           datajson: JSON.stringify(formVals)
         };
         $.post('save/table', data, function(result) {
@@ -419,6 +360,54 @@ define(function(require, exports, module) {
         }, 'json');
       });
   };
+
+  /*
+   * 初始化Combo
+   */
+  function initCombo() {
+    var config = {
+      '.chosen-select': {},
+      '.chosen-select-deselect': {
+        allow_single_deselect: true
+      },
+      '.chosen-select-no-single': {
+        disable_search_threshold: 10
+      },
+      '.chosen-select-no-results': {
+        no_results_text: 'Oops, nothing found!'
+      },
+      '.chosen-select-width': {
+        width: "95%"
+      }
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+  };
+
+  function selCombo(selectedVal) {
+    $.ajax({
+      type : 'GET',
+      url : 'query/table',
+      dataType : 'json',
+      data : {
+        source: 'clan_group',
+        qtype: 'select'
+      },
+      success : function(data) {
+        if (data) {
+          $('select.group_list').empty();
+          $.each(data, function(i, o) {
+            $('select.group_list').append('<option value="'+ o.cln_grp_id +'" ' + (selectedVal == o.cln_grp_id ? 'selected="selected"' : '') + '>'+ o.groupname +'</option>');
+          })
+        }
+        initCombo();
+      },
+      error : function(e) {
+        console.log(e);
+      }
+    });
+  }
 
   function dateFactory (str, date, yearBool) {
     function p(s) {

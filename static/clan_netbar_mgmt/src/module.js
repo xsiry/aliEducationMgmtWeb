@@ -37,8 +37,7 @@ define(function(require, exports, module) {
       })
 
       $('body').on("click", '.upload_new_imgs', function(e) {
-        var type = $(e.currentTarget).data("type");
-        var number = type == 0 ? 4 : 1;
+        var number = 1;
         BootstrapDialog.show({
           title: '文件上传',
           type: 'BootstrapDialog.TYPE_SUCCESS',
@@ -132,61 +131,6 @@ define(function(require, exports, module) {
    * 功能操作
    */
 
-  function applyRow(id, name) {
-    var applyVals = {hvr_id: id, status: 1};
-    swal({
-      title: '是否应用?',
-      text: '应用后，资源“' + name + '”将在推荐位展示！',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '应用',
-      cancelButtonText: '取消'
-    }).then(function() {
-      $.ajax({
-        type : 'POST',
-        url : 'save/table',
-        dataType : 'json',
-        data : {
-          actionname: 'home_videorec',
-          datajson: JSON.stringify(applyVals)
-        },
-        success : function(result) {
-          toastr.options = {
-            closeButton: true,
-            progressBar: true,
-            showMethod: 'slideDown',
-            timeOut: 4000
-          };
-          if (result.success) {
-            swal(
-              '应用成功 :)',
-              '资源“' + name + '” :)已应用到推荐位',
-              'success'
-            );
-            manager.reload();
-          }else{
-            swal(
-              '应用失败！',
-              '未知错误，请联系管理员或查看日志',
-              'error'
-            )
-          }
-        },
-        error : function(e) {
-          console.log(e);
-        }
-      });
-    }, function(dismiss) {
-      if (dismiss === 'cancel') {
-        // swal(
-        //   '已取消',
-        //   '资源《“' + name + '”》未删除！',
-        //   'error'
-        // )
-      }
-    })
-  };
-
   function editRow(id) {
     $.ajax({
       type : 'GET',
@@ -199,7 +143,6 @@ define(function(require, exports, module) {
       success : function(data) {
         if (data) {
           var fun = function() {
-            newModalValidation();
             var imgs = [];
             var selectedVal = '';
             var type = parseInt(data.type);
@@ -381,10 +324,10 @@ define(function(require, exports, module) {
             timeOut: 4000
           };
           if (result.success == true) {
-            msg = "添加成功！";
+            msg = "操作成功！";
             toastr.success(msg);
           } else {
-            msg = "添加失败！";
+            msg = "操作失败！";
             toastr.error(msg);
           };
 

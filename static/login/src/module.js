@@ -61,7 +61,7 @@ define(function(require, exports, module) {
             $.gritter.add({
               title: '登录成功',
               sticky: false,
-              time: 1000,
+              time: 3000,
               speed: 500,
               position: 'bottom-right',
               class_name: 'gritter-success'
@@ -71,7 +71,7 @@ define(function(require, exports, module) {
               title: '登录失败',
               text: result.msg,
               sticky: false,
-              time: 1000,
+              time: 3000,
               speed: 500,
               position: 'bottom-right',
               class_name: 'gritter-error'
