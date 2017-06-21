@@ -44,8 +44,8 @@
       </nav>
     </div>
     <div class="right_conten">
-      <div class="row row_block" id="beauty_tab">
-        <ul>
+      <div class="row row_block">
+        <ul  id="beauty_tab">
           <li><a href="#" data-tabid ="1">主播推荐</a></li>
         </ul>
       </div>
@@ -97,18 +97,26 @@
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/ssofthelper.js"></script>
 <script type="text/javascript">
-$(document).ready(function() { 
-	$("#beauty_tab").on("click", 'a', function(actionobj) {
-      var rowobj = $(this); 
-      $sHelper.AjaxPost("../tempalte/beauty/content",{ tabid:rowobj.data("tabid")},function(msg){
-      	 console.log("1111111111111");
-      	 $("#beauty_content").empty();
-      	 $("#beauty_content").append(msg);
-      }) ;
-      actionobj.preventDefault();
-      rowobj = null;
- }); 
-})
+	$(document).ready(function() { 
+			$("#beauty_tab").on("click", 'a', function(actionobj) {
+		      var rowobj = $(this); 
+		      $sHelper.AjaxPost("../tempalte/beauty/content",{ tabid:rowobj.data("tabid")},function(msg){ 
+		      	 $("#beauty_content").empty();
+		      	 $("#beauty_content").append(msg);
+		      }) ;
+		      actionobj.preventDefault();
+		      rowobj = null;
+		  });  
+	    
+	    $sHelper.AjaxPost("../tempalte/beauty/tab",{},function(msg){ 
+		      	 $("#beauty_tab").empty();
+		      	 $("#beauty_tab").append(msg);
+		  }) ;
+		  $sHelper.AjaxPost("../tempalte/beauty/content",{ tabid:-1},function(msg){ 
+		      	 $("#beauty_content").empty();
+		      	 $("#beauty_content").append(msg);
+		 }) ;
+	}) ;
 </script>
 
 </html>

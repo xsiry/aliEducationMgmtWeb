@@ -11,7 +11,7 @@ define(function(require, exports, module) {
     _configText() {
       $('div h5.mgmt_title').text('赛程列表');
       $('div button font.mgmt_new_btn').text('添加赛程');
-      $('div button font.set_gm_intr_notice_btn').text('设置赛事简介');
+      $('div button font.set_gm_intr_notice_btn').text('设置总赛程简介');
       $('div input.name_search').prop('placeholder', '输入名称');
       $('div button.name_search_btn').text('搜索');
     },
@@ -39,11 +39,8 @@ define(function(require, exports, module) {
       })
 
       $.root_.on("click", '.set_gm_intr_notice_modal_btn', function(e) {
-        var url = '';
-        var fun = function(dialogRef) {
-          newModalValidation();
-        }
-        newModal('赛事简介设置', url, fun);
+        var id = 1;
+        editMainINRow(id);
       })
 
       // bind grid edit
@@ -143,6 +140,33 @@ define(function(require, exports, module) {
     });
   };
 
+  function editMainINRow(id) {
+    $.ajax({
+      type : 'GET',
+      url : 'query/table',
+      dataType : 'json',
+      data : {
+        source: 'gm_intr_notice',
+        sourceid: id
+      },
+      success : function(data) {
+        if (data) {
+          var fun = function() {
+            $.each(data, function(key, val) {
+              $('pre.flex.x-' + key).text(val);
+            })
+            mainIntrNModalValidation();
+          }
+          var url = 'app/clan_main_intr_notice_modal.html';
+          newModal('总赛程简介设置', url, fun, 'mainINModal', 'mainIntrNModalForm', 'mainINClose');
+        }
+      },
+      error : function(e) {
+        console.log(e);
+      }
+    });
+  };
+
   function delRow(id, name) {
     swal({
       title: '确定删除?',
@@ -195,9 +219,16 @@ define(function(require, exports, module) {
     })
   };
 
-  function newModal(title, url, onshowFun) {
+  function newModal(title, url, onshowFun, modalId, formId, closeId) {
+    var mId = 'newModal';
+    if (modalId) mId = modalId;
+    var fId = 'newModalForm';
+    if (formId) fId = formId;
+    var cId = 'newModalClose';
+    if (closeId) cId = closeId;
+
     var modal = BootstrapDialog.show({
-      id: 'newModal',
+      id: mId,
       title: title,
       size: 'size-wide',
       message: $('<div></div>').load(url),
@@ -209,10 +240,10 @@ define(function(require, exports, module) {
         cssClass: 'btn btn-primary',
         autospin: false,
         action: function(dialogRef) {
-          $('#newModalForm').submit();
+          $('#' + fId).submit();
         }
       }, {
-        id: 'newModalClose',
+        id: cId,
         label: '取消',
         cssClass: 'btn btn-white',
         autospin: false,
@@ -310,6 +341,92 @@ define(function(require, exports, module) {
       });
   };
 
+  function mainIntrNModalValidation() {
+    $('#mainIntrNModalForm').formValidation({
+        autoFocus: true,
+        locale: 'zh_CN',
+        message: '该值无效，请重新输入',
+        err: {
+          container: 'tooltip'
+        },
+        icon: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+          // Name: {
+          //   validators: {
+          //     notEmpty: {}
+          //   }
+          // },
+          // BusinessFirm: {
+          //   validators: {
+          //     notEmpty: {}
+          //   }
+          // },
+          // BusinessContact: {
+          //   validators: {
+          //     notEmpty: {}
+          //   }
+          // },
+          // PhoneNumber: {
+          //   validators: {
+          //     notEmpty: {},
+          //     digits: {},
+          //     phone: {
+          //       country: 'CN'
+          //     }
+          //   }
+          // }
+        }
+      })
+      .on('success.form.fv', function(e) {
+        // Prevent form submission
+        e.preventDefault();
+
+        // Get the form instance
+        var $form = $(e.target);
+
+        // Get the FormValidation instance
+        var bv = $form.data('formValidation');
+
+        // Use Ajax to submit form data
+        var formVals = {
+          intro: $('pre.flex.x-intro').text(),
+          notice: $('pre.flex.x-notice').text(),
+          profile: $('pre.flex.x-profile').text(),
+          plan: $('pre.flex.x-plan').text()
+        };
+        $.each($form.serializeArray(), function(i, o) {
+          formVals[o.name] = o.value;
+        });
+
+        var data = {
+          actionname: 'gm_intr_notice',
+          datajson: JSON.stringify(formVals)
+        };
+        $.post('save/table', data, function(result) {
+          var msg;
+          manager.reload();
+          toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            showMethod: 'slideDown',
+            timeOut: 4000
+          };
+          if (result.success == true) {
+            msg = "操作成功！";
+            toastr.success(msg);
+          } else {
+            msg = "操作失败！";
+            toastr.error(msg);
+          };
+
+          $('#mainINClose').click();
+        }, 'json');
+      });
+  };
   /*
    * 初始化Combo
    */

@@ -229,6 +229,7 @@ define(function(require, exports, module) {
             $.each(data, function(key, val) {
               var imgs = [];
               $('#newModalForm input[name="'+ key +'"]').val(val);
+              $('pre.flex.x-' + key).text(val);
               if (key == 'clan_logo') {
                 imgs = val.split(';');
                 $.each(imgs, function(i , url) {
@@ -405,7 +406,12 @@ define(function(require, exports, module) {
         var bv = $form.data('formValidation');
 
         // Use Ajax to submit form data
-        var formVals = {};
+        var formVals = {
+          intro: $('pre.flex.x-intro').text(),
+          tactics: $('pre.flex.x-tactics').text(),
+          wnning: $('pre.flex.x-wnning').text(),
+          slogan: $('pre.flex.x-slogan').text()
+        };
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
         });
@@ -485,9 +491,12 @@ define(function(require, exports, module) {
 
         // Get the FormValidation instance
         var bv = $form.data('formValidation');
-
+        var row = manager.getSelectedRow();
         // Use Ajax to submit form data
-        var formVals = {};
+        var formVals = {
+          cln_id: row.cln_id,
+          info: $('#memberModalForm pre.flex.x-info').text()
+        };
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
         });
@@ -593,6 +602,8 @@ define(function(require, exports, module) {
                 $.each(imgs, function(i , url) {
                   if (url != "") $('#memberModalForm div.img_list_show_5').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 })
+              }else if (key == 'info') {
+                $('#memberModalForm pre.flex.x-' + key).text(val);
               }
             })
             memModalValidation();

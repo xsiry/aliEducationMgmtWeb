@@ -29,3 +29,30 @@
 .tooltip {
   z-index: 2100 !important;
 }
+
+pre {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+
+.flex {
+  background: #fff;
+  border: 1px solid #e5e6e7;
+  border-radius: 0;
+  max-height: 500px;
+  min-height: 250px;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  outline: none;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.flex:focus {
+  border-color: #1ab394 !important;
+}

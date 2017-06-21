@@ -149,10 +149,13 @@ define(function(require, exports, module) {
             $('input[name="type"][value='+ type +']').click();
             $.each(data, function(key, val) {
               $('#newModalForm input[name="'+ key +'"]').val(val);
+
               if (key == 'imgs') {
                 imgs = val.split(';');
               }else if (key == 'cln_id') {
                 selectedVal = val;
+              }else if (key == 'intro') {
+                $('pre.flex.x-' + key).text(val);
               }
             })
             selCombo(selectedVal);
@@ -305,7 +308,9 @@ define(function(require, exports, module) {
         var bv = $form.data('formValidation');
 
         // Use Ajax to submit form data
-        var formVals = {};
+        var formVals = {
+          intro: $('pre.flex.x-intro').text()
+        };
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
         });
