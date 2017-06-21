@@ -257,10 +257,6 @@ ul {
   border: 1px solid #dd191d;
 }
 
-.fc-day-grid>div:last-child {
-  display: none;
-}
-
 #calendar .fc-more-cell a.fc-more {
   color: #d81b60;
 }

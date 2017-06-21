@@ -4,10 +4,15 @@ define([{
   minWidth: 100,
   width: '15%'
 }, {
+  display: '链接',
+  name: 'newsurl',
+  minWidth: 100,
+  width: '10%'
+}, {
   display: '作者',
   name: 'author',
   minWidth: 120,
-  width: '10%'
+  width: '5%'
 }, {
   display: '文章来源',
   name: 'source',
@@ -48,7 +53,7 @@ define([{
   tyep: 'date',
   format: 'yyyy-mm-dd HH:mm:ss',
   minWidth: 140,
-  width: '15%'
+  width: '10%'
 }, {
   display: '操作',
   isSort: false,
