@@ -22,7 +22,7 @@ define(function(require, exports, module) {
     _bindUI: function() {
       $.root_.on('click', 'a.login_out', function() {
         // clean cache
-        window.location = 'app/login.html';
+        window.location = 'login.html';
       })
     },
     menusGenerate: function() {
