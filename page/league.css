@@ -106,6 +106,16 @@ a.img_a>img {
 .my_img {
   display: block;
 }
+.cln_standby_btn {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+
+button.x-btn {
+  background-color: transparent;
+  line-height: 25px;
+}
 
 @-webkit-keyframes img_act {
   0% {

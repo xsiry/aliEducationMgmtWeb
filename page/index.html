@@ -44,23 +44,21 @@
     <div class="right_conten">
       <div class="row x_welcome">欢迎文字</div>
       <div class="row row_block">
-        <div class="col-md-6 deal">
-          <div class="deal_title">优酷七天会员卷仅需1元</div>
+        <div class="col-md-6 deal" id="coupons">
+          <div class="deal_title">优酷七天会员卷仅需<span></span>元</div>
           <div>
             <div class="deal_wrapper">
               <img src="">
             </div>
             <div class="deal_price">
-              <span class="text">￥1.00</span>
+              <span class="text">￥<span class="price"></span></span>
             </div>
           </div>
-          <div class="deal_max">限量<span>100</span>份</div>
+          <div class="deal_max">限量<span></span>份</div>
         </div>
         <div class="col-md-6">
           <div id="videobox">
-            <video preload="preload" id="video">
-              <source src="http://www.runoob.com/try/demo_source/mov_bbb.mp4" type="video/mp4" />
-              <span style="color: red;">您的浏览器不支持html5 video播放</span>
+            <video preload id="video">
             </video>
             <a href="javascript:void(0);" class="play_video"><svg class="svg_icon" viewBox="0 0 1024 1024">
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
@@ -98,66 +96,97 @@
 <!-- Fullcalendar core JS -->
 <script src="lib/fullcalendar/fullcalendar.min.js"></script>
 <script src="lib/fullcalendar/locale/zh-cn.js"></script>
-
 <script type="text/javascript" src="h5_video.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#calendar').fullCalendar({
-    header: false,
-    firstDay: 0,
-    height: 300,
-    contentHeight: 300,
-    defaultDate: '2017-05-12',
-    navLinks: false, // can click day/week names to navigate views
-    editable: false,
-    eventLimit: true, // allow "more" link when too many events
-    events: [{
-      title: 'All Day Event',
-      start: '2017-05-01',
-      end: '2017-05-01'
-    }, {
-      title: 'Long Event',
-      start: '2017-05-07',
-      end: '2017-05-10'
-    }, {
-      id: 999,
-      title: 'Repeating Event',
-      start: '2017-05-09T16:00:00'
-    }, {
-      id: 999,
-      title: 'Repeating Event',
-      start: '2017-05-16T16:00:00'
-    }, {
-      title: 'Conference',
-      start: '2017-05-11',
-      end: '2017-05-13'
-    }, {
-      title: 'Meeting',
-      start: '2017-05-12T10:30:00',
-      end: '2017-05-12T12:30:00'
-    }, {
-      title: 'Lunch',
-      start: '2017-05-12T12:00:00'
-    }, {
-      title: 'Meeting',
-      start: '2017-05-12T14:30:00'
-    }, {
-      title: 'Happy Hour',
-      start: '2017-05-12T17:30:00'
-    }, {
-      title: 'Dinner',
-      start: '2017-05-12T20:00:00'
-    }, {
-      title: 'Birthday Party',
-      start: '2017-05-13T07:00:00'
-    }, {
-      title: 'Click for Google',
-      url: 'http://google.com/',
-      start: '2017-05-28'
-    }]
-  });
+  $.ajax({
+    type : 'GET',
+    url : '../query/table',
+    dataType : 'json',
+    data : {
+      source: 'member_coupons',
+      sourceid: 1
+    },
+    success : function(data) {
+      if (data) {
+        $('.deal_title span').text(data.price);
+        $('.deal_price span.price').text(data.price);
+        $('.deal_wrapper img').prop('src', data.imgs);
+        $('.deal_max span').text(data.number);
+      }
+    }
+  })
+
+  $.ajax({
+    type : 'GET',
+    url : '../query/table',
+    dataType : 'json',
+    data : {
+      source: 'home_videorec',
+      qtype: 'select',
+      qhstr: JSON.stringify({qjson: [{status: 1}]})
+
+    },
+    success : function(data) {
+      if (data.length > 0) {
+        var html = '<source src="' + data[0].videurl + '" type="video/mp4" />'
+           + '<span style="color: red;">您的浏览器不支持html5 video播放</span>';
+        $('#video').append(html);
+      }
+    }
+  })
+
+  $.ajax({
+    type : 'GET',
+    url : '../query/table',
+    dataType : 'json',
+    data : {
+      source: 'gm_promotion',
+      qtype: 'select',
+      qhstr: JSON.stringify({qjson: [{type: 3, status: 1}]})
+
+    },
+    success : function(data) {
+      if (data) {
+        $('.league_wrapper img').prop('src', data[0].imgurl);
+      }
+    }
+  })
+
+  $.ajax({
+    type : 'GET',
+    url : '../query/table',
+    dataType : 'json',
+    data : {
+      source: 'clan_schedule',
+      qtype: 'select'
+    },
+    success : function(data) {
+      if (data) {
+        var calendarData = [];
+        $.each(data, function(i, o) {
+          var date = o.times.split(' ')[0];
+          var time = o.times.split(' ')[1].substring(0, 5);
+          calendarData.push({
+            title: o.clan_name_a + ' VS ' + o.clan_name_b + ' ' + time,
+            start: date,
+            url: o.live_url
+          });
+        })
+        $('#calendar').fullCalendar({
+          header: false,
+          firstDay: 0,
+          height: 300,
+          contentHeight: 300,
+          navLinks: false, // can click day/week names to navigate views
+          editable: false,
+          eventLimit: true, // allow "more" link when too many events
+          events: calendarData
+        });
+      }
+    }
+  })
 
 });
 </script>
-
 </html>

@@ -33,6 +33,7 @@ define(function(require, exports, module) {
         var url = 'app/clan_schedule_mgmt_modal.html';
         var fun = function(dialogRef) {
           selCombo();
+          initScheduleTimes();
           newModalValidation();
         }
         newModal('添加赛程', url, fun);
@@ -114,7 +115,7 @@ define(function(require, exports, module) {
       success : function(data) {
         if (data) {
           var fun = function() {
-            var dtprVal = '', clanAVal = '', clanBVal = '';
+            var dtprVal = '', clanAVal = '', clanBVal = '', defaultDate = '';
             $.each(data, function(key, val) {
               $('#newModalForm input[name="'+ key +'"]').val(val);
               if (key == 'status' && val == 1) {
@@ -125,9 +126,12 @@ define(function(require, exports, module) {
                 clanAVal = val;
               }else if (key == 'clan_id_b') {
                 clanBVal = val;
+              }else if (key == 'times') {
+                defaultDate = val;
               }
             })
             selCombo(dtprVal, clanAVal, clanBVal);
+            initScheduleTimes(defaultDate);
             newModalValidation();
           }
           var url = 'app/clan_schedule_mgmt_modal.html';
@@ -496,6 +500,15 @@ define(function(require, exports, module) {
       error : function(e) {
         console.log(e);
       }
+    });
+  }
+
+  function initScheduleTimes(defaultDate) {
+    var date = new Date();
+    if (defaultDate) date = defaultDate;
+    $('#schedule_times').datetimepicker({
+      format: 'YYYY-MM-DD HH:mm',
+      defaultDate: date
     });
   }
 

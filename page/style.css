@@ -243,10 +243,6 @@ ul {
   color: #525e71;
 }
 
-#calendar a.fc-more {
-  color: #525e71;
-}
-
 .fc-row .fc-content-skeleton td,
 .fc-row .fc-helper-skeleton td {
   /*text-align: center;*/
@@ -263,4 +259,8 @@ ul {
 
 .fc-day-grid>div:last-child {
   display: none;
+}
+
+#calendar .fc-more-cell a.fc-more {
+  color: #d81b60;
 }

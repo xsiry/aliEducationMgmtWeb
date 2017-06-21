@@ -5,12 +5,12 @@ define([{
   width: '15%'
 }, {
   display: '比赛省会',
-  name: 'dtpr_id',
+  name: 'province',
   minWidth: 60,
   width: '10%'
 }, {
   display: '战队A',
-  name: 'clan_id_a',
+  name: 'clan_name_a',
   minWidth: 140,
   width: '10%'
 }, {
@@ -20,7 +20,7 @@ define([{
   width: '10%'
 }, {
   display: '战队B',
-  name: 'clan_id_b',
+  name: 'clan_name_b',
   minWidth: 140,
   width: '10%'
 }, {

@@ -12,6 +12,12 @@
   margin-left: 20px;
 }
 
+.right_conten>div:first-child>ul>li>a {
+  color: #555;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
 .right_conten>ul>li {
   float: left;
   display: inline-block;

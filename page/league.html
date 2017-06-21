@@ -66,25 +66,12 @@
             </div>
             <div class="focus-num"><span class="current">1</span>/<span class="num">0</span></div>
             <div class="img_list">
-              <a class="up_a img_a img_a_0" href="{{obj.url}}" style="z-index: 1;opacity: 1;-webkit-animation: img_act 1s linear forwards;" target="_self">
-                <img class="up_img  img_0" src="http://image.gamersky.com/gameshd/2017/20170613_lmh_241_2.jpg" alt="0">
-                <div class="i_title">天蝎座版《极限竞速7》体验：画面简直6爆！</div>
-              </a>
-              <a class="up_a img_a img_a_1" href="{{obj.url}}" target="_self">
-                <img class="up_img  img_1" src="http://image.gamersky.com/gameshd/2017/20170611xtn_162_11.jpg" alt="1">
-                <div class="i_title">《COD14》战场漫游指南 深入树篱地狱</div>
-              </a>
-              <a class="up_a img_a img_a_2" href="{{obj.url}}" target="_self">
-                <img class="up_img  img_2" src="http://image.gamersky.com/gameshd/2017/20170614_cks_170_2.jpg" alt="2">
-                <div class="i_title">《神舞幻想》新宣传片 画面效果惊艳</div>
-              </a>
-              <a class="up_a img_a img_a_3" href="{{obj.url}}" target="_self">
-                <img class="up_img  img_3" src="http://image.gamersky.com/gameshd/2017/20170614_lmh_241_4.jpg" alt="3">
-                <div class="i_title">《超级马里奥：奥德赛》10月27日发售！</div>
-              </a>
+
             </div>
           </div>
           <div class="progress_bottom_win"></div>
+        </div>
+        <div id="league_videobox" class="pull-left" style="width:50%;display: none;">
         </div>
         <div class="col-md-6 league_schedule">
           <div id='calendar'></div>
@@ -98,7 +85,7 @@
           <div class="center-block">
             <div class="pull-left">总赛程</div>
             <div class="pull-right">
-              <a href="league_provincial.html" class="x-btn">分省赛程》</a>
+              <a href="league_provincial.html" class="x-btn">分省赛程></a>
             </div>
           </div>
           <table class="table table-hover">
@@ -180,9 +167,7 @@
       <div class="row row_block">
         <div class="col-md-12">
           <div id="videobox" class="pull-left" style="width:50%;">
-            <video preload="preload" id="video">
-              <source src="http://www.runoob.com/try/demo_source/mov_bbb.mp4" type="video/mp4" />
-              <span style="color: red;">您的浏览器不支持html5 video播放</span>
+            <video preload id="video">
             </video>
             <a href="javascript:void(0);" class="play_video">
               <svg class="svg_icon" viewBox="0 0 1024 1024">
@@ -195,10 +180,19 @@
               </svg>
             </a>
           </div>
-          <div class="pull-right" style="width: 50%;">
-            <div class="pull-right"><a href="league_corps.html" class="x-btn">参赛战队》</a></div>
-            <div style="margin-left: 40px;"><img style="height: 300px;" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1148966974,1682250033&fm=80&w=179&h=119&img.JPEG"></div>
-            <div class="pull-right"><a href="javascript:void(0);" class="x-btn">支持</a></div>
+          <div class="pull-right" style="width: 50%;padding: 0 20px; position: relative;">
+            <div class="pull-right"><a href="league_corps.html" class="x-btn">参赛战队></a></div>
+            <div><img class="cln_img" style="height: 250px;" src=""></div>
+            <div style="height:200px;overflow-y: auto;">
+              <p>战队介绍: <span class="cln_intro"></span></p>
+              <p>战术介绍: <span class="cln_tactics"></span></p>
+              <p>胜率分析: <span class="cln_wnning"></span></p>
+            </div>
+            <input type='hidden' class="cln_id" value=""/>
+            <input type='hidden' class="cln_standby" value=""/>
+            <div class="cln_standby_btn">
+              <button class="x-btn">支持</button>
+            </div>
           </div>
         </div>
       </div>
@@ -215,107 +209,177 @@
 <script src="lib/fullcalendar/locale/zh-cn.js"></script>
 <script type="text/javascript" src="h5_video.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-  $('#calendar').fullCalendar({
-    header: false,
-    firstDay: 0,
-    height: 300,
-    contentHeight: 300,
-    defaultDate: '2017-05-12',
-    navLinks: false, // can click day/week names to navigate views
-    editable: false,
-    eventLimit: true, // allow "more" link when too many events
-    events: [{
-      title: 'All Day Event',
-      start: '2017-05-01',
-      end: '2017-05-01'
-    }, {
-      title: 'Long Event',
-      start: '2017-05-07',
-      end: '2017-05-10'
-    }, {
-      id: 999,
-      title: 'Repeating Event',
-      start: '2017-05-09T16:00:00'
-    }, {
-      id: 999,
-      title: 'Repeating Event',
-      start: '2017-05-16T16:00:00'
-    }, {
-      title: 'Conference',
-      start: '2017-05-11',
-      end: '2017-05-13'
-    }, {
-      title: 'Meeting',
-      start: '2017-05-12T10:30:00',
-      end: '2017-05-12T12:30:00'
-    }, {
-      title: 'Lunch',
-      start: '2017-05-12T12:00:00'
-    }, {
-      title: 'Meeting',
-      start: '2017-05-12T14:30:00'
-    }, {
-      title: 'Happy Hour',
-      start: '2017-05-12T17:30:00'
-    }, {
-      title: 'Dinner',
-      start: '2017-05-12T20:00:00'
-    }, {
-      title: 'Birthday Party',
-      start: '2017-05-13T07:00:00'
-    }, {
-      title: 'Click for Google',
-      url: 'http://google.com/',
-      start: '2017-05-28'
-    }]
-  });
-
-});
 var sec = 3;
 var num = 0;
 var numTotal = 4;
 var interval;
-$('.num').text(numTotal);
-interval = setInterval(queueingArr, sec * 1000);
 
-$('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-$('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-$('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-$('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-$('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
+$(document).ready(function() {
+  $.ajax({
+    type: 'GET',
+    url: '../query/table',
+    dataType: 'json',
+    data: {
+      source: 'clan_schedule',
+      qtype: 'select'
+    },
+    success: function(data) {
+      if (data) {
+        var calendarData = [];
+        $.each(data, function(i, o) {
+          var date = o.times.split(' ')[0];
+          var time = o.times.split(' ')[1].substring(0, 5);
+          calendarData.push({
+            title: o.clan_name_a + ' VS ' + o.clan_name_b + ' ' + time,
+            start: date,
+            url: o.live_url
+          });
+        })
+        $('#calendar').fullCalendar({
+          header: false,
+          firstDay: 0,
+          height: 300,
+          contentHeight: 300,
+          navLinks: false, // can click day/week names to navigate views
+          editable: false,
+          eventLimit: true, // allow "more" link when too many events
+          events: calendarData
+        });
+      }
+    }
+  });
 
-$('.top_popup').hover(function() {
-  clearInterval(interval);
-  $('.left_btn').css('transform', 'translate(0px,0px)');
-  $('.right_btn').css('transform', 'translate(0px,0px)');
-  $('.progress_bottom_win').css('-webkit-animation', '');
-  $('.progress_bottom_win').css('-moz-animation', '');
-  $('.progress_bottom_win').css('-o-animation', '');
-  $('.progress_bottom_win').css('-ms-animation', '');
-  $('.progress_bottom_win').css('animation', '');
-}, function() {
-  interval = setInterval(queueingArr, sec * 1000);
-  $('.left_btn').css('transform', 'translate(-60px,0px)');
-  $('.right_btn').css('transform', 'translate(60px,0px)');
-  $('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-  $('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-  $('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-  $('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-  $('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
+  $.ajax({
+    type : 'GET',
+    url : '../query/table',
+    dataType : 'json',
+    data : {
+      source: 'gm_promotion',
+      qtype: 'select',
+      qhstr: JSON.stringify({qjson: [{type: 2},{status: 1}]})
+
+    },
+    success : function(data) {
+      if (data.length > 0) {
+        $('.league .league_images').hide();
+        var html = '<video autoplay loop>'
+           + '<source src="' + data[0].imgurl + '" type="video/mp4" />'
+           + '<span style="color: red;">您的浏览器不支持html5 video播放</span>'
+           + '</video>';
+        $('.league #league_videobox').append(html);
+        $('.league #league_videobox').show();
+      }
+    }
+  });
+
+  $.ajax({
+    type : 'GET',
+    url : '../query/table',
+    dataType : 'json',
+    data : {
+      source: 'gm_promotion',
+      qtype: 'select',
+      qhstr: JSON.stringify({qjson: [{type: 0},{status: 1}]})
+
+    },
+    success : function(data) {
+      if (data.length > 0) {
+        var urlArry = data[0].imgurl.split(';');
+        var aUrlArry = data[0].click.split(';');
+        $.each(urlArry, function(i, url){ //'+ aUrlArry[i] +'
+          var aBlock = '<a class="up_a img_a img_a_'+ i +'" href="javascript:void(0)" style="z-index: 1;opacity: 1;-webkit-animation: img_act 1s linear forwards;" target="_self">'
+               + '<img class="up_img  img_'+ i +'" src="'+ url +'" alt="0">'
+               + '<div class="i_title"></div></a>';
+          $('div.img_list').append(aBlock);
+        });
+        numTotal = urlArry.length;
+        $('.num').text(numTotal);
+        interval = setInterval(queueingArr, sec * 1000);
+
+        $('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+        $('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+        $('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+        $('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+        $('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
+
+        $('.top_popup').hover(function() {
+          clearInterval(interval);
+          $('.left_btn').css('transform', 'translate(0px,0px)');
+          $('.right_btn').css('transform', 'translate(0px,0px)');
+          $('.progress_bottom_win').css('-webkit-animation', '');
+          $('.progress_bottom_win').css('-moz-animation', '');
+          $('.progress_bottom_win').css('-o-animation', '');
+          $('.progress_bottom_win').css('-ms-animation', '');
+          $('.progress_bottom_win').css('animation', '');
+        }, function() {
+          interval = setInterval(queueingArr, sec * 1000);
+          $('.left_btn').css('transform', 'translate(-60px,0px)');
+          $('.right_btn').css('transform', 'translate(60px,0px)');
+          $('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+          $('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+          $('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+          $('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+          $('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
+        });
+
+        $('.left_btn').on('click', function() {
+          num = num - 1;
+          if (num < 0) num = numTotal - 1;
+          choseImg(num, true);
+        })
+
+        $('.right_btn').on('click', function() {
+          num = num + 1;
+          if (num >= numTotal) num = 0;
+          choseImg(num);
+        })
+      }else {
+
+      }
+    }
+  })
+
+  $.ajax({
+    type : 'GET',
+    url : '../query/table',
+    dataType : 'json',
+    data : {
+      source: 'clan_name',
+      page: 1,
+      pagesize: 2,
+      sortname: 'cln_id',
+      sortorder: 'DESC'
+    },
+    success : function(data) {
+      if (data.Rows.length > 0) {
+        var html = '<source src="' + data.Rows[0].videourl + '" type="video/mp4" />'
+           + '<span style="color: red;">您的浏览器不支持html5 video播放</span>';
+        $('#video').append(html);
+        $('.cln_img').prop('src', data.Rows[0].imgurl);
+        $('.cln_intro').text(data.Rows[0].intro);
+        $('.cln_tactics').text(data.Rows[0].tactics);
+        $('.cln_wnning').text(data.Rows[0].wnning);
+        $('.cln_id').val(data.Rows[0].cln_id);
+        $('.cln_standby').val(data.Rows[0].standby);
+      }
+    }
+  })
+
+  $('button.x-btn').on('click', function() {
+    $.ajax({
+      type : 'POST',
+      url : '../save/table',
+      dataType : 'json',
+      data : {
+        actionname: 'clan_name',
+        datajson: JSON.stringify({cln_id: $('.cln_id').val(), standby: parseInt($('.cln_standby').val()) + 1})
+      },
+      success : function(data) {
+        $('button.x-btn').text('已支持');
+      }
+    })
+  })
 });
-
-$('.left_btn').on('click', function() {
-  num = num - 1;
-  if (num < 0) num = numTotal - 1;
-  choseImg(num, true);
-})
-
-$('.right_btn').on('click', function() {
-  num = num + 1;
-  if (num >= numTotal) num = 0;
-  choseImg(num);
-})
 
 function queueingArr() {
   num++;
