@@ -21,19 +21,25 @@
     <label class="col-sm-3 control-label">资源类型</label>
     <div class="col-sm-9">
       <div class="radio radio-info radio-inline">
-        <input type="radio" name="type" value="0" checked>
-        <label for="type1">
+        <input type="radio" name="type" id="type0" value="0" checked>
+        <label for="type0">
           轮播图片
         </label>
       </div>
       <div class="radio radio-info radio-inline">
-        <input type="radio" name="type" value="1">
+        <input type="radio" name="type" id="type1" value="1">
         <label for="type1">
           静态图片
         </label>
       </div>
       <div class="radio radio-info radio-inline">
-        <input type="radio" name="type" value="2">
+        <input type="radio" name="type" id="type3" value="3">
+        <label for="type3">
+          首页静态图片
+        </label>
+      </div>
+      <div class="radio radio-info radio-inline">
+        <input type="radio" name="type" id="type2" value="2">
         <label for="type2">
           视频
         </label>
@@ -48,7 +54,18 @@
         <span class="help-block m-b-none">（请一次性添加所需图片，最多四张，应用于E3联赛推广位）</span>
       </div>
     </div>
-    <div class="form-group img_list_show">
+    <div class="form-group img_list_show img_list_show_0">
+    </div>
+  </div>
+  <div class="img_main_block">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">首页静态图片</label>
+      <div class="col-sm-9">
+        <a class="btn btn-primary upload_new_imgs" data-type=3>添加</a>
+        <span class="help-block m-b-none">（请一次性添加所需图片，最多一张，应用于首页推广位）</span>
+      </div>
+    </div>
+    <div class="form-group img_list_show img_list_show_3">
     </div>
   </div>
   <div class="img_block">
@@ -59,7 +76,7 @@
         <span class="help-block m-b-none">（请一次性添加所需图片，最多一张，应用于总赛程推广位）</span>
       </div>
     </div>
-    <div class="form-group img_list_show">
+    <div class="form-group img_list_show img_list_show_1">
     </div>
   </div>
   <div class="video_block">

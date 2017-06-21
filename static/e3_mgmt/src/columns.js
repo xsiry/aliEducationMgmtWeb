@@ -16,6 +16,8 @@ define([{
       text = '静态图片';
     }else if (value == 2) {
       text = '视频';
+    }else if (value == 3) {
+      text = '首页静态图片';
     }
     return text;
   }
@@ -25,7 +27,7 @@ define([{
   minWidth: 60,
   width: '30%',
   render: function(rowdata, rowindex, value) {
-    if (rowdata.type == 0 || rowdata.type == 1) {
+    if (rowdata.type == 0 || rowdata.type == 1 || rowdata.type == 3) {
       var imgLabel = "";
       var imgs = rowdata.imgurl ? rowdata.imgurl.split(';') : [];
       $.each(imgs, function(i, url) {

@@ -40,12 +40,15 @@ define(function(require, exports, module) {
         $('.video_block').hide();
         $('.imgs_block').hide();
         $('.img_block').hide();
+        $('.img_main_block').hide();
         if (type == 0) {
           $('.imgs_block').show();
         }else if(type == 1){
           $('.img_block').show();
-        }else {
+        }else if(type == 2) {
           $('.video_block').show();
+        }else if(type == 3){
+          $('.img_main_block').show();
         }
       })
 
@@ -72,10 +75,10 @@ define(function(require, exports, module) {
               var reData = data.response;
               if (reData.success) {
                 var imgs = [];
-                $('#newModalForm div.img_list_show').empty().css('text-align', 'center');
+                $('#newModalForm div.img_list_show_'+ type).empty().css('text-align', 'center');
                 $.each(reData.result, function(i, url) {
                   imgs.push(url);
-                  $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                  $('#newModalForm div.img_list_show_'+ type).append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 })
                 $('#newModalForm input[name="imgs"]').val(imgs.join(';'));
                 dialogRef.close();
@@ -223,7 +226,9 @@ define(function(require, exports, module) {
             var type = parseInt(data.type);
             $('input[name="type"][value='+ type +']').click();
             $.each(data, function(key, val) {
-              $('#newModalForm input[name="'+ key +'"]').val(val);
+              if (key != 'type') {
+                $('#newModalForm input[name="'+ key +'"]').val(val);
+              }
               if (key == 'imgurl' && type != 2) {
                 imgs = val.split(';');
               }else if (key == 'status' && val == 1) {
@@ -233,7 +238,7 @@ define(function(require, exports, module) {
               }
             })
             $.each(imgs, function(i , url) {
-              if (url != "") $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+              if (url != "") $('#newModalForm div.img_list_show_'+type).append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
             })
           }
           newModal('修改推广', fun);

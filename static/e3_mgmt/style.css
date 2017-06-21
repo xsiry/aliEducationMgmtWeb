@@ -6,6 +6,10 @@ div.img_block {
   display: none;
 }
 
+div.img_main_block {
+	display: none;
+}
+
 .img_list_show {
   text-align: center;
 }
