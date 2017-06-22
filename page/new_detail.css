@@ -1,5 +1,16 @@
 .new_title {
   text-align: center;
+  font: 16px Microsoft Yahei,Helvetica,sans-serif;
+}
+
+.new_title h1 {
+  font-family: "微软雅黑","黑体";
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 38px;
+  color: #191919;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .new_author {
@@ -10,6 +21,10 @@
   height: 18px;
 }
 
+html, body {
+  margin: 0;
+  height: 100%;
+}
 .new_author>div {
   float: left;
   margin-left: 25px;
@@ -49,8 +64,15 @@
   text-align: center;
 }
 
+.new_picture img {
+  width: 400px;
+  height: 250px;
+  margin: 15px;
+}
+
 .new_conten {
   margin-top: 10px;
+  font: 14px/1.25 Microsoft Yahei,Helvetica,sans-serif;
 }
 
 .right_conten>div:last-child {

@@ -96,16 +96,15 @@ $(document).ready(function() {
     dataType: 'json',
     data: {
       source: 'clan_name',
-      sourceid: getParams('id'),
-      qtype: 'select'
+      sourceid: getParams('id')
     },
     success: function(data) {
-      if (data.length > 0) {
-        var html = '<source src="' + data[0].videourl + '" type="video/mp4" />' + '<span style="color: red;">您的浏览器不支持html5 video播放</span>';
+      if (data) {
+        var html = '<source src="' + data.videourl + '" type="video/mp4" />' + '<span style="color: red;">您的浏览器不支持html5 video播放</span>';
         $('#video').append(html);
-        $('.x_clan_img').prop('src', data[0].clan_img);
-        $('.x_clan_name').text(data[0].clan_name);
-        $('.x_clan_slogan').text(data[0].slogan);
+        $('.x_clan_img').prop('src', data.clan_img);
+        $('.x_clan_name').text(data.clan_name);
+        $('.x_clan_slogan').text(data.slogan);
       }
     }
   })
