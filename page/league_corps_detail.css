@@ -32,11 +32,12 @@
 .player_details {
   width: 100%;
   display: block;
-  height: 300px;
+  height: 315px;
   border-bottom: 1px solid #dddddd;
   display: -moz-box;
   display: -webkit-box;
   display: box;
+  padding-top: 15px;
 }
 
 .player_details>div {
@@ -98,4 +99,17 @@
   font-size: 14px;
   text-align: center;
   margin-left: 5px;
+}
+
+.x_clan_info {
+  padding: 15px;
+}
+
+.x_clan_info p:last-child {
+  padding-top: 15px;
+}
+
+.x_clan_img {
+  height: 300px;
+  width: 100%;
 }

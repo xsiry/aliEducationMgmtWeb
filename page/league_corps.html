@@ -33,95 +33,15 @@
       </nav>
     </div>
     <div class="right_conten">
-      <div class="row row_block">
+      <div class="row row_block x_tabs">
         <ul>
           <li><a href="league.html">E<sup>3</sup>联赛</a></li>
           <li><a href="league_total_provincial.html">赛程</a></li>
           <li><a href="league_corps.html">参赛队伍</a></li>
-          <li><a href="league_corps_detail.html">战队展示</a></li>
         </ul>
       </div>
-      <div class="row row_block">
-        <ul>
-          <li>
-            <a href="">
-              <div>
-                <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" style="display: block;">
-                <div>
-                  <p>战队名称：</p>
-                  <p>所属网吧：</p>
-                  <p>目前热度：</p>
-                  <p>参赛口号：</p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div>
-                <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" style="display: block;">
-                <p>战队名称：</p>
-                <p>所属网吧：</p>
-                <p>目前热度：</p>
-                <p>参赛口号：</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div>
-                <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" style="display: block;">
-                <div>
-                  <p>战队名称：</p>
-                  <p>所属网吧：</p>
-                  <p>目前热度：</p>
-                  <p>参赛口号：</p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div>
-                <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" style="display: block;">
-                <p>战队名称：</p>
-                <p>所属网吧：</p>
-                <p>目前热度：</p>
-                <p>参赛口号：</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <div>
-                <img data-original="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png" style="display: block;">
-                <p>战队名称：</p>
-                <p>所属网吧：</p>
-                <p>目前热度：</p>
-                <p>参赛口号：</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <nav aria-label="Page navigation" class="x-page">
-          <ul class="pagination">
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <div class="row row_block" id="clan_name_lsitid">
+
       </div>
     </div>
   </section>
@@ -130,8 +50,19 @@
 <script src="lib/jquery/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap core JS -->
 <script src="lib/bootstrap/bootstrap.min.js"></script>
+<script src="lib/ssofthelper.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {})
+$(document).ready(function() {
+  clancorpsClick(1);
+})
+
+function clancorpsClick(page){
+   $sHelper.AjaxPost("../tempalte/league/clanName",{"page":page, "pagesize":1},function(msg){
+           $("#clan_name_lsitid").empty();
+           $("#clan_name_lsitid").append(msg);
+    }) ;
+}
+
 </script>
 
 </html>

@@ -1,0 +1,59 @@
+     <div class="col-md-12"> 
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="text-center">比赛时间</th>
+                <th class="text-right">战队</th>
+                <th class="text-center">比分</th>
+                <th class="text-left">战队</th>
+                <th class="text-center">比赛视频</th>
+              </tr>
+            </thead>
+            <tbody>
+            	<%
+				for(clan_sch in clan_sch_ls){
+				%>
+              <tr>
+                <td class="text-center">${clan_sch.longtimes,dateFormat="MM月dd日 HH:mm"}</td>
+                <td class="text-right"><span>${clan_sch.clan_name_a}</span><span><img src="${clan_sch.clan_logo_a}"/></span></td>
+                <td class="text-center">${clan_sch.clan_id_a}-${clan_sch.clan_id_b}</td>
+                <td class="text-left"><span><img src="${clan_sch.clan_logo_b}"/></span><span>${clan_sch.clan_name_b}</span></td>
+                <td class="text-center"><a href="${clan_sch.live_url}" target="_blank">观看直播</a></td>
+              </tr> 
+               <%
+				}
+				%>
+		            
+            </tbody>
+          </table>
+          <nav aria-label="Page navigation" class="x-page">
+            <ul class="pagination">
+              <% 
+			   if(has(per)){
+				%>
+              <li>
+                <a href="javascript:clanscheduleClick(${per});" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+                <%
+                }
+				  for(pageno in pagels){
+				%>
+                 <li><a href="javascript:clanscheduleClick(${pageno});">${pageno}</a></li>
+                 <%
+			   }
+			   if(has(next)){
+				%>
+              
+              <li>
+                <a href="javascript:clanscheduleClick(${next});" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+                <%
+			      } 
+				%>
+            </ul>
+          </nav>
+        </div>

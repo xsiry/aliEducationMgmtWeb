@@ -19,7 +19,7 @@
   <symbol id="arrow_svg">
     <path d="M384 556l0-64 64 0 0 64-64 0zM448 620l0-64 64 0 0 64-64 0zM512 684l0-64 64 0 0 64-64 0zM576 748l0-64 64 0 0 64-64 0zM576 364l0-64 64 0 0 64-64 0zM448 492l0-64 64 0 0 64-64 0zM512 428l0-64 64 0 0 64-64 0z" p-id="7225" fill="#ffffff"></path>
   </symbol>
-    <symbol id="video_fullscreen_svg">
+  <symbol id="video_fullscreen_svg">
     <path d="M79.068993 65.73412c-3.917377 0.044002-7.834753 1.531889-10.81065 4.551666-2.997387 2.975774-4.485335 6.91448-4.485335 10.853186l0.152479 318.693366c0 1.968841 1.181967 3.894703 3.151912 4.726651 1.968922 0.787946 4.157863 0.305969 5.580317-1.137916l107.730927-107.223047 144.439448 143.810337c2.7569 2.756787 6.608782 4.463662 10.85363 4.463662 4.200844 0 8.052726-1.706875 10.809626-4.463662l98.079731-97.638761c2.800904-2.756787 4.507849-6.608511 4.507849-10.897188 0-4.244674-1.706945-8.096399-4.507849-10.897188L300.230897 176.85187l104.688513-104.247272c1.443944-1.399883 1.925941-3.588735 1.093959-5.601578-0.787978-1.968841-2.713919-3.15076-4.726845-3.15076L79.068993 65.73412z" p-id="2382" fill="#ffffff"></path>
     <path d="M79.178491 960.14774c-3.938867 0.044002-7.877734-1.487887-10.876144-4.463662-3.0199-3.018753-4.529339-6.958482-4.529339-10.896164l0.152479-321.363172c0-2.012843 1.181967-3.938706 3.151912-4.725628 1.968922-0.831948 4.157863-0.306992 5.580317 1.093914l107.730927 107.266026 144.439448-143.853315c2.7569-2.756787 6.608782-4.463662 10.85363-4.463662 4.200844 0 8.052726 1.706875 10.809626 4.463662l98.079731 97.637738c2.800904 2.800789 4.507849 6.652514 4.507849 10.897188s-1.706945 8.140401-4.507849 10.897188L300.230897 846.360184l104.776521 104.334253c1.444968 1.443885 1.925941 3.632737 1.137963 5.602601-0.831982 1.968841-2.713919 3.15076-4.726845 3.194762L79.178491 960.14774z" p-id="2383" fill="#ffffff"></path>
     <path d="M944.90747 65.73412c3.938867 0.044002 7.83373 1.531889 10.809626 4.551666 3.0199 2.975774 4.507849 6.91448 4.507849 10.853186l-0.174993 318.693366c0 1.968841-1.181967 3.894703-3.151912 4.726651-1.968922 0.787946-4.157863 0.305969-5.557804-1.137916L843.588842 296.197002 699.159627 440.007339c-2.800904 2.756787-6.608782 4.463662-10.85363 4.463662s-8.052726-1.706875-10.85363-4.463662l-98.036751-97.638761c-2.800904-2.756787-4.507849-6.608511-4.507849-10.897188 0-4.244674 1.706945-8.096399 4.507849-10.853186l144.385211-143.766334L619.068309 72.604598c-1.444968-1.399883-1.925941-3.588735-1.093959-5.601578 0.787978-1.968841 2.712896-3.15076 4.726845-3.15076L944.90747 65.73412z" p-id="2384" fill="#ffffff"></path>
@@ -48,19 +48,16 @@
       </nav>
     </div>
     <div class="right_conten">
-      <div class="row row_block title">
+      <div class="row row_block x_tabs">
         <ul>
           <li><a href="league.html">E<sup>3</sup>联赛</a></li>
           <li><a href="league_total_provincial.html">赛程</a></li>
           <li><a href="league_corps.html">参赛队伍</a></li>
-          <li><a href="league_corps_detail.html">战队展示</a></li>
         </ul>
       </div>
       <div class="row row_block">
         <div id="videobox" class="pull-left" style="width:50%;">
           <video preload="preload" id="video">
-            <source src="http://www.runoob.com/try/demo_source/mov_bbb.mp4" type="video/mp4" />
-            <span style="color: red;">您的浏览器不支持html5 video播放</span>
           </video>
           <a href="javascript:void(0);" class="play_video">
             <svg class="svg_icon" viewBox="0 0 1024 1024">
@@ -73,159 +70,14 @@
             </svg>
           </a>
         </div>
-        <div>
-          <p>战队名称：</p>
-          <img src="">
-          <p>战队宣言：</p>
+        <div class="x_clan_info">
+          <p>战队名称：<span class="x_clan_name"></span></p>
+          <img class="x_clan_img" src="">
+          <p>战队宣言：<span class="x_clan_slogan"></span></p>
         </div>
       </div>
-      <div class="row row_block">
-        <ul>
-          <li>
-            <div class="player_details">
-              <div>
-                <img src="http://bbs.pcbeta.com/data/attachment/portal/201706/10/123100c9rr5hlbsk1159lr.png.thumb.jpg">
-              </div>
-              <div>
-                <div>
-                  <div class="head_portrait">
-                    <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1644214360,2300632886&fm=58" class="img-circle">
-                  </div>
-                  <div class="player_info">
-                    <p>姓名：</p>
-                    <p>所属战队：</p>
-                  </div>
-                </div>
-                <div class="intro">
-                  <textarea readonly="true"></textarea>
-                </div>
-                <div class="player_btn">
-                  <a href="">赞</a>
-                  <a href="">鲜花</a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="player_details">
-              <div>
-                <img src="http://bbs.pcbeta.com/data/attachment/portal/201706/10/123100c9rr5hlbsk1159lr.png.thumb.jpg">
-              </div>
-              <div>
-                <div>
-                  <div class="head_portrait">
-                    <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1644214360,2300632886&fm=58" class="img-circle">
-                  </div>
-                  <div class="player_info">
-                    <p>姓名：</p>
-                    <p>所属战队：</p>
-                  </div>
-                </div>
-                <div class="intro">
-                  <textarea readonly="true"></textarea>
-                </div>
-                <div class="player_btn">
-                  <a href="">赞</a>
-                  <a href="">鲜花</a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="player_details">
-              <div>
-                <img src="http://bbs.pcbeta.com/data/attachment/portal/201706/10/123100c9rr5hlbsk1159lr.png.thumb.jpg">
-              </div>
-              <div>
-                <div>
-                  <div class="head_portrait">
-                    <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1644214360,2300632886&fm=58" class="img-circle">
-                  </div>
-                  <div class="player_info">
-                    <p>姓名：</p>
-                    <p>所属战队：</p>
-                  </div>
-                </div>
-                <div class="intro">
-                  <textarea readonly="true"></textarea>
-                </div>
-                <div class="player_btn">
-                  <a href="">赞</a>
-                  <a href="">鲜花</a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="player_details">
-              <div>
-                <img src="http://bbs.pcbeta.com/data/attachment/portal/201706/10/123100c9rr5hlbsk1159lr.png.thumb.jpg">
-              </div>
-              <div>
-                <div>
-                  <div class="head_portrait">
-                    <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1644214360,2300632886&fm=58" class="img-circle">
-                  </div>
-                  <div class="player_info">
-                    <p>姓名：</p>
-                    <p>所属战队：</p>
-                  </div>
-                </div>
-                <div class="intro">
-                  <textarea readonly="true"></textarea>
-                </div>
-                <div class="player_btn">
-                  <a href="">赞</a>
-                  <a href="">鲜花</a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="player_details">
-              <div>
-                <img src="http://bbs.pcbeta.com/data/attachment/portal/201706/10/123100c9rr5hlbsk1159lr.png.thumb.jpg">
-              </div>
-              <div>
-                <div>
-                  <div class="head_portrait">
-                    <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1644214360,2300632886&fm=58" class="img-circle">
-                  </div>
-                  <div class="player_info">
-                    <p>姓名：</p>
-                    <p>所属战队：</p>
-                  </div>
-                </div>
-                <div class="intro">
-                  <textarea readonly="true"></textarea>
-                </div>
-                <div class="player_btn">
-                  <a href="">赞</a>
-                  <a href="">鲜花</a>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <nav aria-label="Page navigation" class="x-page">
-          <ul class="pagination">
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <div class="row row_block" id="clan_member_lsitid">
+
       </div>
     </div>
   </section>
@@ -234,10 +86,55 @@
 <script src="lib/jquery/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap core JS -->
 <script src="lib/bootstrap/bootstrap.min.js"></script>
-
 <script type="text/javascript" src="h5_video.js"></script>
+<script src="lib/ssofthelper.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {})
+$(document).ready(function() {
+  $.ajax({
+    type: 'GET',
+    url: '../query/table',
+    dataType: 'json',
+    data: {
+      source: 'clan_name',
+      sourceid: getParams('id'),
+      qtype: 'select'
+    },
+    success: function(data) {
+      if (data.length > 0) {
+        var html = '<source src="' + data[0].videourl + '" type="video/mp4" />' + '<span style="color: red;">您的浏览器不支持html5 video播放</span>';
+        $('#video').append(html);
+        $('.x_clan_img').prop('src', data[0].clan_img);
+        $('.x_clan_name').text(data[0].clan_name);
+        $('.x_clan_slogan').text(data[0].slogan);
+      }
+    }
+  })
+
+  clanmemberClick();
+})
+
+// url传参数
+function getParams(fndname) {
+  var url = location.search; //一般的查询
+  var query = url.substr(url.indexOf("?") + 1);
+  var pairs = query.split("&"); //在逗号处断开
+  for (var i = 0; i < pairs.length; i++) {
+    var pos = pairs[i].indexOf('='); //查找name=value
+    if (pos == -1)
+      continue; //如果没有找到就跳过
+    var argname = pairs[i].substring(0, pos); //提取name
+    var value = pairs[i].substring(pos + 1); //提取value
+    if (argname == fndname)
+      return value;
+  }
+}
+
+function clanmemberClick() {
+  $sHelper.AjaxPost("../tempalte/league/clanMember", {cln_id: getParams('id')}, function(msg) {
+    $("#clan_member_lsitid").empty();
+    $("#clan_member_lsitid").append(msg);
+  });
+}
 </script>
 
 </html>

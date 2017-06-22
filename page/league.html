@@ -76,93 +76,19 @@
         <div class="col-md-6 league_schedule">
           <div id='calendar'></div>
           <div class="league_btn center-block">
-            <a href="">赛程安排</a>
+            <a href="league_total_provincial.html">赛程安排</a>
           </div>
         </div>
       </div>
-      <div class="row row_block" style="z-index: 3;">
-        <div class="col-md-12">
-          <div class="center-block">
-            <div class="pull-left">总赛程</div>
-            <div class="pull-right">
-              <a href="league_provincial.html" class="x-btn">分省赛程></a>
-            </div>
-          </div>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th class="text-center">比赛时间</th>
-                <th class="text-right">战队</th>
-                <th class="text-center">比分</th>
-                <th class="text-left">战队</th>
-                <th class="text-center">比赛视频</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-            </tbody>
-          </table>
-          <nav aria-label="Page navigation" class="x-page">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+
+       <div class="row">
+        <div class="pull-left" style="margin-top: 20px;">总赛程</div>
+        <div class="pull-right">
+          <a href="league_provincial.html" class="x-btn">分省赛程></a>
         </div>
+      </div>
+      <div class="row row_block" style="z-index: 3;" id="clan_schedule_lsitid">
+
       </div>
       <div class="row row_block">
         <div class="col-md-12">
@@ -208,7 +134,9 @@
 <script src="lib/fullcalendar/fullcalendar.min.js"></script>
 <script src="lib/fullcalendar/locale/zh-cn.js"></script>
 <script type="text/javascript" src="h5_video.js"></script>
+<script src="lib/ssofthelper.js"></script>
 <script type="text/javascript">
+
 var sec = 3;
 var num = 0;
 var numTotal = 4;
@@ -379,6 +307,7 @@ $(document).ready(function() {
       }
     })
   })
+   clanscheduleClick(1);
 });
 
 function queueingArr() {
@@ -407,6 +336,14 @@ function choseImg(num, bool) {
   $('.img_a_' + num).css('animation', 'img_act 1s linear forwards');
   $('.current').text(num + 1);
 }
+
+function clanscheduleClick(page){
+	   $sHelper.AjaxPost("../tempalte/league/clanSchedule",{"page":page, "pagesize":1},function(msg){
+		      	 $("#clan_schedule_lsitid").empty();
+		      	 $("#clan_schedule_lsitid").append(msg);
+		  }) ;
+}
+
 </script>
 
 </html>

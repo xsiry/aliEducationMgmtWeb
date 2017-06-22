@@ -1,0 +1,32 @@
+<ul>
+  <% for(clan_mem in clan_mem_ls){ %>
+  <li>
+    <div class="player_details">
+      <div>
+        <img src="${clan_mem.photo}">
+      </div>
+      <div>
+        <div>
+          <div class="head_portrait">
+            <img src="${clan_mem.avatar}" class="img-circle">
+          </div>
+          <div class="player_info">
+            <p>姓名：<span>${clan_mem.name}</span>(<span>${clan_mem.nickname}</span>)</p>
+            <p>所属战队：<span>${clan_mem.clan_name}</span></p>
+          </div>
+        </div>
+        <div class="intro">
+        <textarea readonly="true">
+        年龄：${clan_mem.age}
+        个人简介：${clan_mem.info}
+        </textarea>
+        </div>
+        <div class="player_btn">
+          <a href="javascript:void(0);" class="thumbs_btn" data-mbid=${clan_mem.cln_mbid}>赞</a>
+          <a href="javascript:void(0);" class="flowers_btn" data-mbid=${clan_mem.cln_mbid}>鲜花</a>
+        </div>
+      </div>
+    </div>
+  </li>
+  <% } %>
+</ul>

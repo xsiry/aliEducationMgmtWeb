@@ -69,7 +69,9 @@ a:focus {
   box-flex: 1;
   /*border: 1px solid #dddddd;*/
 }
-
+.x_tabs {
+  line-height: 40px;
+}
 .x_welcome {
   height: 50px;
 }

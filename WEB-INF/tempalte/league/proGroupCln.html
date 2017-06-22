@@ -1,0 +1,151 @@
+       <%
+       	var index = 0;
+       %>
+       <div class="col-md-12 prov_top">
+          <div>
+            <div class="center-block">
+              <a href="#" data-proid="${grouplst[0].cln_grp_id}">${grouplst[0].groupname}</a>
+              <a href="#" data-proid="${grouplst[1].cln_grp_id}">${grouplst[1].groupname}</a>
+            </div>
+            <div class="center-block" id="grouplist_${grouplst[0].cln_grp_id}">
+	            <table class="table table-hover">
+	              <thead>
+	                <tr>
+	                  <th class="text-center">排名</th>
+	                  <th class="text-right">战队</th>
+	                  <th class="text-center">胜</th>
+	                  <th class="text-left">负</th>
+	                  <th class="text-center">积分</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <%
+	                   index=1;
+					   for(clanname in clannamemp[grouplst[0].cln_grp_id]) {
+					%>
+	                <tr>
+	                  <th scope="row">${index++}</th>
+	                  <td class="text-right">${clanname.clan_name}</td>
+	                  <td class="text-center">${clanname.wins}</td>
+	                  <td class="text-left">${clanname.failure}</td>
+	                  <td class="text-center">${clanname.integral}</td>
+	                </tr>
+	                 <%
+	                 }
+	                 %>
+	              </tbody>
+	            </table>
+            </div>
+            <div class="center-block hidden" id="grouplist_${grouplst[1].cln_grp_id}">
+	            <table class="table table-hover">
+	              <thead>
+	                <tr>
+	                  <th class="text-center">排名</th>
+	                  <th class="text-right">战队</th>
+	                  <th class="text-center">胜</th>
+	                  <th class="text-left">负</th>
+	                  <th class="text-center">积分</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <%
+	                	index=1;
+					   for(clanname in clannamemp[grouplst[1].cln_grp_id]) {
+					%>
+	               <tr>
+	                  <th scope="row">${index++}</th>
+	                  <td class="text-right">${clanname.clan_name}</td>
+	                  <td class="text-center">${clanname.wins}</td>
+	                  <td class="text-left">${clanname.failure}</td>
+	                  <td class="text-center">${clanname.integral}</td>
+	                </tr>
+	                 <%
+	                 }
+	                 %>
+	                
+	              </tbody>
+	            </table>
+            </div>
+          </div>
+          <div>
+            <div class="center-block">
+              <a href="#" data-proid="${grouplst[2].cln_grp_id}">${grouplst[2].groupname}</a>
+              <a href="#" data-proid="${grouplst[3].cln_grp_id}">${grouplst[3].groupname}</a>
+            </div>
+             <div class="center-block " id="grouplist_${grouplst[2].cln_grp_id}">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center">排名</th>
+                  <th class="text-center">战队</th>
+                  <th class="text-center">胜</th>
+                  <th class="text-center">负</th>
+                  <th class="text-center">积分</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%
+                	   index=1;
+					   for(clanname in clannamemp[grouplst[2].cln_grp_id]) {
+					%>
+	                <tr>
+	                  <th scope="row">${index++}</th>
+	                  <td class="text-right">${clanname.clan_name}</td>
+	                  <td class="text-center">${clanname.wins}</td>
+	                  <td class="text-left">${clanname.failure}</td>
+	                  <td class="text-center">${clanname.integral}</td>
+	                </tr>
+	                 <%
+	                 }
+	                 %>
+              </tbody>
+            </table>
+            </div>
+             <div class="center-block hidden" id="grouplist_${grouplst[3].cln_grp_id}">
+	            <table class="table table-hover">
+	              <thead>
+	                <tr>
+	                  <th class="text-center">排名</th>
+	                  <th class="text-right">战队</th>
+	                  <th class="text-center">胜</th>
+	                  <th class="text-left">负</th>
+	                  <th class="text-center">积分</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <%
+	                	index=1;
+					   for(clanname in clannamemp[grouplst[3].cln_grp_id]) {
+					%>
+	               <tr>
+	                  <th scope="row">${index++}</th>
+	                  <td class="text-right">${clanname.clan_name}</td>
+	                  <td class="text-center">${clanname.wins}</td>
+	                  <td class="text-left">${clanname.failure}</td>
+	                  <td class="text-center">${clanname.integral}</td>
+	                </tr>
+	                 <%
+	                 }
+	                 %>
+	                
+	              </tbody>
+	            </table>
+            </div>
+          </div>
+          <div>
+            <div class="center-block">
+              <span>新闻推荐</span>
+            </div>
+            <ul>
+              <li><a href="new_detail.html">12312</a></li>
+              <li><a href="new_detail.html">12312</a></li>
+              <li><a href="new_detail.html">12312</a></li>
+              <li><a href="new_detail.html">12312</a></li>
+              <li><a href="new_detail.html">12312</a></li>
+              <li><a href="new_detail.html">12312</a></li>
+              <li><a href="new_detail.html">12312</a></li>
+              <li><a href="new_detail.html">12312</a></li>
+              <li><a href="new_detail.html">12312</a></li>
+            </ul>
+          </div>
+        </div>

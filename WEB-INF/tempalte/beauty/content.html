@@ -1,0 +1,42 @@
+       <%
+		for(beautyinfo in contentlist){
+		%>
+       <li class="serach_lastli" data-ranktype="7" data-cid="1" data-rid="664810" data-is-on="1" data-rpos="0" data-sub_rt="0">
+          <a class="play-list-link" data-rid="664810" data-tid="1" data-sid="37" data-rpos="0" data-sub_rt="0" href="${beautyinfo.clickurl}" title="LSPL夏季赛YG VS DS" target="_blank">
+            <span class="imgbox">
+              <span class="imgbox-corner-mark"></span>
+            <b><svg class="svg_icon" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
+              </svg></b>
+            <i class="black"></i>
+            <img  src="../${beautyinfo.imgs}" style="display: block;">
+            </span>
+            <div class="mes">
+              <div class="mes-tit">
+                <h3 class="ellipsis">
+                  <svg class="svg_icon hot_svg" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hot_svg"></use>
+                  </svg>
+                  <span>${beautyinfo.livetype}</span></h3>
+                <!--<span class="tag ellipsis">英雄联盟</span>-->
+              </div>
+              <p>
+                <span class="dy-name ellipsis fl">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user_svg"></use>
+                  </svg>
+                  ${beautyinfo.nickname}
+                </span>
+                <span class="dy-num fr">
+                  <svg class="svg_icon svg_min" viewBox="0 0 1024 1024">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#focus_svg"></use>
+                  </svg>
+                   ${beautyinfo.follow}
+                </span>
+              </p>
+            </div>
+          </a>
+        </li>
+        <%
+        }
+        %>

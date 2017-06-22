@@ -1,0 +1,50 @@
+<ul>
+  <%
+        for(clan_nam in clan_nam_ls){
+        %>
+    <li>
+      <a href="league_corps_detail.html?id=${clan_nam.cln_id}">
+        <div>
+          <img data-original="" src="${clan_nam.imgurl}" style="display: block;">
+          <div>
+            <p>战队名称：${clan_nam.clan_name}</p>
+            <p>所属网吧：</p>
+            <p>目前热度：${clan_nam.standby}</p>
+            <p>参赛口号：${clan_nam.slogan}</p>
+          </div>
+        </div>
+      </a>
+    </li>
+    <%
+        }
+        %>
+</ul>
+<nav aria-label="Page navigation" class="x-page">
+  <ul class="pagination">
+    <%
+         if(has(per)){
+        %>
+      <li>
+        <a href="javascript:clancorpsClick(${per});" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <%
+                }
+          for(pageno in pagels){
+        %>
+        <li><a href="javascript:clancorpsClick(${pageno});">${pageno}</a></li>
+        <%
+         }
+         if(has(next)){
+        %>
+          <li>
+            <a href="javascript:clancorpsClick(${next});" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          <%
+            }
+        %>
+  </ul>
+</nav>

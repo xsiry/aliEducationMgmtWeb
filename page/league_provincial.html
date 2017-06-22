@@ -34,101 +34,14 @@
     </div>
     <div class="right_conten">
       <div class="row row_block">
-        <ul>
+        <ul id="province_lstid">
           <li><a href="league_total_provincial.html">总赛程</a></li>
-          <li><a href="">湖南省</a></li>
-          <li><a href="">河南省</a></li>
-          <li><a href="">XX省</a></li>
-          <li><a href="">XX省</a></li>
-          <li><a href="">XX省</a></li>
-          <li><a href="">XX省</a></li>
+           
+        
         </ul>
       </div>
-      <div class="row row_block">
-        <div class="col-md-12 prov_top">
-          <div>
-            <div class="center-block">
-              <a href="">甲组</a>
-              <a href="">乙组</a>
-            </div>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th class="text-center">排名</th>
-                  <th class="text-right">战队</th>
-                  <th class="text-center">胜</th>
-                  <th class="text-left">负</th>
-                  <th class="text-center">积分</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td class="text-right">Snake</td>
-                  <td class="text-center">2</td>
-                  <td class="text-left">0</td>
-                  <td class="text-center">2</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td class="text-right">Snake</td>
-                  <td class="text-center">2</td>
-                  <td class="text-left">0</td>
-                  <td class="text-center">2</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div class="center-block">
-              <a href="">丙组</a>
-              <a href="">丁组</a>
-            </div>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th class="text-center">排名</th>
-                  <th class="text-center">战队</th>
-                  <th class="text-center">胜</th>
-                  <th class="text-center">负</th>
-                  <th class="text-center">积分</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td class="text-center">Snake</td>
-                  <td class="text-center">2</td>
-                  <td class="text-center">0</td>
-                  <td class="text-center">2</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td class="text-center">Snake</td>
-                  <td class="text-center">2</td>
-                  <td class="text-center">0</td>
-                  <td class="text-center">2</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div class="center-block">
-              <span>新闻推荐</span>
-            </div>
-            <ul>
-              <li><a href="new_detail.html">12312</a></li>
-              <li><a href="new_detail.html">12312</a></li>
-              <li><a href="new_detail.html">12312</a></li>
-              <li><a href="new_detail.html">12312</a></li>
-              <li><a href="new_detail.html">12312</a></li>
-              <li><a href="new_detail.html">12312</a></li>
-              <li><a href="new_detail.html">12312</a></li>
-              <li><a href="new_detail.html">12312</a></li>
-              <li><a href="new_detail.html">12312</a></li>
-            </ul>
-          </div>
-        </div>
+      <div class="row row_block" id="pro_gourp_cln_ls">
+
       </div>
       <div class="row row_block" style="z-index: 3;">
         <div class="col-md-12">
@@ -218,8 +131,23 @@
 <script src="lib/jquery/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap core JS -->
 <script src="lib/bootstrap/bootstrap.min.js"></script>
+<script src="lib/ssofthelper.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {})
+$(document).ready(function() {
+	
+	
+	  $sHelper.AjaxPost("../tempalte/league/provinceTabList",{},function(msg){ 
+		      $("#province_lstid").empty();
+		      $("#province_lstid").append(msg);
+		});
+})
+
+function provinceLstClick(proid){
+	  $sHelper.AjaxPost("../tempalte/league/proGroupCln",{"proid":proid},function(msg){ 
+		     $("#pro_gourp_cln_ls").empty();
+		     $("#pro_gourp_cln_ls").append(msg);
+		});
+}
 </script>
 
 </html>
