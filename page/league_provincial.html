@@ -36,93 +36,13 @@
       <div class="row row_block">
         <ul id="province_lstid">
           <li><a href="league_total_provincial.html">总赛程</a></li>
-           
-        
         </ul>
       </div>
-      <div class="row row_block" id="pro_gourp_cln_ls">
-
-      </div>
-      <div class="row row_block" style="z-index: 3;">
-        <div class="col-md-12">
-          <div class="center-block">
-            <div class="pull-left">分省赛程</div>
-          </div>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th class="text-center">比赛时间</th>
-                <th class="text-right">战队</th>
-                <th class="text-center">比分</th>
-                <th class="text-left">战队</th>
-                <th class="text-center">比赛视频</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-            </tbody>
-          </table>
-          <nav aria-label="Page navigation" class="x-page">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+      <div class="row row_block">
+        <div class="col-md-8 prov_top" id="pro_gourp_cln_ls">
         </div>
+      </div>
+      <div class="row row_block" style="z-index: 3;" id="clan_schedule_lsitid">
       </div>
     </div>
   </section>
@@ -133,20 +53,62 @@
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/ssofthelper.js"></script>
 <script type="text/javascript">
+var _proid = -1;
 $(document).ready(function() {
-	
-	
-	  $sHelper.AjaxPost("../tempalte/league/provinceTabList",{},function(msg){ 
-		      $("#province_lstid").empty();
-		      $("#province_lstid").append(msg);
-		});
-})
 
-function provinceLstClick(proid){
-	  $sHelper.AjaxPost("../tempalte/league/proGroupCln",{"proid":proid},function(msg){ 
-		     $("#pro_gourp_cln_ls").empty();
-		     $("#pro_gourp_cln_ls").append(msg);
-		});
+
+  $sHelper.AjaxPost("../tempalte/league/provinceTabList", {}, function(msg) {
+    $("#province_lstid").empty();
+    $("#province_lstid").append(msg);
+  });
+  provinceLstClick(1);
+
+function provinceLstClick(proid) {
+  $sHelper.AjaxPost("../tempalte/league/proGroupCln", {
+    "proid": proid
+  }, function(msg) {
+    $("#pro_gourp_cln_ls").empty();
+    $("#pro_gourp_cln_ls").append(msg);
+    var newsT = '<div><div class="center-block"><span>新闻推荐</span></div><ul class="news_list"></ul></div>';
+    $("#pro_gourp_cln_ls").append(newsT);
+    $.ajax({
+      type: 'GET',
+      url: '../query/table',
+      dataType: 'json',
+      data: {
+        source: 'news',
+        qtype: 'select'
+      },
+      success: function(data) {
+        if (data.length > 0) {
+          var newTitle = '';
+          $.each(data, function(i, n) {
+            var url = '';
+            if (n.newsurl) {
+              url = n.newsurl;
+            }else {
+              url = 'new_detail.html?id='+ n.news_id;
+            }
+            newTitle += '<li><a href="'+ url +'">'+ n.title +'</a></li>';
+          });
+          $('ul.news_list').append(newTitle);
+        }
+      }
+    })
+  });
+  _proid = proid;
+  clanscheduleClick(1);
+}
+
+function clanscheduleClick(page) {
+  $sHelper.AjaxPost("../tempalte/league/clanSchedule", {
+    "page": page,
+    "pagesize": 1,
+    "dtpr_id": _proid
+  }, function(msg) {
+    $("#clan_schedule_lsitid").empty();
+    $("#clan_schedule_lsitid").append(msg);
+  });
 }
 </script>
 

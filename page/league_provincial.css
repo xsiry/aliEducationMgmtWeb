@@ -13,12 +13,14 @@
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   box-flex: 1;
+  background-color: #30324b;
 }
 
 .prov_top>div>div {
-  height: 50px;
+  height: 40px;
   background-color: #30324b;
   padding: 5px;
+  color: #fff;
 }
 
 .prov_top>div:last-child {
@@ -30,6 +32,7 @@
   height: 50px;
   background-color: #FFF;
   padding: 0;
+  color: #313131;
   margin-left: 5px;
   font-size: 25px;
   line-height: 40px;
@@ -70,4 +73,8 @@
   text-align: center;
   font-size: 25px;
   line-height: 40px;
+}
+
+#pro_gourp_cln_ls {
+  width: 100%;
 }
