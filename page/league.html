@@ -338,7 +338,7 @@ function choseImg(num, bool) {
 }
 
 function clanscheduleClick(page){
-	   $sHelper.AjaxPost("../tempalte/league/clanSchedule",{"page":page, "pagesize":1},function(msg){
+	   $sHelper.AjaxPost("../tempalte/league/clanSchedule",{"page":page, "pagesize":1,"dtpr_id":""},function(msg){
 		      	 $("#clan_schedule_lsitid").empty();
 		      	 $("#clan_schedule_lsitid").append(msg);
 		  }) ;
