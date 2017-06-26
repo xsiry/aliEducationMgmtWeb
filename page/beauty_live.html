@@ -37,6 +37,7 @@
       <nav class="x-navbar">
         <div class="x-menus">
           <ul>
+            <li><a href="index.html">专区首页</a></li>
             <li><a href="league.html">E<sup>3</sup>联赛</a></li>
             <li class="active"><a href="beauty_live.html">美女直播</a></li>
           </ul>
@@ -85,7 +86,7 @@
               </p>
             </div>
           </a>
-        </li>--> 
+        </li>-->
       </ul>
     </div>
   </section>
@@ -97,22 +98,22 @@
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/ssofthelper.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() { 
+	$(document).ready(function() {
 			$("#beauty_tab").on("click", 'a', function(actionobj) {
-		      var rowobj = $(this); 
-		      $sHelper.AjaxPost("../tempalte/beauty/content",{ tabid:rowobj.data("tabid")},function(msg){ 
+		      var rowobj = $(this);
+		      $sHelper.AjaxPost("../tempalte/beauty/content",{ tabid:rowobj.data("tabid")},function(msg){
 		      	 $("#beauty_content").empty();
 		      	 $("#beauty_content").append(msg);
 		      }) ;
 		      actionobj.preventDefault();
 		      rowobj = null;
-		  });  
-	    
-	    $sHelper.AjaxPost("../tempalte/beauty/tab",{},function(msg){ 
+		  });
+
+	    $sHelper.AjaxPost("../tempalte/beauty/tab",{},function(msg){
 		      	 $("#beauty_tab").empty();
 		      	 $("#beauty_tab").append(msg);
 		  }) ;
-		  $sHelper.AjaxPost("../tempalte/beauty/content",{ tabid:-1},function(msg){ 
+		  $sHelper.AjaxPost("../tempalte/beauty/content",{ tabid:-1},function(msg){
 		      	 $("#beauty_content").empty();
 		      	 $("#beauty_content").append(msg);
 		 }) ;

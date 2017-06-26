@@ -1,0 +1,66 @@
+
+.right_conten>div:first-child {
+  padding: 20px 0;
+  height: 70px;
+  position: relative;
+}
+
+.right_conten>div:first-child>ul {
+	position: absolute;
+  right: 20px;
+}
+
+.right_conten>div:first-child>ul>li {
+	position:relative;
+  float: left;
+  margin-left: 4px;
+  padding: 3px 24px 3px 34px;
+  background-color: #e4e4e4;
+}
+
+.right_conten>div:first-child>ul>li:first-child {
+  padding: 3px 24px 3px 22px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.right_conten>div:first-child>ul>li:last-child {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.right_conten>div:first-child>ul>li div.arrow_left {
+	border: 14.5px solid transparent;
+  border-left-color: #eff1f8;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.right_conten>div:first-child>ul>li div.arrow_right {
+	border: 14.5px solid transparent;
+  border-left-color: #e4e4e4;
+  position: absolute;
+  right: -29px;
+  top: 0;
+  z-index: 1;
+}
+
+.right_conten>div:first-child>ul>li div.arrow_active {
+  border-left-color: #ff4401;
+}
+
+.right_conten>div:first-child>ul>li.actived {
+	background-color: #ff4401;
+}
+
+.right_conten>div:first-child>ul>li.actived a {
+	color: #fff;
+}
+
+.right_conten>div:first-child>ul>li a {
+	display: block;
+  color: #525e71;
+  font-size: 15px;
+  line-height: 23px;
+}

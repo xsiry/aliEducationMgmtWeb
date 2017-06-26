@@ -10,7 +10,7 @@ define(function(require, exports, module) {
     },
     _configText() {
       $('div h5.mgmt_title').text('动态推广资源列表');
-      $('div button font.mgmt_new_btn').text('添加推广');
+      $('div button font.mgmt_new_btn').text('添加联赛推广');
       $('div input.name_search').prop('placeholder', '输入推广资源标题');
       $('div button.name_search_btn').text('搜索');
     },
@@ -35,6 +35,13 @@ define(function(require, exports, module) {
         newModal('添加推广资源', fun);
       })
 
+      // $('body').on("click", '.form_tabs>li', function(e) {
+      //   var toggle = $(e.currentTarget).attr('id');
+      //   if (toggle == 1) {
+
+      //   }
+      // })
+
       $('body').on("change", 'input[name="type"]', function(e) {
         var type = $(e.currentTarget).val();
         $('.video_block').hide();
@@ -43,9 +50,9 @@ define(function(require, exports, module) {
         $('.img_main_block').hide();
         if (type == 0) {
           $('.imgs_block').show();
-        }else if(type == 1){
+        }else if(type == 2){
           $('.img_block').show();
-        }else if(type == 2) {
+        }else if(type == 1) {
           $('.video_block').show();
         }else if(type == 3){
           $('.img_main_block').show();
@@ -53,22 +60,30 @@ define(function(require, exports, module) {
       })
 
       $.root_.on("click", '.row_btn_apply', function(e) {
-        var id = $(e.currentTarget).attr('id');
-        var name = $(e.currentTarget).attr('name');
-        applyRow(id, name);
+        var id = $(e.currentTarget).data('id');
+        var name = $(e.currentTarget).data('name');
+        var type = $(e.currentTarget).data('type');
+        applyRow(id, name, type);
       })
 
       $('body').on("click", '.upload_new_imgs', function(e) {
         var type = $(e.currentTarget).data("type");
         var number = type == 0 ? 4 : 1;
-        BootstrapDialog.show({
+        new BootstrapDialog({
           title: '文件上传',
-          type: 'BootstrapDialog.TYPE_SUCCESS',
+          type: 'upload_img',
           size: 'size-wide',
+          autodestroy: true,
           closeByBackdrop: false,
           message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount='+ number +' data-types="image" data-async=false></div>')
             .load('app/upload_file.html'),
+          onshow: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
+          },
           onshown: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
             $('#newModal').hide();
             $('#previewModal').hide();
             $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
@@ -92,17 +107,17 @@ define(function(require, exports, module) {
             $('#newModal').show();
             $('#previewModal').show();
           }
-        });
+        }).open();
       })
 
       // bind grid edit
       $.root_.on("click", '.row_btn_edit', function(e) {
-        var id = $(e.currentTarget).attr('id');
+        var id = $(e.currentTarget).data('id');
         editRow(id);
       })
       $.root_.on("click", '.row_btn_del', function(e) {
-        var id = $(e.currentTarget).attr('id');
-        var name = $(e.currentTarget).attr('name');
+        var id = $(e.currentTarget).data('id');
+        var name = $(e.currentTarget).data('name');
         delRow(id, name);
       })
     }
@@ -128,7 +143,7 @@ define(function(require, exports, module) {
       clickToEdit: false,
       width: '100%',
       height: '91%',
-      sortName: 'dtpr_id',
+      sortName: 'type',
       sortOrder: 'ASC'
     });
   };
@@ -154,11 +169,21 @@ define(function(require, exports, module) {
    * 功能操作
    */
 
-  function applyRow(id, name) {
-    var applyVals = {hvr_id: id, status: 1};
+  function applyRow(id, name, type) {
+    var applyVals = {gp_id: id, status: 1, type: type};
+    var text = '';
+    if (type == 0) {
+      text = '联赛主页（轮播图片）';
+    }else if (type == 2) {
+      text = '专区主页（联赛图片）';
+    }else if (type == 1) {
+      text = '联赛主页（在线视频）';
+    }else if (type == 3) {
+      text = '总赛程主页（顶部图片）';
+    }
     swal({
       title: '是否应用?',
-      text: '应用后，资源“' + name + '”将在推荐位展示！',
+      text: '应用后，资源“' + name + '”将在' + text + '推荐位展示！',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: '应用',
@@ -169,7 +194,7 @@ define(function(require, exports, module) {
         url : 'save/table',
         dataType : 'json',
         data : {
-          actionname: 'home_videorec',
+          actionname: 'gm_promotion',
           datajson: JSON.stringify(applyVals)
         },
         success : function(result) {
@@ -182,7 +207,7 @@ define(function(require, exports, module) {
           if (result.success) {
             swal(
               '应用成功 :)',
-              '资源“' + name + '” :)已应用到推荐位',
+              '资源“' + name + '” :)已应用到' + text + '推荐位',
               'success'
             );
             manager.reload();
@@ -229,11 +254,11 @@ define(function(require, exports, module) {
               if (key != 'type') {
                 $('#newModalForm input[name="'+ key +'"]').val(val);
               }
-              if (key == 'imgurl' && type != 2) {
+              if (key == 'imgurl' && type != 1) {
                 imgs = val.split(';');
               }else if (key == 'status' && val == 1) {
                 $('#newModalForm input[name="'+ key +'"]').prop('checked','checked');
-              }else if (key == 'imgurl' && type == 2) {
+              }else if (key == 'imgurl' && type == 1) {
                 $('input[name="video_url"]').val(val);
               }
             })
@@ -385,14 +410,14 @@ define(function(require, exports, module) {
         var bv = $form.data('formValidation');
 
         // Use Ajax to submit form data
-        var formVals = {};
+        var formVals = {status: 0};
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
-          formVals["status"] = (o.name == "status" && o.value == "on") ? 1 : 0;
+          if (o.name == "status") {formVals["status"] = 1};
         });
 
         var imgurl = '';
-        if (formVals['type'] == 2) {
+        if (formVals['type'] == 1) {
           imgurl = formVals['video_url'];
         }else {
           imgurl = formVals['imgs'];

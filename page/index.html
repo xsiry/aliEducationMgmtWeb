@@ -35,47 +35,67 @@
       <nav class="x-navbar">
         <div class="x-menus">
           <ul>
+            <li class="active"><a href="index.html">专区首页</a></li>
             <li><a href="league.html">E<sup>3</sup>联赛</a></li>
             <li><a href="beauty_live.html">美女直播</a></li>
+            <li><a href="beauty_live.html">影音特惠</a></li>
           </ul>
         </div>
       </nav>
     </div>
     <div class="right_conten">
-      <div class="row x_welcome">欢迎文字</div>
+      <div class="row x_welcome"></div>
       <div class="row row_block">
         <div class="col-md-6 deal" id="coupons">
-          <div class="deal_title">优酷七天会员卷仅需<span></span>元</div>
+          <div class="deal_title"></div>
           <div>
             <div class="deal_wrapper">
-              <img src="">
+              <img src="" width="650" height="300">
+              <div class="deal_price">
+                <span class="text">￥<span class="price"></span></span>
+              </div>
             </div>
-            <div class="deal_price">
+            <!-- <div class="deal_price">
               <span class="text">￥<span class="price"></span></span>
-            </div>
+            </div> -->
           </div>
           <div class="deal_max">限量<span></span>份</div>
         </div>
         <div class="col-md-6">
-          <div id="videobox">
-            <video preload id="video">
-            </video>
-            <a href="javascript:void(0);" class="play_video"><svg class="svg_icon" viewBox="0 0 1024 1024">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
-            </svg></a>
-            <a href="javascript:void(0);" id="fullScreenBtn">
-              <svg class="svg_icon fullscreen_svg" viewBox="0 0 1024 1024">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#video_fullscreen_svg"></use>
-              </svg>
-            </a>
-          </div>
+
+          <!-- <object type="application/x-shockwave-flash" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="100%" height="100%">
+            <param name="movie" value="http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjgyMjM1MzM0MA==/v.swf">
+            <param name="quality" value="high">
+            <param name="wmode" value="transparent">
+            <param name="allowFullScreen" value="true" />
+            <embed wmode="transparent" src="http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjgyMjM1MzM0MA==/v.swf" allowfullscreen="true" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100%" height="100%" title="Adobe Flash Player">
+          </object> -->
+
+            <embed class='flash_src' src='' controls="volumelever" quality='high' width='100%' height='100%' allowScriptAccess='always' allowFullScreen='true' wmode='direct' bgcolor='#000000' flashvars='isAutoPlay=true&loop=true&playmode=2' type='application/x-shockwave-flash'>
+           <!--  <object type="application/x-shockwave-flash" data="//static.youku.com/v201706241000.0/v/swf/upsplayer/player_yknpsv.swf" width="100%" height="100%" id="movie_player">
+              <param name="allowFullScreen" value="true">
+              <param name="allowscriptaccess" value="always">
+              <param name="allowFullScreenInteractive" value="true">
+              <param name="wmode" value="direct">
+              <param name="bgcolor" value="#000000">
+              <param name="flashvars" value="skincolor1=ffffff&amp;skincolor2=ffffff&amp;VideoIDS=XMjgyMjM1MzM0MA==&amp;ShowId=0&amp;category=98&amp;Cp=0&amp;sv=true&amp;unCookie=0&amp;frame=undefined&amp;uepflag=0&amp;Tid=0&amp;isAutoPlay=true&amp;playmode=2&amp;show_ce=1&amp;winType=interior&amp;Fid=50100422&amp;Pt=2&amp;Ob=1&amp;plchid=&amp;embedid=AjcwNTU4ODMzNQJ2LnlvdWt1LmNvbQIvdl9zaG93L2lkX1hNamd5TWpNMU16TTBNQT09Lmh0bWw=&amp;ysuid=1447947097810a2G&amp;vext=bc%3D%26pid%3Dundefined%26unCookie%3Dundefined%26frame%3Dundefined%26type%3D1%26fob%3D1%26fpo%3D2%26svt%3D0%26cna%3DqtDSDqMcSnUCAdoA%252FN7vs6I%252F%26emb%3DAjcwNTU4ODMzNQJ2LnlvdWt1LmNvbQIvdl9zaG93L2lkX1hNamd5TWpNMU16TTBNQT09Lmh0bWw%3D%26dn%3D%E7%BD%91%E9%A1%B5%26hwc%3D1%26mtype%3Doth&amp;cna=qtDSDqMcSnUCAdoA%2FN7vs6I%2F&amp;pageStartTime=1498280672789">
+              <param name="movie" value="//static.youku.com/v201706241000.0/v/swf/upsplayer/player_yknpsv.swf">
+              <div class="player_html5">
+                <div class="picture" style="height:100%">
+                  <div style="line-height:460px;"><span style="font-size:18px">您还没有安装flash播放器,请点击<a href="//www.adobe.com/go/getflash" target="_blank">这里</a>安装</span></div>
+                </div>
+              </div>
+            </object> -->
+
         </div>
       </div>
       <div class="row row_block league">
         <div class="col-md-6 league_title">
-          <p>E3联赛</p>
+          <p>E<sup>3</sup>联赛</p>
           <div class="league_wrapper">
-            <img src="">
+            <a href="league.html">
+              <img src="" width='650' height='350'>
+            </a>
           </div>
         </div>
         <div class="col-md-6 league_schedule">
@@ -96,7 +116,6 @@
 <!-- Fullcalendar core JS -->
 <script src="lib/fullcalendar/fullcalendar.min.js"></script>
 <script src="lib/fullcalendar/locale/zh-cn.js"></script>
-<script type="text/javascript" src="h5_video.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   $.ajax({
@@ -109,9 +128,11 @@ $(document).ready(function() {
     },
     success : function(data) {
       if (data) {
+        $('.x_welcome').text(data.welcome);
+        $('.deal_title').text(data.title);
         $('.deal_title span').text(data.price);
         $('.deal_price span.price').text(data.price);
-        $('.deal_wrapper img').prop('src', data.imgs);
+        $('.deal_wrapper img').prop('src', '../' + data.imgs);
         $('.deal_max span').text(data.number);
       }
     }
@@ -129,9 +150,7 @@ $(document).ready(function() {
     },
     success : function(data) {
       if (data.length > 0) {
-        var html = '<source src="' + data[0].videurl + '" type="video/mp4" />'
-           + '<span style="color: red;">您的浏览器不支持html5 video播放</span>';
-        $('#video').append(html);
+        $('.flash_src').prop('src', data[0].videurl);
       }
     }
   })
@@ -143,12 +162,12 @@ $(document).ready(function() {
     data : {
       source: 'gm_promotion',
       qtype: 'select',
-      qhstr: JSON.stringify({qjson: [{type: 3, status: 1}]})
+      qhstr: JSON.stringify({qjson: [{type: 2, status: 1}]})
 
     },
     success : function(data) {
       if (data) {
-        $('.league_wrapper img').prop('src', data[0].imgurl);
+        $('.league_wrapper img').prop('src', '../' + data[0].imgurl);
       }
     }
   })

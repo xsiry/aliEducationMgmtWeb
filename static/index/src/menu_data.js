@@ -1,6 +1,6 @@
 define([{
   icon: 'fa fa-th-large',
-  title: '主页',
+  title: '专区主页',
   href: '#app/main_mgmt.html'
 }, {
   icon: 'fa fa-book',
@@ -8,7 +8,7 @@ define([{
   href: '#',
   childrens: [
   {
-    title: '首页',
+    title: '推广资源管理',
     href: '#app/e3_index_mgmt.html'
   }, {
     title: '赛程管理',

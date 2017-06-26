@@ -26,6 +26,7 @@
       <nav class="x-navbar">
         <div class="x-menus">
           <ul>
+            <li><a href="index.html">专区首页</a></li>
             <li class="active"><a href="league.html">E<sup>3</sup>联赛</a></li>
             <li><a href="beauty_live.html">美女直播</a></li>
           </ul>
@@ -34,26 +35,19 @@
     </div>
     <div class="right_conten">
       <div class="row row_block">
-        <ul>
-          <li><a href="league_total_provincial.html">总赛程</a></li>
-          <li><a href="">湖南省</a></li>
-          <li><a href="">河南省</a></li>
-          <li><a href="">XX省</a></li>
-          <li><a href="">XX省</a></li>
-          <li><a href="">XX省</a></li>
-          <li><a href="">XX省</a></li>
+        <ul id="province_lstid">
         </ul>
       </div>
       <div class="row row_block">
         <div class="col-md-12 prov_top">
           <div>
-            <img src="http://bbs.pcbeta.com/data/attachment/portal/201706/10/123100c9rr5hlbsk1159lr.png.thumb.jpg">
+            <img src="">
           </div>
-          <div>
-            <p>赛事介绍</p>
-            <p>参赛须知</p>
-            <p>赛事概况</p>
-            <p>赛程安排</p>
+          <div style="padding: 25px;">
+            <p>赛事介绍：<span class="x-intro"></span></p>
+            <p>参赛须知：<span class="x-notice"></span></p>
+            <p>赛事概况：<span class="x-profile"></span></p>
+            <p>赛程安排：<span class="x-plan"></span></p>
           </div>
         </div>
       </div>
@@ -61,85 +55,21 @@
         <div class="col-md-12">
           <div class="center-block">
             <div class="pull-left">总赛程</div>
-            <div class="pull-right"><a href="league_provincial.html" class="x-btn">分省赛程》</a></div>
+            <div class="pull-right">
+              <a href="league_provincial.html" class="x-btn">
+                分省赛程
+                <svg class="svg_icon right_svg svg_icon_btn" viewBox="0 0 1024 1024">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow_svg"></use>
+                </svg>
+              </a>
+            </div>
           </div>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th class="text-center">比赛时间</th>
-                <th class="text-right">战队</th>
-                <th class="text-center">比分</th>
-                <th class="text-left">战队</th>
-                <th class="text-center">比赛视频</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-              <tr>
-                <td class="text-center">6月15日 17：00</td>
-                <td class="text-right">Snake</td>
-                <td class="text-center">0-0</td>
-                <td class="text-left">DNA</td>
-                <td class="text-center">观看直播</td>
-              </tr>
-            </tbody>
-          </table>
-          <nav aria-label="Page navigation" class="x-page">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <div class="row row_block" id="clan_schedule_lsitid">
+
+          </div>
         </div>
       </div>
-      <div class="row row_block venues_province">
+      <div class="row row_block venues_province" style="margin-top: 50px;">
         <ul>
           <li>参赛场馆</li>
           <li><a href="" class="active">湖南省</a></li>
@@ -204,8 +134,72 @@
 <script src="lib/jquery/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap core JS -->
 <script src="lib/bootstrap/bootstrap.min.js"></script>
+<script src="lib/ssofthelper.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {})
+
+var _proid = -1;
+$(document).ready(function() {
+  $sHelper.AjaxPost("../tempalte/league/provinceTabList", {}, function(msg) {
+    $("#province_lstid").empty();
+    $("#province_lstid").append(msg);
+  });
+  provinceLstClick(_proid);
+
+  $.ajax({
+    type : 'GET',
+    url : '../query/table',
+    dataType : 'json',
+    data : {
+      source: 'gm_intr_notice',
+      qtype: 'select',
+      qhstr: JSON.stringify({qjson: [{dtpr_id: -1}]})
+
+    },
+    success : function(data) {
+      if (data) {
+        $('.x-intro').text(data[0].intro);
+        $('.x-notice').text(data[0].notice);
+        $('.x-profile').text(data[0].profile);
+        $('.x-plan').text(data[0].plan);
+      }
+    }
+  })
+
+  $.ajax({
+    type : 'GET',
+    url : '../query/table',
+    dataType : 'json',
+    data : {
+      source: 'gm_promotion',
+      qtype: 'select',
+      qhstr: JSON.stringify({qjson: [{type: 3, status: 1}]})
+
+    },
+    success : function(data) {
+      if (data) {
+        $('.prov_top img').prop('src', '../' + data[0].imgurl);
+      }
+    }
+  })
+})
+
+function provinceLstClick(proid) {
+  _proid = proid;
+  clanscheduleClick(1);
+}
+
+function clanscheduleClick(page) {
+  $sHelper.AjaxPost("../tempalte/league/clanSchedule", {
+    "page": page,
+    "pagesize": 12,
+    "dtpr_id": _proid
+  }, function(msg) {
+    $(".tab_prov").css('text-decoration', 'none');
+    $(".tab_"+_proid).css('text-decoration', 'underline');
+    $("#clan_schedule_lsitid").empty();
+    $("#clan_schedule_lsitid").append(msg);
+  });
+}
 </script>
 
 </html>

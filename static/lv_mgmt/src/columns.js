@@ -2,12 +2,12 @@ define([{
   display: '昵称',
   name: 'nickname',
   minWidth: 100,
-  width: '15%'
+  width: '10%'
 }, {
   display: '所属标签',
   name: 'tab_name',
   minWidth: 100,
-  width: '15%'
+  width: '10%'
 }, {
   display: '点击地址',
   name: 'clickurl',
@@ -32,6 +32,24 @@ define([{
     return value == 1 ? '是' : '否';
   }
 }, {
+  display: '角标文本',
+  name: 'markname',
+  minWidth: 50,
+  width: '5%'
+}, {
+  display: '角标图片',
+  name: 'markurl',
+  minWidth: 50,
+  width: '10%',
+  render: function(rowdata, rowindex, value) {
+    var imgLabel = "";
+    var imgs = rowdata.markurl ? rowdata.markurl.split(';') : [];
+    $.each(imgs, function(i, url) {
+      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+    })
+    return imgLabel;
+  }
+}, {
   display: '是否正在直播',
   name: 'live',
   minWidth: 50,
@@ -43,7 +61,7 @@ define([{
   display: '图片',
   name: 'imgs',
   minWidth: 60,
-  width: '15%',
+  width: '10%',
   render: function(rowdata, rowindex, value) {
     var imgLabel = "";
     var imgs = rowdata.imgs.split(';');

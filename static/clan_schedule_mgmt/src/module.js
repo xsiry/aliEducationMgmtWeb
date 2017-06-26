@@ -313,10 +313,10 @@ define(function(require, exports, module) {
         var bv = $form.data('formValidation');
 
         // Use Ajax to submit form data
-        var formVals = {};
+        var formVals = {status: 0};
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
-          formVals["status"] = (o.name == "status" && o.value == "on") ? 1 : 0;
+          if (o.name == "status") {formVals["status"] = 1};
         });
 
         var data = {

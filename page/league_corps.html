@@ -26,6 +26,7 @@
       <nav class="x-navbar">
         <div class="x-menus">
           <ul>
+            <li><a href="index.html">专区首页</a></li>
             <li class="active"><a href="league.html">E<sup>3</sup>联赛</a></li>
             <li><a href="beauty_live.html">美女直播</a></li>
           </ul>
@@ -37,7 +38,7 @@
         <ul>
           <li><a href="league.html">E<sup>3</sup>联赛</a></li>
           <li><a href="league_total_provincial.html">赛程</a></li>
-          <li><a href="league_corps.html">参赛队伍</a></li>
+          <li><a href="league_corps.html" style="text-decoration:underline;">参赛队伍</a></li>
         </ul>
       </div>
       <div class="row row_block" id="clan_name_lsitid">
@@ -57,7 +58,7 @@ $(document).ready(function() {
 })
 
 function clancorpsClick(page){
-   $sHelper.AjaxPost("../tempalte/league/clanName",{"page":page, "pagesize":1},function(msg){
+   $sHelper.AjaxPost("../tempalte/league/clanName",{"page":page, "pagesize":9},function(msg){
            $("#clan_name_lsitid").empty();
            $("#clan_name_lsitid").append(msg);
     }) ;

@@ -4,6 +4,16 @@
   position: relative;
   overflow: hidden;
 }
+#league_videobox {
+  padding: 0;
+}
+
+.right_conten>div:nth-child(2) {
+  padding: 0px 35px;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
 
 a.img_a {
   width: 100%;
@@ -20,13 +30,24 @@ a.img_a>img {
   height: 450px;
 }
 
+svg path {
+    fill: inherit;
+}
+
 .svg_icon {
   display: inline-block;
   width: 60px;
   height: 60px;
   vertical-align: -6px;
   pointer-events: none;
-  fill: currentColor
+}
+
+.svg_icon_btn {
+  position: absolute;
+  top: -8.5px;
+  fill: red;
+  height: 48px;
+  right: -18px;
 }
 
 .progress_bottom_win {
@@ -40,6 +61,7 @@ a.img_a>img {
 }
 
 .left_btn {
+  color: #FFF;
   background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
   left: 0;
@@ -53,6 +75,7 @@ a.img_a>img {
 }
 
 .right_btn {
+  color: #FFF;
   background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
   right: 0;

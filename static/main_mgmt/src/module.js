@@ -10,8 +10,8 @@ define(function(require, exports, module) {
     },
     _configText() {
       $('div h5.mgmt_title').text('主页管理');
-      $('div button font.set_coupons_btn').text('秒杀活动设置');
-      $('div button font.mgmt_new_btn').text('添加推荐位资源');
+      $('div button font.set_coupons_btn').text('欢迎文字和秒杀活动设置');
+      $('div button font.mgmt_new_btn').text('添加视频推荐位资源');
       $('div input.name_search').prop('placeholder', '输入资源标题');
       $('div button.name_search_btn').text('搜索');
     },
@@ -48,8 +48,11 @@ define(function(require, exports, module) {
             },
             success : function(data) {
               if (data) {
+                $('#couponsModalForm .mc_welcome').val(data.welcome);
+                $('#couponsModalForm .mc_title').val(data.title);
                 $('#couponsModalForm .mc_number').val(data.number);
                 $('#couponsModalForm .mc_price').val(data.price);
+                $('#couponsModalForm .mc_imgs').val(data.imgs);
                 $.each(data.imgs.split(';'), function(i , url) {
                   if (url != "") $('#couponsModalForm .img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 });
@@ -65,14 +68,20 @@ define(function(require, exports, module) {
       })
 
       $('body').on("click", '.upload_coupons_imgs', function(e) {
-        BootstrapDialog.show({
+        new BootstrapDialog({
           title: '文件上传',
-          type: 'BootstrapDialog.TYPE_SUCCESS',
+          type: 'upload_img',
           size: 'size-wide',
           closeByBackdrop: false,
           message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount=1 data-types="image, flash" data-async=false></div>')
             .load('app/upload_file.html'),
+          onshow: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
+          },
           onshown: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
             $('#couponsModal').hide();
             $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
               var reData = data.response;
@@ -94,7 +103,7 @@ define(function(require, exports, module) {
           onhidden: function(dialogRef){
             $('#couponsModal').show();
           }
-        });
+        }).open();
       })
 
       // bind grid edit
@@ -375,10 +384,10 @@ define(function(require, exports, module) {
         var bv = $form.data('formValidation');
 
         // Use Ajax to submit form data
-        var formVals = {};
+        var formVals = {status: 0};
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
-          formVals["status"] = (o.name == "status" && o.value == "on") ? 1 : 0;
+          if (o.name == "status") {formVals["status"] = 1};
         });
         var data = {
           actionname: 'home_videorec',
@@ -460,7 +469,6 @@ define(function(require, exports, module) {
         var formVals = {};
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
-          // formVals["status"] = (o.name == "status" && o.value == "on") ? 1 : 0;
         });
         var data = {
           actionname: 'member_coupons',

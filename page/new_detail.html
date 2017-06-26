@@ -24,6 +24,7 @@
       <nav class="x-navbar">
         <div class="x-menus">
           <ul>
+            <li><a href="index.html">专区首页</a></li>
             <li class="active"><a href="league.html">E<sup>3</sup>联赛</a></li>
             <li><a href="beauty_live.html">美女直播</a></li>
           </ul>
@@ -79,7 +80,7 @@ $(document).ready(function() {
         var imgs = data.imgs.split(';');
         var imgHtml = '';
         $.each(imgs, function(i, url) {
-          imgHtml += '<img src="' + url + '" />'
+          imgHtml += '<img src="' + '../' + url + '" />'
         })
         $('.new_picture').append(imgHtml);
         $('.new_conten').text(data.content);

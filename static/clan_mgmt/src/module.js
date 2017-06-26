@@ -63,14 +63,20 @@ define(function(require, exports, module) {
           number = 1;
         }
 
-        BootstrapDialog.show({
+        new BootstrapDialog({
           title: '文件上传',
-          type: 'BootstrapDialog.TYPE_SUCCESS',
+          type: 'upload_img',
           size: 'size-wide',
           closeByBackdrop: false,
           message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount='+ number +' data-types="image" data-async=false></div>')
             .load('app/upload_file.html'),
+          onshow: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
+          },
           onshown: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
             $('#newModal').hide();
             $('#memModal').hide();
             $('#addMemModal').hide();
@@ -111,7 +117,7 @@ define(function(require, exports, module) {
             $('#addMemModal').show();
             $('#memModal').show();
           }
-        });
+        }).open();
       })
 
       // bind grid edit

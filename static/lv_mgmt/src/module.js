@@ -64,26 +64,34 @@ define(function(require, exports, module) {
 
 
       $('body').on("click", '.upload_new_imgs', function(e) {
-        BootstrapDialog.show({
+        var type = $(e.currentTarget).data('type');
+        new BootstrapDialog({
           title: '文件上传',
-          type: 'BootstrapDialog.TYPE_SUCCESS',
+          type: 'upload_img',
           size: 'size-wide',
+          autodestroy: true,
           closeByBackdrop: false,
-          message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount=3 data-types="image, flash" data-async=false></div>')
+          message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount=1 data-types="image" data-async=false></div>')
             .load('app/upload_file.html'),
+          onshow: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
+          },
           onshown: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
             $('#newModal').hide();
             $('#previewModal').hide();
             $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
               var reData = data.response;
               if (reData.success) {
                 var imgs = [];
-                $('#newModalForm div.img_list_show').empty().css('text-align', 'center');
+                $('#newModalForm div.img_list_show_'+type).empty().css('text-align', 'center');
                 $.each(reData.result, function(i, url) {
                   imgs.push(url);
-                  $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                  $('#newModalForm div.img_list_show_'+type).append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 })
-                $('#newModalForm input[name="imgs"]').val(imgs.join(';'));
+                $('#newModalForm input[name="'+ type +'"]').val(imgs.join(';'));
                 dialogRef.close();
               }
             })
@@ -95,7 +103,7 @@ define(function(require, exports, module) {
             $('#newModal').show();
             $('#previewModal').show();
           }
-        });
+        }).open();
       })
 
       // bind grid edit
@@ -248,11 +256,14 @@ define(function(require, exports, module) {
         if (data) {
           var fun = function() {
             var imgs = [];
+            var marks = [];
             var selectedVal = '';
             $.each(data, function(key, val) {
               $('#newModalForm input[name="'+ key +'"]').val(val);
               if (key == 'imgs') {
                 imgs = val.split(';');
+              }else if (key == 'markurl') {
+                marks = val.split(';');
               }else if ((key == 'mark' && val == 1) || (key == 'live' && val == 1)) {
                 $('#newModalForm input[name="'+ key +'"]').prop('checked','checked');
               }else if (key == 'tab_id') {
@@ -262,7 +273,10 @@ define(function(require, exports, module) {
             tabSelCombo(selectedVal);
             newModalValidation();
             $.each(imgs, function(i , url) {
-              if (url != "") $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+              if (url != "") $('#newModalForm div.img_list_show_imgs').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+            })
+            $.each(marks, function(i , url) {
+              if (url != "") $('#newModalForm div.img_list_show_markurl').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
             })
           }
           newModal('修改直播', fun);
@@ -429,13 +443,12 @@ define(function(require, exports, module) {
         var bv = $form.data('formValidation');
 
         // Use Ajax to submit form data
-        var formVals = {};
+        var formVals = {mark: 0, live: 0};
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
-
           if (o.name == "lv_tab_val") formVals["tab_id"] = o.value;
-          formVals["mark"] = (o.name == "mark" && o.value == "on") ? 1 : 0;
-          formVals["live"] = (o.name == "live" && o.value == "on") ? 1 : 0;
+          if (o.name == "mark") {formVals["mark"] = 1};
+          if (o.name == "live") {formVals["live"] = 1};
         });
         var data = {
           actionname: 'lv_beauty_info',

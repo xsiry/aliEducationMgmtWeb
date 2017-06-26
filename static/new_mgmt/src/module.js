@@ -55,14 +55,20 @@ define(function(require, exports, module) {
 
 
       $('body').on("click", '.upload_new_imgs', function(e) {
-        BootstrapDialog.show({
+        new BootstrapDialog({
           title: '文件上传',
-          type: 'BootstrapDialog.TYPE_SUCCESS',
+          type: 'upload_img',
           size: 'size-wide',
           closeByBackdrop: false,
           message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount=3 data-types="image, flash" data-async=false></div>')
             .load('app/upload_file.html'),
+          onshow: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
+          },
           onshown: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
             $('#newModal').hide();
             $('#previewModal').hide();
             $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
@@ -86,7 +92,7 @@ define(function(require, exports, module) {
             $('#newModal').show();
             $('#previewModal').show();
           }
-        });
+        }).open();
       })
 
       // bind grid edit

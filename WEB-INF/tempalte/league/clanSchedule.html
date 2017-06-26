@@ -1,4 +1,4 @@
-     <div class="col-md-12"> 
+     <div class="col-md-12">
           <table class="table table-hover">
             <thead>
               <tr>
@@ -15,20 +15,20 @@
 				%>
               <tr>
                 <td class="text-center">${clan_sch.longtimes,dateFormat="MM月dd日 HH:mm"}</td>
-                <td class="text-right"><span>${clan_sch.clan_name_a}</span><span><img src="${clan_sch.clan_logo_a}"/></span></td>
-                <td class="text-center">${clan_sch.clan_id_a}-${clan_sch.clan_id_b}</td>
-                <td class="text-left"><span><img src="${clan_sch.clan_logo_b}"/></span><span>${clan_sch.clan_name_b}</span></td>
+                <td class="text-right"><span>${clan_sch.clan_name_a}</span><span><img width="40" height="20" src="../${clan_sch.clan_logo_a}"/></span></td>
+                <td class="text-center">${clan_sch.a_score}-${clan_sch.b_score}</td>
+                <td class="text-left"><span><img width="40" height="20" src="../${clan_sch.clan_logo_b}"/></span><span>${clan_sch.clan_name_b}</span></td>
                 <td class="text-center"><a href="${clan_sch.live_url}" target="_blank">观看直播</a></td>
-              </tr> 
+              </tr>
                <%
 				}
 				%>
-		            
+
             </tbody>
           </table>
           <nav aria-label="Page navigation" class="x-page">
             <ul class="pagination">
-              <% 
+              <%
 			   if(has(per)){
 				%>
               <li>
@@ -45,14 +45,14 @@
 			   }
 			   if(has(next)){
 				%>
-              
+
               <li>
                 <a href="javascript:clanscheduleClick(${next});" aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                 </a>
               </li>
                 <%
-			      } 
+			      }
 				%>
             </ul>
           </nav>
