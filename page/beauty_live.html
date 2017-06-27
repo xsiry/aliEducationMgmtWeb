@@ -105,6 +105,8 @@
 		      	 $("#beauty_content").empty();
 		      	 $("#beauty_content").append(msg);
 		      }) ;
+          $(".tab_beauty").css('text-decoration', 'none').css('color', '#555');
+          $(".tab_beauty_"+rowobj.data("tabid")).css('text-decoration', 'underline').css('color', '#ff7043');
 		      actionobj.preventDefault();
 		      rowobj = null;
 		  });
@@ -112,11 +114,8 @@
 	    $sHelper.AjaxPost("../tempalte/beauty/tab",{},function(msg){
 		      	 $("#beauty_tab").empty();
 		      	 $("#beauty_tab").append(msg);
+             $("#beauty_tab a").get(0).click();
 		  }) ;
-		  $sHelper.AjaxPost("../tempalte/beauty/content",{ tabid:-1},function(msg){
-		      	 $("#beauty_content").empty();
-		      	 $("#beauty_content").append(msg);
-		 }) ;
 	}) ;
 </script>
 

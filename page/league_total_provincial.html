@@ -70,13 +70,10 @@
         </div>
       </div>
       <div class="row row_block venues_province" style="margin-top: 50px;">
-        <ul>
-          <li>参赛场馆</li>
-          <li><a href="" class="active">湖南省</a></li>
-          <li><a href="">河南省</a></li>
+        <ul id="province_netbar_lstid">
         </ul>
       </div>
-      <div class="row row_block">
+      <div class="row row_block" id="clan_netbar_lsitid">
         <table class="table table-bordered">
           <caption>全国联赛</caption>
           <thead>
@@ -138,12 +135,13 @@
 <script type="text/javascript">
 
 var _proid = -1;
+var _netbarproid = '';
 $(document).ready(function() {
   $sHelper.AjaxPost("../tempalte/league/provinceTabList", {}, function(msg) {
     $("#province_lstid").empty();
     $("#province_lstid").append(msg);
+    $("#province_lstid a").get(0).click();
   });
-  provinceLstClick(_proid);
 
   $.ajax({
     type : 'GET',
@@ -181,11 +179,22 @@ $(document).ready(function() {
       }
     }
   })
+
+  $sHelper.AjaxPost("../tempalte/league/provinceTabNetbarList", {}, function(msg) {
+    $("#province_netbar_lstid").empty();
+    $("#province_netbar_lstid").append(msg);
+    $("#province_netbar_lstid a").get(0).click();
+  });
 })
 
 function provinceLstClick(proid) {
   _proid = proid;
   clanscheduleClick(1);
+}
+
+function provinceTabNetLstClick(proid) {
+  _netbarproid = proid;
+  clanNetbarClick(1);
 }
 
 function clanscheduleClick(page) {
@@ -194,10 +203,23 @@ function clanscheduleClick(page) {
     "pagesize": 12,
     "dtpr_id": _proid
   }, function(msg) {
-    $(".tab_prov").css('text-decoration', 'none');
-    $(".tab_"+_proid).css('text-decoration', 'underline');
+    $(".tab_prov").css('text-decoration', 'none').css('color', '#555');
+    $(".tab_t_"+_proid).css('text-decoration', 'underline').css('color', '#ff7043');
     $("#clan_schedule_lsitid").empty();
     $("#clan_schedule_lsitid").append(msg);
+  });
+}
+
+function clanNetbarClick(page) {
+  $sHelper.AjaxPost("../tempalte/league/clanNetbar", {
+    "page": page,
+    "pagesize": 12,
+    "dtpr_id": _netbarproid
+  }, function(msg) {
+    $(".tab_netbar").css('text-decoration', 'none').css('color', '#555');
+    $(".tab_netbar_"+_netbarproid).css('text-decoration', 'underline').css('color', '#ff7043');
+    $("#clan_netbar_lsitid").empty();
+    $("#clan_netbar_lsitid").append(msg);
   });
 }
 </script>

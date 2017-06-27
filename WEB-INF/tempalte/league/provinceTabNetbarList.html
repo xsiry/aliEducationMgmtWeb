@@ -1,0 +1,8 @@
+<li>参赛场馆</li>
+<%
+for(var i=0;i<province_ls.~size;i++){
+%>
+<li class=${i==0?"active":""}><a href="javascript:provinceTabNetLstClick('${province_ls[i].dtpr_id}');" class="tab_prov tab_netbar tab_netbar_${province_ls[i].dtpr_id}">${province_ls[i].province}</a></li>
+<%
+}
+%>

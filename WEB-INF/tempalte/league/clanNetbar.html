@@ -1,0 +1,60 @@
+     <div class="col-md-12">
+        <table class="table table-bordered">
+          <caption>全国联赛</caption>
+          <thead>
+            <tr>
+              <th class="text-center">电竞馆名称</th>
+              <th class="text-center">城市</th>
+              <th class="text-center">区域</th>
+              <th class="text-center">详细地址</th>
+              <th class="text-center">楼层</th>
+            </tr>
+          </thead>
+          <tbody>
+            	<%
+				for(clan_nb in clan_netbar_ls){
+				%>
+            <tr class="text-center">
+              <td>${clan_nb.wangba}</td>
+              <td>${clan_nb.city}</td>
+              <td>${clan_nb.address}</td>
+              <td>${clan_nb.area}</td>
+              <td>${clan_nb.floor}</td>
+            </tr>
+               <%
+				}
+				%>
+
+            </tbody>
+          </table>
+          <nav aria-label="Page navigation" class="x-page">
+            <ul class="pagination">
+              <%
+			   if(has(per)){
+				%>
+              <li>
+                <a href="javascript:clanNetbarClick(${per});" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+                <%
+                }
+				  for(pageno in pagels){
+				%>
+                 <li><a href="javascript:clanNetbarClick(${pageno});">${pageno}</a></li>
+                 <%
+			   }
+			   if(has(next)){
+				%>
+
+              <li>
+                <a href="javascript:clanNetbarClick(${next});" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+                <%
+			      }
+				%>
+            </ul>
+          </nav>
+        </div>

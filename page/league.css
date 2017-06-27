@@ -131,7 +131,7 @@ svg path {
 }
 .cln_standby_btn {
   position: absolute;
-  bottom: 0;
+  bottom: 25px;
   right: 20px;
 }
 

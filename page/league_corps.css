@@ -15,18 +15,18 @@
 
 .right_conten>div:last-child>ul>li {
   float: left;
-  margin-left: 40px;
-  margin-top: 40px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .right_conten>div:last-child>ul>li>a>div {
   display: block;
-  width: 450px;
+  width: 400px;
   height: 400px;
 }
 
 .right_conten>div:last-child>ul>li>a>div img {
-  width: 450px;
+  width: 400px;
   height: 250px;
 }
 

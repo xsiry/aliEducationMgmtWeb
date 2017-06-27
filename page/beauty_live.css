@@ -15,13 +15,13 @@
 .right_conten>div:first-child>ul>li>a {
   color: #555;
   font-size: 16px;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .right_conten>ul>li {
   float: left;
   display: inline-block;
-  margin: 50px;
+  margin: 20px;
 }
 
 .right_conten>ul>li a {
@@ -62,8 +62,8 @@
 }
 
 .right_conten>ul>li .imgbox>img {
-  width: 400px;
-  height: 300px;
+  width: 305px;
+  height: 250px;
 }
 
 .right_conten>ul>li .mes {
