@@ -2,12 +2,12 @@ define([{
   display: '网吧名称',
   name: 'wangba',
   minWidth: 100,
-  width: '25%'
+  width: '15%'
 }, {
   display: '网吧图片',
   name: 'imgs',
   minWidth: 60,
-  width: '30%',
+  width: '10%',
   render: function(rowdata, rowindex, value) {
     var imgLabel = "";
     var imgs = rowdata.imgs ? rowdata.imgs.split(';') : [];
@@ -20,22 +20,42 @@ define([{
   display: '网吧介绍',
   name: 'intro',
   minWidth: 140,
-  width: '10%'
+  width: '15%'
+}, {
+  display: '省会',
+  name: 'province',
+  minWidth: 140,
+  width: '5%'
+}, {
+  display: '城市',
+  name: 'city',
+  minWidth: 60,
+  width: '5%'
 }, {
   display: '地址',
   name: 'address',
   minWidth: 60,
-  width: '10%'
+  width: '15%'
+}, {
+  display: '区域',
+  name: 'area',
+  minWidth: 60,
+  width: '5%'
+}, {
+  display: '楼层',
+  name: 'floor',
+  minWidth: 60,
+  width: '5%'
 }, {
   display: '电话',
   name: 'tel',
   minWidth: 60,
-  width: '10%'
+  width: '8%'
 }, {
   display: '操作',
   isSort: false,
   minWidth: 120,
-  width: '15%',
+  width: '12%',
   name: 'Apply',
   render: function(rowdata, rowindex, value) {
     var h = "";

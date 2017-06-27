@@ -54,6 +54,48 @@ define(function(require, exports, module) {
         var name = $(e.currentTarget).attr('name');
         delRow(id, name);
       })
+
+      $('body').on("click", '.upload_new_imgs', function(e) {
+        var number = 1;
+        new BootstrapDialog({
+          title: '文件上传',
+          type: 'upload_img',
+          size: 'size-wide',
+          closeByBackdrop: false,
+          message: $('<div class="img_upload" data-url="system/fileupload" data-mincount=1 data-maxcount='+ number +' data-types="image" data-async=false></div>')
+            .load('app/upload_file.html'),
+          onshow: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
+          },
+          onshown: function(dialogRef) {
+            if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
+            if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
+            $('#mainINModal').hide();
+            $('#previewModal').hide();
+            $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
+              var reData = data.response;
+              if (reData.success) {
+                var imgs = [];
+                $('#mainIntrNModalForm div.img_list_show').empty().css('text-align', 'center');
+                $.each(reData.result, function(i, url) {
+                  imgs.push(url);
+                  $('#mainIntrNModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                })
+                $('#mainIntrNModalForm input[name="imgs"]').val(imgs.join(';'));
+                dialogRef.close();
+              }
+            })
+            $('#x_file').on('filebatchuploaderror', function(event, data, msg) {
+               consol.log("服务器内部错误，请联系管理员！")
+            })
+          },
+          onhidden: function(dialogRef){
+            $('#mainINModal').show();
+            $('#previewModal').show();
+          }
+        }).open();
+      })
     }
   };
 
@@ -158,6 +200,31 @@ define(function(require, exports, module) {
           var fun = function() {
             $.each(data, function(key, val) {
               $('pre.flex.x-' + key).text(val);
+            })
+
+            $.ajax({
+              type : 'GET',
+              url : 'query/table',
+              dataType : 'json',
+              data : {
+                source: 'gm_promotion',
+                qtype: 'select',
+                qhstr: JSON.stringify({qjson: [{type: 3},{status: 1}]})
+
+              },
+              success : function(data) {
+                if (data.length > 0) {
+                  $.each(data[0], function(k, v) {
+                    $('#mainIntrNModalForm input[name="'+ k +'"]').val(v);
+                    if (k=='imgurl') {
+                      $('#mainIntrNModalForm input[name="imgs"]').val(v);
+                      if (v != "") $('#mainIntrNModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + v + '">');
+                    }
+                  })
+                }else {
+
+                }
+              }
             })
             mainIntrNModalValidation();
           }
@@ -402,9 +469,32 @@ define(function(require, exports, module) {
           profile: $('pre.flex.x-profile').text(),
           plan: $('pre.flex.x-plan').text()
         };
+
+        var gp_id = '', imgurl = '', click = '';
+
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
+          if (o.name == 'gp_id') {
+            gp_id = o.value;
+          }else if (o.name == 'imgs') {
+            imgurl = o.value;
+          }else if (o.name == 'click') {
+            click = o.value;
+          }
         });
+
+        $.ajax({
+          type : 'POST',
+          url : 'save/table',
+          dataType : 'json',
+          data : {
+            actionname: 'gm_promotion',
+            datajson: JSON.stringify({gp_id: gp_id, imgurl: imgurl, click: click, status: 1, type: 3})
+          },
+          success : function(data) {
+            console.log('成功');
+          }
+        })
 
         var data = {
           actionname: 'gm_intr_notice',

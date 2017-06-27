@@ -24,7 +24,7 @@ define([{
   minWidth: 140,
   width: '10%',
   render: function(rowdata, rowindex, value) {
-    return rowdata.content.substr(0, 50);
+    return rowdata.introduction.substr(0, 50);
   }
 }, {
   display: '图片',

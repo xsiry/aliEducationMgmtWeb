@@ -44,17 +44,21 @@ define(function(require, exports, module) {
 
       $('body').on("change", 'input[name="type"]', function(e) {
         var type = $(e.currentTarget).val();
+        // $('#newModalForm')[0].reset();
+        // $('input[name="type"][value='+ type +']').click();
+
         $('.video_block').hide();
         $('.imgs_block').hide();
         $('.img_block').hide();
         $('.img_main_block').hide();
+
         if (type == 0) {
           $('.imgs_block').show();
-        }else if(type == 2){
+        }else if(type == 3){
           $('.img_block').show();
         }else if(type == 1) {
           $('.video_block').show();
-        }else if(type == 3){
+        }else if(type == 2){
           $('.img_main_block').show();
         }
       })
@@ -135,7 +139,8 @@ define(function(require, exports, module) {
         $("#txtrowindex").val(rowindex);
       },
       url: 'query/table',
-      parms: { source: 'gm_promotion' },
+      parms: { source: 'gm_promotion',
+               qhstr: JSON.stringify({qjson: [{'type': 3}], qjsonkeytype: [{'type': 'NotEquery'}]})},
       method: "get",
       dataAction: 'server',
       usePager: true,
@@ -256,10 +261,19 @@ define(function(require, exports, module) {
               }
               if (key == 'imgurl' && type != 1) {
                 imgs = val.split(';');
+                $('input[name="imgs"]').val(val);
               }else if (key == 'status' && val == 1) {
                 $('#newModalForm input[name="'+ key +'"]').prop('checked','checked');
               }else if (key == 'imgurl' && type == 1) {
                 $('input[name="video_url"]').val(val);
+              }else if (key == 'click' && type == 0) {
+                $.each(val.split(';'), function(i, o) {
+                  $('input[name="click_'+ (i+1) +'"]').val(o);
+                })
+              }else if (key == 'title' && type == 0) {
+                $.each(val.split(';'), function(i, o) {
+                  $('input[name="title_'+ (i+1) +'"]').val(o);
+                })
               }
             })
             $.each(imgs, function(i , url) {
@@ -408,7 +422,6 @@ define(function(require, exports, module) {
 
         // Get the FormValidation instance
         var bv = $form.data('formValidation');
-
         // Use Ajax to submit form data
         var formVals = {status: 0};
         $.each($form.serializeArray(), function(i, o) {
@@ -419,7 +432,19 @@ define(function(require, exports, module) {
         var imgurl = '';
         if (formVals['type'] == 1) {
           imgurl = formVals['video_url'];
-        }else {
+        } else if(formVals['type'] == 0) {
+          var titleArr = [];
+          var urlArr = [];
+          $.each($('.imgs_list_title'), function(i, o) {
+            titleArr.push($(o).val());
+          })
+          $.each($('.imgs_list_click'), function(i, o) {
+            urlArr.push($(o).val());
+          })
+          formVals['title'] = titleArr.join(';');
+          formVals['click'] = urlArr.join(';');
+          imgurl = formVals['imgs'];
+        } else {
           imgurl = formVals['imgs'];
         }
         formVals['imgurl'] = imgurl;

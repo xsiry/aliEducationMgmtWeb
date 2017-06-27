@@ -76,14 +76,14 @@ $(document).ready(function() {
         $('.new_author div:first-child span').text(data.times);
         $('.new_author div:nth-child(2) span').text(data.author);
         $('.new_author div:last-child span').text(data.source);
-        $('.new_takeaway div:last-child p').text(data.introduction);
+        $('.new_takeaway div:last-child p').html(data.introduction);
         var imgs = data.imgs.split(';');
         var imgHtml = '';
         $.each(imgs, function(i, url) {
-          imgHtml += '<img src="' + '../' + url + '" />'
+          if(url != "") imgHtml += '<img src="' + '../' + url + '" />'
         })
         $('.new_picture').append(imgHtml);
-        $('.new_conten').text(data.content);
+        $('.new_conten').html(data.content);
       }
     }
   })

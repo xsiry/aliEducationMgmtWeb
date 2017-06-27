@@ -31,6 +31,7 @@ define(function(require, exports, module) {
       $.root_.on("click", '.new_modal_btn', function(e) {
         var fun = function(dialogRef) {
           selCombo();
+          selCityCombo();
           newModalValidation();
         }
         newModal('添加网吧', fun);
@@ -151,6 +152,7 @@ define(function(require, exports, module) {
           var fun = function() {
             var imgs = [];
             var selectedVal = '';
+            var dtprVal = '';
             var type = parseInt(data.type);
             $('input[name="type"][value='+ type +']').click();
             $.each(data, function(key, val) {
@@ -160,11 +162,14 @@ define(function(require, exports, module) {
                 imgs = val.split(';');
               }else if (key == 'cln_id') {
                 selectedVal = val;
+              }else if (key == 'dtpr_id') {
+                dtprVal = val;
               }else if (key == 'intro') {
                 $('pre.flex.x-' + key).text(val);
               }
             })
             selCombo(selectedVal);
+            selCityCombo(dtprVal)
             newModalValidation();
             $.each(imgs, function(i , url) {
               if (url != "") $('#newModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
@@ -386,8 +391,32 @@ define(function(require, exports, module) {
           $.each(data, function(i, o) {
             $('select.clan_list').append('<option value="'+ o.cln_id +'" ' + (selectedVal == o.cln_id ? 'selected="selected"' : '') + '>'+ o.clan_name +'</option>');
           })
+          $('select.clan_list').chosen({});
         }
-        initCombo();
+      },
+      error : function(e) {
+        console.log(e);
+      }
+    });
+  }
+
+  function selCityCombo(dtprVal) {
+    $.ajax({
+      type : 'GET',
+      url : 'query/table',
+      dataType : 'json',
+      data : {
+        source: 'dict_province',
+        qtype: 'select'
+      },
+      success : function(data) {
+        if (data) {
+          $('select.dtpr_list').empty();
+          $.each(data, function(i, o) {
+            $('select.dtpr_list').append('<option value="'+ o.dtpr_id +'" ' + (dtprVal == o.dtpr_id ? 'selected="selected"' : '') + '>'+ o.province +'</option>');
+          })
+          $('select.dtpr_list').chosen({});
+        }
       },
       error : function(e) {
         console.log(e);

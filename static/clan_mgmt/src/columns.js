@@ -105,8 +105,8 @@ define([{
   name: 'Apply',
   render: function(rowdata, rowindex, value) {
     var h = "";
-    h += "<button type='button' id='" + rowdata.cln_id + "' class='btn btn-outline btn-info btn-xs row-btn row_btn_edit'>修改</button> ";
-    h += "<button type='button' id='" + rowdata.cln_id + "' name='" + rowdata.clan_name + "' class='btn btn-outline btn-danger btn-xs row-btn row_btn_del'>删除</button> ";
+    h += "<button type='button' data-id='" + rowdata.cln_id + "' class='btn btn-outline btn-info btn-xs row-btn row_btn_edit'>修改</button> ";
+    h += "<button type='button' data-id='" + rowdata.cln_id + "' data-name='" + rowdata.clan_name + "' class='btn btn-outline btn-danger btn-xs row-btn row_btn_del'>删除</button> ";
     return h;
   }
 }])

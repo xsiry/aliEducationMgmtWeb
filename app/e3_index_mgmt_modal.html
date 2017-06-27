@@ -34,12 +34,12 @@
           专区主页联赛图片
         </label>
       </div>
-      <div class="radio radio-info radio-inline">
+      <!-- <div class="radio radio-info radio-inline">
         <input type="radio" name="type" id="type3" value="3">
         <label for="type3">
           总赛程主页顶部图片
         </label>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="imgs_block">
@@ -50,6 +50,26 @@
         <span class="help-block m-b-none">（请一次性添加所需图片，最多四张，应用于E3联赛主页推广位，以轮播图片展现）</span>
       </div>
     </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">各图片标题</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control imgs_list_title" name="title_1" placeholder="请填写第一张轮播图片标题">
+        <input type="text" class="form-control imgs_list_title" name="title_2" placeholder="请填写第二张轮播图片标题">
+        <input type="text" class="form-control imgs_list_title" name="title_3" placeholder="请填写第三张轮播图片标题">
+        <input type="text" class="form-control imgs_list_title" name="title_4" placeholder="请填写第四张轮播图片标题">
+        <span class="help-block m-b-none">（请按图片顺序进行添加，最多四个，一一对应）</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">点击跳转地址</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control imgs_list_click" name="click_1" placeholder="请填写第一张轮播图片链接">
+        <input type="text" class="form-control imgs_list_click" name="click_2" placeholder="请填写第二张轮播图片链接">
+        <input type="text" class="form-control imgs_list_click" name="click_3" placeholder="请填写第三张轮播图片链接">
+        <input type="text" class="form-control imgs_list_click" name="click_4" placeholder="请填写第四张轮播图片链接">
+        <span class="help-block m-b-none">（请按图片顺序进行添加，最多四个，一一对应）</span>
+      </div>
+    </div>
     <div class="form-group img_list_show img_list_show_0">
     </div>
   </div>
@@ -57,24 +77,36 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">专区联赛图片</label>
       <div class="col-sm-9">
-        <a class="btn btn-primary upload_new_imgs" data-type=3>添加</a>
+        <a class="btn btn-primary upload_new_imgs" data-type=2>添加</a>
         <span class="help-block m-b-none">（请一次性添加所需图片，最多一张，应用于首页联赛推广位）</span>
       </div>
     </div>
-    <div class="form-group img_list_show img_list_show_3">
-    </div>
-  </div>
-  <div class="img_block">
     <div class="form-group">
-      <label class="col-sm-3 control-label">总赛程图片</label>
+      <label class="col-sm-3 control-label">点击跳转地址</label>
       <div class="col-sm-9">
-        <a class="btn btn-primary upload_new_imgs" data-type=2>添加</a>
-        <span class="help-block m-b-none">（请一次性添加所需图片，最多一张，应用于总赛程主页推广位）</span>
+        <input type="text" class="form-control" name="click">
       </div>
     </div>
     <div class="form-group img_list_show img_list_show_2">
     </div>
   </div>
+  <!-- <div class="img_block">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">赛程安排主页图片</label>
+      <div class="col-sm-9">
+        <a class="btn btn-primary upload_new_imgs">添加</a>
+        <span class="help-block m-b-none">（请一次性添加所需图片，最多一张，应用于赛程安排主页推广位）</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">点击跳转地址</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="click">
+      </div>
+    </div>
+    <div class="form-group img_list_show img_list_show">
+    </div>
+  </div> -->
   <div class="video_block">
     <div class="form-group">
       <label class="col-sm-3 control-label">联赛在线视频</label>
@@ -83,13 +115,6 @@
         <span class="help-block m-b-none">（请填写视频地址，应用于E3联赛推广位，以视频展现）</span>
         <span class="help-block m-b-none">（请添加以swf结尾的优酷flash分享地址，例：http://xxx/xx/xx/xx.swf）</span>
       </div>
-    </div>
-  </div>
-  <div class="hr-line-dashed"></div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">点击数</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" name="click">
     </div>
   </div>
   <div class="hr-line-dashed"></div>

@@ -212,58 +212,63 @@ $(document).ready(function() {
       if (data.length > 0) {
         var urlArry = data[0].imgurl.split(';');
         var aUrlArry = data[0].click.split(';');
+        var titleArry = data[0].title.split(';');
+        numTotal = urlArry.length;
+        runImgsPlay();
         $.each(urlArry, function(i, url){
-          var aBlock = '<a class="up_a img_a img_a_'+ i +'" href="'+ aUrlArry[i] +'" style="z-index: 1;opacity: 1;-webkit-animation: img_act 1s linear forwards;" target="_self">'
+          var aBlock = '<a class="up_a img_a img_a_'+ i +'" href="'+ aUrlArry[i] +'"'+ ((i==0) ? 'style="z-index: 1;opacity: 1;-webkit-animation: img_act 1s linear forwards;"' : '') + 'target="_self">'
                + '<img class="up_img  img_'+ i +'" src="'+ '../' + url +'" alt="0">'
-               + '<div class="i_title"></div></a>';
+               + '<div class="i_title">'+ titleArry[i] +'</div></a>';
           $('div.img_list').append(aBlock);
         });
-        numTotal = urlArry.length;
-        $('.num').text(numTotal);
-        interval = setInterval(queueingArr, sec * 1000);
-
-        $('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-        $('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-        $('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-        $('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-        $('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
-
-        $('.top_popup').hover(function() {
-          clearInterval(interval);
-          $('.left_btn').css('transform', 'translate(0px,0px)');
-          $('.right_btn').css('transform', 'translate(0px,0px)');
-          $('.progress_bottom_win').css('-webkit-animation', '');
-          $('.progress_bottom_win').css('-moz-animation', '');
-          $('.progress_bottom_win').css('-o-animation', '');
-          $('.progress_bottom_win').css('-ms-animation', '');
-          $('.progress_bottom_win').css('animation', '');
-        }, function() {
-          interval = setInterval(queueingArr, sec * 1000);
-          $('.left_btn').css('transform', 'translate(-60px,0px)');
-          $('.right_btn').css('transform', 'translate(60px,0px)');
-          $('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-          $('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-          $('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-          $('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
-          $('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
-        });
-
-        $('.left_btn').on('click', function() {
-          num = num - 1;
-          if (num < 0) num = numTotal - 1;
-          choseImg(num, true);
-        })
-
-        $('.right_btn').on('click', function() {
-          num = num + 1;
-          if (num >= numTotal) num = 0;
-          choseImg(num);
-        })
       }else {
 
       }
     }
   })
+
+  function runImgsPlay() {
+    $('.num').text(numTotal);
+    interval = setInterval(queueingArr, sec * 1000);
+
+    $('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+    $('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+    $('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+    $('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+    $('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
+
+    $('.top_popup').hover(function() {
+      clearInterval(interval);
+      $('.left_btn').css('transform', 'translate(0px,0px)');
+      $('.right_btn').css('transform', 'translate(0px,0px)');
+      $('.progress_bottom_win').css('-webkit-animation', '');
+      $('.progress_bottom_win').css('-moz-animation', '');
+      $('.progress_bottom_win').css('-o-animation', '');
+      $('.progress_bottom_win').css('-ms-animation', '');
+      $('.progress_bottom_win').css('animation', '');
+    }, function() {
+      interval = setInterval(queueingArr, sec * 1000);
+      $('.left_btn').css('transform', 'translate(-60px,0px)');
+      $('.right_btn').css('transform', 'translate(60px,0px)');
+      $('.progress_bottom_win').css('-webkit-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+      $('.progress_bottom_win').css('-moz-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+      $('.progress_bottom_win').css('-o-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+      $('.progress_bottom_win').css('-ms-animation', 'progress_bottom_act ' + sec + 's infinite linear');
+      $('.progress_bottom_win').css('animation', 'progress_bottom_act ' + sec + 's infinite linear');
+    });
+
+    $('.left_btn').on('click', function() {
+      num = num - 1;
+      if (num < 0) num = numTotal - 1;
+      choseImg(num, true);
+    })
+
+    $('.right_btn').on('click', function() {
+      num = num + 1;
+      if (num >= numTotal) num = 0;
+      choseImg(num);
+    })
+  }
 
   $.ajax({
     type : 'GET',

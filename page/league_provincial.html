@@ -76,19 +76,22 @@ function provinceLstClick(proid) {
       dataType: 'json',
       data: {
         source: 'news',
-        qtype: 'select'
+        page:1,
+        pagesize:10,
+        sortname: 'times',
+        sortorder: 'DESC'
       },
       success: function(data) {
-        if (data.length > 0) {
+        if (data.Total > 0) {
           var newTitle = '';
-          $.each(data, function(i, n) {
+          $.each(data.Rows, function(i, n) {
             var url = '';
             if (n.newsurl) {
               url = n.newsurl;
             }else {
               url = 'new_detail.html?id='+ n.news_id;
             }
-            newTitle += '<li><a href="'+ url +'">'+ n.title +'</a></li>';
+            newTitle += '<li><a href="'+ url +'">'+ n.title.substring(0, 20) + (n.title.length > 19 ? '...' : '') +'</a></li>';
           });
           $('ul.news_list').append(newTitle);
         }

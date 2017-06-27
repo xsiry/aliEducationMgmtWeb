@@ -17,6 +17,7 @@ section {
 a,
 a:hover,
 a:focus {
+  color: #525e71;
   text-decoration: none;
 }
 

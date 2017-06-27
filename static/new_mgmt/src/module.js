@@ -41,8 +41,8 @@ define(function(require, exports, module) {
           var row = manager.getRow(rowid);
           $('.new_title h3').text(row.title);
           $('.new_author').text(row.author);
-          $('.new_introduction p').text(row.introduction);
-          $('.new_conten').text(row.content);
+          $('.new_introduction p').html(row.introduction);
+          $('.new_conten').html(row.content);
           $('.new_source').text(row.source);
           $('.new_times').text(row.times);
           $.each(row.imgs.split(';'), function(i , url) {
@@ -128,8 +128,8 @@ define(function(require, exports, module) {
       clickToEdit: false,
       width: '100%',
       height: '91%',
-      sortName: 'title',
-      sortOrder: 'ASC'
+      sortName: 'times',
+      sortOrder: 'DESC'
     });
   };
 
@@ -172,9 +172,9 @@ define(function(require, exports, module) {
               if (key == 'imgs') {
                 imgs = val.split(';');
               }else if (key == 'content') {
-                $('pre.flex.x-content').text(val);
+                $('pre.flex.x-content').html(val);
               }else if (key == 'introduction') {
-                $('pre.flex.x-introduction').text(val);
+                $('pre.flex.x-introduction').html(val);
               }
             })
             $.each(imgs, function(i , url) {
@@ -345,7 +345,7 @@ define(function(require, exports, module) {
         var bv = $form.data('formValidation');
 
         // Use Ajax to submit form data
-        var formVals = {times: dateFactory ('', new Date(), true), content: $('pre.flex.x-content').text(), introduction: $('pre.flex.x-introduction').text()};
+        var formVals = {times: dateFactory ('', new Date(), true), content: $('pre.flex.x-content').html(), introduction: $('pre.flex.x-introduction').html()};
         $.each($form.serializeArray(), function(i, o) {
           formVals[o.name] = o.value;
         });

@@ -17,3 +17,7 @@ div.img_main_block {
 .form_tabs {
 	margin-bottom: 15px;
 }
+
+.imgs_list_title, .imgs_list_click {
+	margin-top: 5px;
+}

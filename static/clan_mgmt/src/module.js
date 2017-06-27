@@ -56,7 +56,7 @@ define(function(require, exports, module) {
         }else if (type == 2) {
           number = 1;
         }else if (type == 3) {
-          number = 3;
+          number = 1;
         }else if (type == 4) {
           number = 1;
         }else if (type == 5) {
@@ -122,12 +122,12 @@ define(function(require, exports, module) {
 
       // bind grid edit
       $.root_.on("click", '.row_btn_edit', function(e) {
-        var id = $(e.currentTarget).attr('id');
+        var id = $(e.currentTarget).data('id');
         editRow(id);
       })
       $.root_.on("click", '.row_btn_del', function(e) {
-        var id = $(e.currentTarget).attr('id');
-        var name = $(e.currentTarget).attr('name');
+        var id = $(e.currentTarget).data('id');
+        var name = $(e.currentTarget).data('name');
         delRow(id, name);
       })
 

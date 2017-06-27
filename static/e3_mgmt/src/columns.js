@@ -12,7 +12,7 @@ define([{
     }else if (value == 1) {
       text = '联赛主页（在线视频）';
     }else if (value == 3) {
-      text = '总赛程主页（顶部图片）';
+      text = '赛程安排主页（顶部图片）';
     }
     return text;
   }
