@@ -3,10 +3,10 @@
        %>
           <div>
             <div class="center-block">
-              <a href="#" data-proid="${grouplst[0].cln_grp_id}">${grouplst[0].groupname}</a>
-              <a href="#" data-proid="${grouplst[1].cln_grp_id}">${grouplst[1].groupname}</a>
+              <a href="#" class="grpidAA actived" data-grpid="${grouplst[0].cln_grp_id}">${grouplst[0].groupname}</a>
+              <a href="#" class="grpidAA" data-grpid="${grouplst[1].cln_grp_id}">${grouplst[1].groupname}</a>
             </div>
-            <div class="center-block" id="grouplist_${grouplst[0].cln_grp_id}">
+            <div class="center-block grouplist_A" id="grouplist_${grouplst[0].cln_grp_id}">
 	            <table class="table table-hover">
 	              <thead>
 	                <tr>
@@ -35,7 +35,7 @@
 	              </tbody>
 	            </table>
             </div>
-            <div class="center-block hidden" id="grouplist_${grouplst[1].cln_grp_id}">
+            <div class="center-block grouplist_A" id="grouplist_${grouplst[1].cln_grp_id}" style="display: none;">
 	            <table class="table table-hover">
 	              <thead>
 	                <tr>
@@ -68,10 +68,10 @@
           </div>
           <div>
             <div class="center-block">
-              <a href="#" data-proid="${grouplst[2].cln_grp_id}">${grouplst[2].groupname}</a>
-              <a href="#" data-proid="${grouplst[3].cln_grp_id}">${grouplst[3].groupname}</a>
+              <a href="#" class="grpidAB actived" data-grpid="${grouplst[2].cln_grp_id}">${grouplst[2].groupname}</a>
+              <a href="#" class="grpidAB" data-grpid="${grouplst[3].cln_grp_id}">${grouplst[3].groupname}</a>
             </div>
-             <div class="center-block " id="grouplist_${grouplst[2].cln_grp_id}">
+             <div class="center-block grouplist_B" id="grouplist_${grouplst[2].cln_grp_id}">
             <table class="table table-hover">
               <thead>
                 <tr>
@@ -100,7 +100,7 @@
               </tbody>
             </table>
             </div>
-             <div class="center-block hidden" id="grouplist_${grouplst[3].cln_grp_id}">
+             <div class="center-block grouplist_B" id="grouplist_${grouplst[3].cln_grp_id}" style="display: none;">
 	            <table class="table table-hover">
 	              <thead>
 	                <tr>

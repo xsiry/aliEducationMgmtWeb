@@ -384,8 +384,16 @@
   }
 
   table.table-hover a,
-  table.table-hover a:hover,
   table.table-hover a:focus {
     color: #a2adde;
     text-decoration: none;
+  }
+
+  table.table-hover a:hover {
+    color: #fcc70e;
+    text-decoration: none;
+  }
+
+  .table-hover>tbody>tr:hover {
+    background-color: #2e2e4b;
   }

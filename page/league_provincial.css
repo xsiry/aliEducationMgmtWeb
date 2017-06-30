@@ -13,17 +13,21 @@
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   box-flex: 1;
-  background-color: #30324b;
+  background-color: #2e2e4b;
 }
 
 .prov_top>div>div {
-  height: 40px;
-  background-color: #30324b;
+  height: 45px;
+  background-color: #2e2e4b;
   padding: 5px;
   color: #fff;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
 }
 
 .prov_top>div:last-child {
+  width: 280px;
   background-color: #FFF;
 }
 
@@ -44,8 +48,8 @@
 }
 
 .prov_top>div:last-child>ul>li {
-  line-height: 40px;
-  font-size: 20px;
+  line-height: 30px;
+  font-size: 18px;
 }
 
 .prov_top>div:last-child>ul>li a {
@@ -63,9 +67,10 @@
 }
 
 .prov_top>div>div>a {
-  width: 50%;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
   display: block;
-  float: left;
   height: 40px;
   color: #8d9499;
   background-color: #FFF;
@@ -73,6 +78,18 @@
   text-align: center;
   font-size: 25px;
   line-height: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.prov_top>div>div>a:hover {
+  background: #464670;
+  color: #fff;
+}
+
+.prov_top>div>div>a.actived {
+  background: #464670;
+  color: #fff;
 }
 
 #pro_gourp_cln_ls {

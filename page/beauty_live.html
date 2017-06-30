@@ -47,7 +47,6 @@
     <div class="right_conten">
       <div class="row row_block">
         <ul  id="beauty_tab">
-          <li><a href="#" data-tabid ="1">主播推荐</a></li>
         </ul>
       </div>
       <ul id="beauty_content">
@@ -114,7 +113,7 @@
 	    $sHelper.AjaxPost("../tempalte/beauty/tab",{},function(msg){
 		      	 $("#beauty_tab").empty();
 		      	 $("#beauty_tab").append(msg);
-             $("#beauty_tab a:first").click();
+             $("#beauty_tab a:first").trigger('click');
 		  }) ;
 	}) ;
 </script>

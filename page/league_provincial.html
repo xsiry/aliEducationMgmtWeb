@@ -58,8 +58,21 @@ $(document).ready(function() {
   $sHelper.AjaxPost("../tempalte/league/provinceTabList", {}, function(msg) {
     $("#province_lstid").empty();
     $("#province_lstid").append(msg);
-    $("#province_lstid a").get(0).click();
+    $("#province_lstid a:first>span").trigger('click');
   });
+
+  $('#pro_gourp_cln_ls').on('click', 'a', function(e) {
+    var grpid = $(e.currentTarget).data("grpid");
+    if(grpid < 3) {
+      $('a.grpidAA').removeClass('actived');
+      $('.grouplist_A').hide()
+    }else{
+      $('a.grpidAB').removeClass('actived');
+      $('.grouplist_B').hide()
+    };
+    $(e.currentTarget).addClass('actived');
+    $('#grouplist_'+ grpid).show();
+  })
 })
 
 function provinceLstClick(proid) {
@@ -76,8 +89,8 @@ function provinceLstClick(proid) {
       dataType: 'json',
       data: {
         source: 'news',
-        page:1,
-        pagesize:10,
+        page: 1,
+        pagesize: 12,
         sortname: 'times',
         sortorder: 'DESC'
       },
