@@ -166,7 +166,11 @@ $(document).ready(function() {
           });
         })
         $('#calendar').fullCalendar({
-          header: false,
+          header: {
+            left: 'prev',
+            center: 'title',
+            right: 'next'
+          },
           firstDay: 0,
           height: 400,
           contentHeight: 400,
@@ -339,10 +343,10 @@ function choseImg(num, bool) {
 }
 
 function clanscheduleClick(page){
-	   $sHelper.AjaxPost("../tempalte/league/clanSchedule",{"page":page, "pagesize":12,"dtpr_id":""},function(msg){
-		      	 $("#clan_schedule_lsitid").empty();
-		      	 $("#clan_schedule_lsitid").append(msg);
-		  }) ;
+  $sHelper.AjaxPost("../tempalte/league/clanSchedule",{"page":page, "pagesize": 9,"dtpr_id":""},function(msg){
+    $("#clan_schedule_lsitid").empty();
+    $("#clan_schedule_lsitid").append(msg);
+  });
 }
 
 </script>

@@ -133,6 +133,7 @@
 .right_conten>ul>li p span {
   display: block;
   font-size: 12px;
+  line-height: 13px;
   margin-left: 5px;
   color: #797979;
 }
