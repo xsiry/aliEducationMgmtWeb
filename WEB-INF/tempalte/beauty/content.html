@@ -9,11 +9,13 @@
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
               </svg></b>
             <i class="black"></i>
-            ${beautyinfo.live=='1' ? '<span class="tag_live">直播中</span>':''}
-            <% if (beautyinfo.mark=='1') {%>
-            <div class="tag_mark"><img src="../${beautyinfo.markurl}"><span>${beautyinfo.markname}</span></div>
-            <%}%>
-            <img  src="../${beautyinfo.imgs}" style="display: block;">
+            <div style="width:100%; position:relative; padding-bottom:65%; height:0;">
+              ${beautyinfo.live=='1' ? '<span class="tag_live">直播中</span>':''}
+              <% if (beautyinfo.mark=='1') {%>
+              <div class="tag_mark"><img src="../${beautyinfo.markurl}"><span>${beautyinfo.markname}</span></div>
+              <%}%>
+              <img  src="../${beautyinfo.imgs}" style="display: block;">
+            </div>
             </span>
             <div class="mes">
               <div class="mes-tit">

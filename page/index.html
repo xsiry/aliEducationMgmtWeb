@@ -193,7 +193,11 @@ $(document).ready(function() {
           });
         })
         $('#calendar').fullCalendar({
-          header: false,
+          header: {
+            left: 'prev',
+            center: 'title',
+            right: 'next'
+          },
           firstDay: 0,
           height: 400,
           contentHeight: 400,

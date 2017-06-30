@@ -23,6 +23,7 @@ a:focus {
 
 .left_conten {
   width: 200px;
+  border-right: 1px solid #d8d8d8;
 }
 
 .x-menus>ul {
@@ -162,7 +163,7 @@ a:focus {
 
 .league_btn {
   position: relative;
-  bottom: -30px;
+  bottom: -3px;
   background-color: #ff7043;
   border: 1px solid #f4511e;
   border-radius: 8px;
@@ -234,11 +235,17 @@ ul {
 .fc-unthemed td,
 .fc-unthemed th,
 .fc-unthemed thead {
-  border-color: hsla(0, 0%, 100%, 0);
+  /*border-color: hsla(0, 0%, 100%, 0);*/
+}
+
+.fc-unthemed th {
+  color: #acacac;
+  line-height: 25px;
+  border-right: 1px solid #eff1f8;
 }
 
 .fc-unthemed td.fc-head-container {
-  border-bottom-color: #d81b60;
+  /*border-bottom-color: #d81b60;*/
 }
 
 #calendar a.fc-day-number {
@@ -265,4 +272,63 @@ ul {
 
 #calendar .fc-more-cell a.fc-more {
   color: #d81b60;
+}
+
+
+.fc-toolbar.fc-header-toolbar {
+  margin-bottom: 0;
+  border: 1px solid;
+  background-color: #cd300c;
+  background-image: -moz-linear-gradient(top,#c12e0c,#b82c0b);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#c12e0c),to(#b82c0b));
+  background-image: -webkit-linear-gradient(top,#c12e0c,#b82c0b);
+  background-image: -o-linear-gradient(top,#c12e0c,#b82c0b);
+  background-image: linear-gradient(to bottom,#c12e0c,#b82c0b);
+  background-repeat: repeat-x;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(255,255,255,.75);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  border-radius: 0 !important;
+}
+
+
+.fc-state-default {
+  border: 1px solid;
+  background-color: #cd300c;
+  background-image: -moz-linear-gradient(top,#c12e0c,#b82c0b);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#c12e0c),to(#b82c0b));
+  background-image: -webkit-linear-gradient(top,#c12e0c,#b82c0b);
+  background-image: -o-linear-gradient(top,#c12e0c,#b82c0b);
+  background-image: linear-gradient(to bottom,#c12e0c,#b82c0b);
+  background-repeat: repeat-x;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(255,255,255,.75);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  border-radius: 0 !important;
+}
+
+.fc-toolbar h2 {
+  margin: 0;
+  margin-top: 3px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
+.fc-event:hover {
+  width: 120px;
+  transform: scale(1.5);
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+}
+
+.fc-body.fc-widget-content>.fc-event-container>.fc-event:hover {
+  width: 100%;
+  transform: scale(1);
+  -ms-transform: scale(1); /* IE 9 */
+  -webkit-transform: scale(1); /* Safari and Chrome */
 }

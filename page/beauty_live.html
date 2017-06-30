@@ -114,7 +114,7 @@
 	    $sHelper.AjaxPost("../tempalte/beauty/tab",{},function(msg){
 		      	 $("#beauty_tab").empty();
 		      	 $("#beauty_tab").append(msg);
-             $("#beauty_tab a").get(0).click();
+             $("#beauty_tab a:first").click();
 		  }) ;
 	}) ;
 </script>

@@ -64,3 +64,20 @@
   font-size: 15px;
   line-height: 23px;
 }
+
+.buy_main {
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  height: 350px;
+}
+
+.buy_main>div:first-chlid {
+  width: 250px;
+}
+
+.buy_main>div:last-chlid {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+}
