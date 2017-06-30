@@ -1,7 +1,7 @@
 html,
 body {
   margin: 0;
-  padding: 5px;
+  padding: 0;
   width: 100%;
   height: 100%;
   background-color: #eff1f8;
@@ -64,11 +64,12 @@ a:focus {
 }
 
 .right_conten {
-  padding: 10px 20px;
+  padding: 5px 20px;
   height: 100%;
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   box-flex: 1;
+  overflow-y: auto;
   /*border: 1px solid #dddddd;*/
 }
 .x_tabs {
@@ -86,7 +87,6 @@ a:focus {
 
 .right_conten>div:last-child {
   border-bottom: 1px solid #dddddd;
-  margin-bottom: 15px;
 }
 
 .right_conten>div:last-child>div:last-child {
@@ -271,7 +271,7 @@ ul {
 }
 
 #calendar .fc-more-cell a.fc-more {
-  color: #d81b60;
+  color: #fc1703;
 }
 
 
@@ -288,8 +288,8 @@ ul {
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
   color: #fff;
-  text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  /*text-shadow: 0 1px 1px rgba(255,255,255,.75);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);*/
   border-radius: 0 !important;
 }
 
@@ -306,9 +306,13 @@ ul {
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
   color: #fff;
-  text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  /*text-shadow: 0 1px 1px rgba(255,255,255,.75);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);*/
   border-radius: 0 !important;
+}
+
+.fc-state-hover {
+  background-position:0 0;
 }
 
 .fc-toolbar h2 {
@@ -331,4 +335,9 @@ ul {
   transform: scale(1);
   -ms-transform: scale(1); /* IE 9 */
   -webkit-transform: scale(1); /* Safari and Chrome */
+}
+
+.col-md-6 {
+  padding-right: 0;
+  padding-left: 0;
 }
