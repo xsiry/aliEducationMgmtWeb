@@ -97,6 +97,7 @@ function provinceLstClick(proid) {
       success: function(data) {
         if (data.Total > 0) {
           var newTitle = '';
+          $('ul.news_list').empty();
           $.each(data.Rows, function(i, n) {
             var url = '';
             if (n.newsurl) {

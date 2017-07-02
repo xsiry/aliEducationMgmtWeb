@@ -140,7 +140,7 @@ $(document).ready(function() {
   $sHelper.AjaxPost("../tempalte/league/provinceTabList", {}, function(msg) {
     $("#province_lstid").empty();
     $("#province_lstid").append(msg);
-    $("#province_lstid a").get(0).click();
+    provinceLstClick(_proid);
   });
 
   $.ajax({

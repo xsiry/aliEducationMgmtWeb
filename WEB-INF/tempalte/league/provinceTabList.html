@@ -1,7 +1,12 @@
+	<!-- <li><a href="league_total_provincial.html" class="tab_prov tab_t_-1"><span>总赛程</span></a></li> -->
 <%
 for(pro in province_ls) {
 %>
+	<% if (pro.dtpr_id == -1) {%>
+	<li><a href="league_total_provincial.html" class="tab_prov tab_t_${pro.dtpr_id}"><span>${pro.province}</span></a></li>
+	<% }else {%>
 	<li><a href="javascript:provinceLstClick('${pro.dtpr_id}');" class="tab_prov tab_t_${pro.dtpr_id}"><span>${pro.province}</span></a></li>
+	<% }%>
 <%
 }
 %>
