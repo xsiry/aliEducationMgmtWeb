@@ -78,13 +78,10 @@
 .intro {
   width: 100%;
   display: inline-block;
-  margin-top: 10px;
+  margin: 6px 0;
   height: 150px;
-}
-
-.intro>textarea {
-  height: 150px;
-  width: 100%;
+  border: 1px solid #dddddd;
+  padding: 5px;
 }
 
 .player_btn a {

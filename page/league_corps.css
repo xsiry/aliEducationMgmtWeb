@@ -4,8 +4,9 @@
 }
 
 .right_conten>div:last-child {
-  padding: 0 40px 40px 0;
+  padding: 0 0px 40px 10px;
   position: relative;
+  height: 100%;
 }
 
 .right_conten>div:last-child>ul {
@@ -15,19 +16,23 @@
 
 .right_conten>div:last-child>ul>li {
   float: left;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 25%;
+  display: inline-block;
+  padding: 0 10px 0 0;
 }
 
 .right_conten>div:last-child>ul>li>a>div {
   display: block;
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 300px;
 }
 
 .right_conten>div:last-child>ul>li>a>div img {
-  width: 400px;
-  height: 250px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 

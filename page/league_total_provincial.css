@@ -83,3 +83,11 @@ caption {
   margin: 0;
   border: 0;
 }
+.total_prov {
+  padding: 25px;
+}
+
+.total_prov>p {
+  font-size: 16px;
+  margin-top: 5px;
+}
