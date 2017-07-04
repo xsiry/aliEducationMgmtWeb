@@ -53,12 +53,12 @@
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/ssofthelper.js"></script>
 <script type="text/javascript">
-var _proid = -1;
+var _proid = getParams('proid');
 $(document).ready(function() {
   $sHelper.AjaxPost("../tempalte/league/provinceTabList", {}, function(msg) {
     $("#province_lstid").empty();
     $("#province_lstid").append(msg);
-    $("#province_lstid a:first>span").trigger('click');
+    provinceLstClick(_proid)
   });
 
   $('#pro_gourp_cln_ls').on('click', 'a', function(e) {
@@ -112,7 +112,6 @@ function provinceLstClick(proid) {
       }
     })
   });
-  _proid = proid;
   clanscheduleClick(1);
 }
 
@@ -127,6 +126,22 @@ function clanscheduleClick(page) {
     $("#clan_schedule_lsitid").empty();
     $("#clan_schedule_lsitid").append(msg);
   });
+}
+
+// url传参数
+function getParams(fndname) {
+  var url = location.search; //一般的查询
+  var query = url.substr(url.indexOf("?") + 1);
+  var pairs = query.split("&"); //在逗号处断开
+  for (var i = 0; i < pairs.length; i++) {
+    var pos = pairs[i].indexOf('='); //查找name=value
+    if (pos == -1)
+      continue; //如果没有找到就跳过
+    var argname = pairs[i].substring(0, pos); //提取name
+    var value = pairs[i].substring(pos + 1); //提取value
+    if (argname == fndname)
+      return value;
+  }
 }
 </script>
 

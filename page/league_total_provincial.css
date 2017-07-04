@@ -78,3 +78,8 @@ caption {
   font-weight: bold;
   color: #000;
 }
+
+#clan_schedule_lsitid {
+  margin: 0;
+  border: 0;
+}
