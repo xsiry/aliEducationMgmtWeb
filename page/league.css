@@ -15,9 +15,11 @@
 
 .right_conten>div:nth-child(2) {
   padding: 0px 35px;
-  border-left: 1px solid #dddddd;
-  border-right: 1px solid #dddddd;
   border-top: 1px solid #dddddd;
+  line-height: 30px;
+  font-size: 20px;
+  background-color: #252436;
+  color: #FFF;
 }
 
 a.img_a {
@@ -143,6 +145,15 @@ svg path {
 button.x-btn {
   background-color: transparent;
   line-height: 25px;
+}
+
+.cln_x_info> p {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+#clan_schedule_lsitid {
+  border: 0;
 }
 
 @-webkit-keyframes img_act {

@@ -5,6 +5,7 @@
     width: 100%;
     height: 100%;
     background-color: #eff1f8;
+    font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
   }
 
   section {
@@ -80,6 +81,7 @@
   .x_welcome {
     height: 50px;
     font-size: 24px;
+    line-height: 42px;
   }
 
   .row_block {
@@ -100,18 +102,20 @@
   }
 
   .deal {
-    padding: 30px 20px;
+    padding: 10px;
   }
 
   .deal_title {
+    font-size: 14px;
+    padding: 0 25px;
     position: relative;
   }
 
   .deal_wrapper {
-    padding: 25px;
+    padding: 0 25px;
     position: relative;
     width: 500px;
-    height: 350px;
+    height: 335px;
     overflow: hidden;
     border-radius: inherit;
     margin-top: 10px;
@@ -140,10 +144,11 @@
   }
 
   .deal_max {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 23px;
     display: block;
     margin-top: 10px;
+    padding: 0 25px;
   }
 
   .league {
@@ -152,6 +157,11 @@
 
   .league_title {
     font-size: 16px;
+  }
+
+  .league_title>p {
+    font-size: 20px;
+    margin: 0 10px;
   }
 
   .league_wrapper {
