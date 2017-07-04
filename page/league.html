@@ -20,7 +20,10 @@
 </head>
 <svg class="txp_svg_sprite txp_svg_sprite_head" display="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <symbol id="arrow_svg">
-    <path d="M384 556l0-64 64 0 0 64-64 0zM448 620l0-64 64 0 0 64-64 0zM512 684l0-64 64 0 0 64-64 0zM576 748l0-64 64 0 0 64-64 0zM576 364l0-64 64 0 0 64-64 0zM448 492l0-64 64 0 0 64-64 0zM512 428l0-64 64 0 0 64-64 0z" p-id="7225" fill="#ffffff"></path>
+    <path d="M465.301422 515.736091l206.865441-206.865441c6.012947-6.012947 6.012947-15.763009 0-21.775956l-50.808176-50.808176c-6.012947-6.012947-15.763009-6.012947-21.776979 0l-267.463588 267.463588-2.133593 2.133593c-5.440919 5.440919-5.440919 14.262842 0 19.703761l1.889023 1.889023 266.855744 266.855744c6.701632 6.701632 17.107633 6.375198 23.727401-0.24457l48.178279-48.178279c6.859221-6.859221 6.859221-17.980513 0-24.840758L465.301422 515.736091z" p-id="4374" fill="#ffffff"></path>
+  </symbol>
+  <symbol id="arrow_right_svg">
+    <path d="M558.698578 515.736091l-206.864418-206.865441c-6.012947-6.012947-6.012947-15.763009 0-21.775956l50.808176-50.808176c6.012947-6.012947 15.763009-6.012947 21.776979 0l267.463588 267.463588 2.133593 2.133593c5.440919 5.440919 5.440919 14.262842 0 19.703761l-1.889023 1.889023-266.855744 266.855744c-6.701632 6.701632-17.107633 6.375198-23.727401-0.24457l-48.178279-48.178279c-6.859221-6.859221-6.859221-17.980513 0-24.840758L558.698578 515.736091z" p-id="5204" fill="#ffffff"></path>
   </symbol>
   <symbol id="video_fullscreen_svg">
     <path d="M79.068993 65.73412c-3.917377 0.044002-7.834753 1.531889-10.81065 4.551666-2.997387 2.975774-4.485335 6.91448-4.485335 10.853186l0.152479 318.693366c0 1.968841 1.181967 3.894703 3.151912 4.726651 1.968922 0.787946 4.157863 0.305969 5.580317-1.137916l107.730927-107.223047 144.439448 143.810337c2.7569 2.756787 6.608782 4.463662 10.85363 4.463662 4.200844 0 8.052726-1.706875 10.809626-4.463662l98.079731-97.638761c2.800904-2.756787 4.507849-6.608511 4.507849-10.897188 0-4.244674-1.706945-8.096399-4.507849-10.897188L300.230897 176.85187l104.688513-104.247272c1.443944-1.399883 1.925941-3.588735 1.093959-5.601578-0.787978-1.968841-2.713919-3.15076-4.726845-3.15076L79.068993 65.73412z" p-id="2382" fill="#ffffff"></path>
@@ -61,8 +64,8 @@
               </svg>
             </div>
             <div class="right_btn">
-              <svg class="svg_icon right_svg" style="fill: #FFF;" viewBox="0 0 1024 1024">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow_svg"></use>
+              <svg class="svg_icon" style="fill: #FFF;" viewBox="0 0 1024 1024">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow_right_svg"></use>
               </svg>
             </div>
             <div class="focus-num"><span class="current">1</span>/<span class="num">0</span></div>
@@ -88,8 +91,8 @@
         <div class="pull-right">
           <a href="league_total_provincial.html" class="x-btn">
             分省赛程
-            <svg class="svg_icon right_svg svg_icon_btn" viewBox="0 0 1024 1024">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow_svg"></use>
+            <svg class="svg_icon svg_icon_btn" viewBox="0 0 1024 1024">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow_right_svg"></use>
             </svg>
           </a>
         </div>
@@ -146,6 +149,8 @@ var numTotal = 4;
 var interval;
 
 $(document).ready(function() {
+  $('.left_btn').css('transform', 'translate(-60px,0px)');
+  $('.right_btn').css('transform', 'translate(60px,0px)');
   $.ajax({
     type: 'GET',
     url: '../query/table',
