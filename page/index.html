@@ -59,7 +59,7 @@
               <span class="text">￥<span class="price"></span></span>
             </div> -->
           </div>
-          <div class="deal_max">限量<span></span>份</div>
+          <div class="deal_max">限量<span></span>份<button></button></div>
         </div>
         <div class="col-md-6">
 
@@ -134,6 +134,7 @@ $(document).ready(function() {
         $('.deal_price span.price').text(data.price);
         $('.deal_wrapper img').prop('src', '../' + data.imgs);
         $('.deal_max span').text(data.number);
+        $('.deal_max button').text(parseInt(data.number) > 0 ? '马上抢' : '已抢光');
       }
     }
   })
