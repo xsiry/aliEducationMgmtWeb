@@ -38,7 +38,7 @@ a.img_a>img {
 }
 
 svg path {
-    fill: inherit;
+  fill: inherit;
 }
 
 .svg_icon {
@@ -73,6 +73,8 @@ svg path {
   position: absolute;
   left: 0;
   top: 50%;
+  width: 60px;
+  height: 60px;
   margin-top: -30px;
   border-radius: 0 5px 5px 0;
   z-index: 2;
@@ -87,6 +89,8 @@ svg path {
   position: absolute;
   right: 0;
   top: 50%;
+  width: 60px;
+  height: 60px;
   margin-top: -30px;
   border-radius: 5px 0 0 5px;
   z-index: 2;
