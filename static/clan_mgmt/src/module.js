@@ -61,6 +61,8 @@ define(function(require, exports, module) {
           number = 1;
         }else if (type == 5) {
           number = 1;
+        }else if (type == 6) {
+          number = 1;
         }
 
         new BootstrapDialog({
@@ -86,6 +88,7 @@ define(function(require, exports, module) {
                 var imgs = [];
                 var formId = 'newModalForm';
                 if (type > 3) formId = 'memberModalForm';
+                if (type == 6) formId = 'newModalForm';
 
                 $('#'+ formId +' div.img_list_show_' + type).empty().css('text-align', 'center');
                 $.each(reData.result, function(i, url) {
@@ -103,6 +106,8 @@ define(function(require, exports, module) {
                   $('#memberModalForm input[name="photo"]').val(imgs.join(';'));
                 }else if (type == 5) {
                   $('#memberModalForm input[name="avatar"]').val(imgs.join(';'));
+                }else if (type == 6) {
+                  $('#newModalForm input[name="videourl"]').val(imgs.join(';'));
                 }
 
                 dialogRef.close();
@@ -250,6 +255,11 @@ define(function(require, exports, module) {
                 imgs = val.split(';');
                 $.each(imgs, function(i , url) {
                   if (url != "") $('#newModalForm div.img_list_show_3').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                })
+              }else if (key == 'videourl') {
+                imgs = val.split(';');
+                $.each(imgs, function(i , url) {
+                  if (url != "") $('#newModalForm div.img_list_show_6').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 })
               }else if (key == 'cln_grp_id') {
                 selectedVal = val;

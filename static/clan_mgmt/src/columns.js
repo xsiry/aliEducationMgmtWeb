@@ -35,8 +35,21 @@ define([{
     return imgLabel;
   }
 }, {
-  display: '战队视频',
+  display: '战队视频图片',
   name: 'videourl',
+  minWidth: 80,
+  width: '5%',
+  render: function(rowdata, rowindex, value) {
+    var imgLabel = "";
+    var imgs = rowdata.videourl ? rowdata.videourl.split(';') : [];
+    $.each(imgs, function(i, url) {
+      if (url != "" && url != []) imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+    })
+    return imgLabel;
+  }
+}, {
+  display: '点击地址',
+  name: 'clickurl',
   minWidth: 80,
   width: '5%'
 }, {
@@ -81,7 +94,7 @@ define([{
   display: '胜率分析',
   name: 'wnning',
   minWidth: 60,
-  width: '10%'
+  width: '5%'
 }, {
   display: '支持数',
   name: 'slogan',

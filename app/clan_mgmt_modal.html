@@ -3,6 +3,7 @@
   <input type="hidden" name="clan_logo" value="">
   <input type="hidden" name="clan_img" value="">
   <input type="hidden" name="imgurl" value="">
+  <input type="hidden" name="videourl" value="">
 
   <div class="form-group">
     <label class="col-sm-3 control-label">战队名称</label>
@@ -42,10 +43,18 @@
   </div>
   <div class="hr-line-dashed"></div>
   <div class="form-group">
-    <label class="col-sm-3 control-label">战队视频</label>
+    <label class="col-sm-3 control-label">战队视频图片</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" name="videourl">
-      <span class="help-block m-b-none">（请添加以swf结尾的优酷flash分享地址，例：http://xxx/xx/xx/xx.swf）</span>
+      <a class="btn btn-primary upload_new_imgs" data-type=6>添加</a>
+      <span class="help-block m-b-none">（请一次性添加所需图片，最多一张）</span>
+    </div>
+  </div>
+  <div class="form-group img_list_show img_list_show_6">
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">点击跳转地址</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="clickurl">
     </div>
   </div>
   <div class="hr-line-dashed"></div>
