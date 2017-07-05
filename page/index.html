@@ -15,7 +15,6 @@
   <link href="lib/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
   <link href="lib/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media='print' />
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" type="text/css" href="h5_video.css">
 </head>
 <svg display="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <symbol id="play_svg">
@@ -68,7 +67,7 @@
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play_svg"></use>
                 </svg>
               </b>
-              <img src="https://rpic.douyucdn.cn/roomCover/cover_update/2017/06/14/b353ec4393277725ff5dc66d0441cbfa.png">
+              <img src="">
               </span>
           </a>
             <!-- <embed class='flash_src' src='' controls="volumelever" quality='high' width='100%' height='100%' allowScriptAccess='always' allowFullScreen='true' wmode='direct' bgcolor='#000000' flashvars='isAutoPlay=true&loop=true&playmode=2' type='application/x-shockwave-flash'> -->
@@ -139,6 +138,7 @@ $(document).ready(function() {
     success : function(data) {
       if (data.length > 0) {
         // $('.flash_src').prop('src', data[0].videurl);
+        $('.play_flash').prop('href', data[0].clickurl);
         $('.play_flash img').prop('src', '../' + data[0].imgurl)
       }
     }

@@ -483,6 +483,7 @@ a.play_flash:hover .imgbox>b {
   display: inline-block;
   vertical-align: -1px;
   pointer-events: none;
-  fill: currentColor;
+  fill: #FFF;
   width: 80px;
+  height: 80px;
 }
