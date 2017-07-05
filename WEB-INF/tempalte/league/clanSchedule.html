@@ -3,6 +3,7 @@
             <thead>
               <tr>
                 <th class="text-center">比赛时间</th>
+                <th class="text-center">项目类别</th>
                 <th class="text-right">战队</th>
                 <th class="text-center">比分</th>
                 <th class="text-left">战队</th>
@@ -14,7 +15,8 @@
 				for(clan_sch in clan_sch_ls){
 				%>
               <tr>
-                <td class="text-center">${clan_sch.longtimes,dateFormat="MM月dd日 HH:mm"}</td>
+                <td class="text-center">${clan_sch.longtimes,dateFormat="yyyy年MM月dd日 HH:mm"}</td>
+                <td class="text-center">${clan_sch.category}</td>
                 <td class="text-right"><span>${clan_sch.clan_name_a}</span><span><img width="40" height="20" src="../${clan_sch.clan_logo_a}"/></span></td>
                 <td class="text-center">${clan_sch.a_score}-${clan_sch.b_score}</td>
                 <td class="text-left"><span><img width="40" height="20" src="../${clan_sch.clan_logo_b}"/></span><span>${clan_sch.clan_name_b}</span></td>

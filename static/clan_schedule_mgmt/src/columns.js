@@ -9,6 +9,11 @@ define([{
   minWidth: 60,
   width: '10%'
 }, {
+  display: '项目类别',
+  name: 'category',
+  minWidth: 60,
+  width: '10%'
+}, {
   display: '战队A',
   name: 'clan_name_a',
   minWidth: 140,
@@ -17,7 +22,7 @@ define([{
   display: '战队A比分',
   name: 'a_score',
   minWidth: 60,
-  width: '10%'
+  width: '5%'
 }, {
   display: '战队B',
   name: 'clan_name_b',
@@ -27,7 +32,7 @@ define([{
   display: '战队B比分',
   name: 'b_score',
   minWidth: 60,
-  width: '10%'
+  width: '5%'
 }, {
   display: '直播地址',
   name: 'live_url',
