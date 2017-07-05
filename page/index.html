@@ -56,10 +56,11 @@
           <div class="deal_max">
             <!-- 限量<span></span>份 -->
             <!-- <button></button> -->
+            <p class="prompt"></p>
             <a class="buy_btn" href="javascript:void(0);" target="_blank">马上抢</a>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="padding: 10px 10px 10px 0;">
           <a class="play_flash" href="" target="_blank">
             <span class="imgbox">
               <b>
@@ -120,6 +121,7 @@ $(document).ready(function() {
         $('.deal_wrapper img').prop('src', '../' + data.imgs);
         // $('.deal_max span').text(data.number);
         // $('.deal_max button').text(parseInt(data.number) > 0 ? '马上抢' : '已抢光');
+        $('.prompt').text(data.prompt);
         $('.deal_max .buy_btn').prop('href', data.clickurl);
       }
     }

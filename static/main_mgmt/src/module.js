@@ -53,6 +53,7 @@ define(function(require, exports, module) {
                 $('#couponsModalForm .mc_clickurl').val(data.clickurl);
                 $('#couponsModalForm .mc_price').val(data.price);
                 $('#couponsModalForm .mc_imgs').val(data.imgs);
+                $('#couponsModalForm .mc_prompt').val(data.prompt);
                 $.each(data.imgs.split(';'), function(i , url) {
                   if (url != "") $('#couponsModalForm .img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 });

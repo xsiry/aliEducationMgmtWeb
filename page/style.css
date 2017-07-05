@@ -194,7 +194,7 @@
   }
 
   .league_wrapper {
-    padding: 10px;
+    padding: 0 25px 0 15px;
     width: 95%;
     height: 100%;
     overflow: hidden;
@@ -469,7 +469,7 @@
 .play_flash .imgbox>img {
   display: block;
   width: 776px;
-  height: 450px;
+  height: 430px;
 }
 
 a.play_flash:hover .imgbox>b {
