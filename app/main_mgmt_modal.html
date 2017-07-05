@@ -1,5 +1,6 @@
 <form class="form-horizontal" id="newModalForm" role="form">
   <input type="hidden" name="hrv_id" value="">
+  <input type="hidden" name="imgurl" value="">
   <div class="form-group">
     <label class="col-sm-3 control-label">标题</label>
     <div class="col-sm-9">
@@ -8,11 +9,19 @@
   </div>
   <div class="hr-line-dashed"></div>
   <div class="form-group">
-    <label class="col-sm-3 control-label">视频地址</label>
+    <label class="col-sm-3 control-label">视频图片</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" name="videurl">
-      <span class="help-block m-b-none">（请添加以swf结尾的优酷flash分享地址，例：http://xxx/xx/xx/xx.swf）</span>
+      <a class="btn btn-primary upload_coupons_imgs" data-type=1>添加</a>
+      <span class="help-block m-b-none">（请一次性添加所需图片，最多一张，应用于首页视频推广位）</span>
     </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">点击跳转地址</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="clickurl">
+    </div>
+  </div>
+  <div class="form-group img_list_show">
   </div>
   <!-- <div class="hr-line-dashed"></div>
   <div class="form-group">

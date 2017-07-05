@@ -50,7 +50,7 @@ define(function(require, exports, module) {
               if (data) {
                 $('#couponsModalForm .mc_welcome').val(data.welcome);
                 $('#couponsModalForm .mc_title').val(data.title);
-                $('#couponsModalForm .mc_number').val(data.number);
+                $('#couponsModalForm .mc_clickurl').val(data.clickurl);
                 $('#couponsModalForm .mc_price').val(data.price);
                 $('#couponsModalForm .mc_imgs').val(data.imgs);
                 $.each(data.imgs.split(';'), function(i , url) {
@@ -68,6 +68,15 @@ define(function(require, exports, module) {
       })
 
       $('body').on("click", '.upload_coupons_imgs', function(e) {
+        var type = $(e.currentTarget).data('type');
+        var modal = 'couponsModal';
+        var form = 'couponsModalForm';
+        var name = 'imgs';
+        if (type == 1) {
+          modal = 'newModal';
+          form = 'newModalForm';
+          name = 'imgurl';
+        }
         new BootstrapDialog({
           title: '文件上传',
           type: 'upload_img',
@@ -82,17 +91,17 @@ define(function(require, exports, module) {
           onshown: function(dialogRef) {
             if($('.modal-backdrop').length > 1) {$('.modal-backdrop').last().remove()};
             if($('.upload_img').length > 1) {$('.upload_img').last().remove()};
-            $('#couponsModal').hide();
+            $('#'+modal).hide();
             $('#x_file').on('filebatchuploadsuccess', function(event, data, previewId, index) {
-              var reData = data.response;
+                reData = data.response;
               if (reData.success) {
                 var imgs = [];
-                $('#couponsModalForm div.img_list_show').empty();
+                $('#' + form + ' div.img_list_show').empty();
                 $.each(reData.result, function(i, url) {
                   imgs.push(url);
-                  $('#couponsModalForm div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                  $('#' + form + ' div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 })
-                $('#couponsModalForm input[name="imgs"]').val(imgs.join(';'));
+                $('#' + form + ' input[name="'+ name +'"]').val(imgs.join(';'));
                 dialogRef.close();
               }
             })
@@ -101,7 +110,7 @@ define(function(require, exports, module) {
             })
           },
           onhidden: function(dialogRef){
-            $('#couponsModal').show();
+            $('#'+modal).show();
           }
         }).open();
       })

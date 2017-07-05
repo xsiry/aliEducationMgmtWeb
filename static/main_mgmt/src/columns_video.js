@@ -2,17 +2,30 @@ define([{
   display: '标题',
   name: 'hvr_name',
   minWidth: 100,
-  width: '20%'
+  width: '25%'
+// }, {
+//   display: '视频跳转地址',
+//   name: 'videurl',
+//   minWidth: 120,
+//   width: '20%'
 }, {
-  display: '视频地址',
-  name: 'videurl',
-  minWidth: 120,
-  width: '20%'
-}, {
-  display: '点击地址',
+  display: '点击跳转地址',
   name: 'clickurl',
   minWidth: 60,
-  width: '20%'
+  width: '25%'
+}, {
+  display: '视频图片',
+  name: 'imgurl',
+  minWidth: 60,
+  width: '10%',
+  render: function(rowdata, rowindex, value) {
+    var imgLabel = "";
+    var imgs = rowdata.imgurl ? rowdata.imgurl.split(';') : [];
+    $.each(imgs, function(i, url) {
+      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+    })
+    return imgLabel;
+  }
 }, {
   display: '状态',
   name: 'status',
