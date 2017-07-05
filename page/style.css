@@ -126,16 +126,14 @@
     bottom: 0px;
     right: 0px;
     cursor: pointer;
-    font-size: 28px;
     text-align: center;
-    color: #fff;
-    background-color: #fc1703;
-    border: 1px solid #dd191d;
-    border-radius: 8px;
     display: block;
-    width: 110px;
-    height: 60px;
-    line-height: 58px;
+    width: 140px;
+    height: 80px;
+  }
+  .deal_price> img {
+    width: 100%;
+    height: 100%;
   }
 
   .deal_price .text {

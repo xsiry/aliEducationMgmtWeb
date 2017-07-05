@@ -52,10 +52,14 @@ define(function(require, exports, module) {
                 $('#couponsModalForm .mc_title').val(data.title);
                 $('#couponsModalForm .mc_clickurl').val(data.clickurl);
                 $('#couponsModalForm .mc_price').val(data.price);
+                $('#couponsModalForm .mc_priceimg').val(data.priceimg);
                 $('#couponsModalForm .mc_imgs').val(data.imgs);
                 $('#couponsModalForm .mc_prompt').val(data.prompt);
                 $.each(data.imgs.split(';'), function(i , url) {
                   if (url != "") $('#couponsModalForm .img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                });
+                $.each(data.priceimg.split(';'), function(i , url) {
+                  if (url != "") $('#couponsModalForm .img_list_show_price').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 });
               }
             },
@@ -77,6 +81,8 @@ define(function(require, exports, module) {
           modal = 'newModal';
           form = 'newModalForm';
           name = 'imgurl';
+        }else if (type == 3) {
+          name = 'priceimg';
         }
         new BootstrapDialog({
           title: '文件上传',
@@ -97,10 +103,10 @@ define(function(require, exports, module) {
                 reData = data.response;
               if (reData.success) {
                 var imgs = [];
-                $('#' + form + ' div.img_list_show').empty();
+                $('#' + form + ' div.img_list_show' + (type == 3 ? '_price' : '')).empty();
                 $.each(reData.result, function(i, url) {
                   imgs.push(url);
-                  $('#' + form + ' div.img_list_show').append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
+                  $('#' + form + ' div.img_list_show' + (type == 3 ? '_price' : '')).append('<img style="margin-right:10px;width: 100px;height: 100px;" src="' + url + '">');
                 })
                 $('#' + form + ' input[name="'+ name +'"]').val(imgs.join(';'));
                 dialogRef.close();
