@@ -387,11 +387,12 @@
   }
 
   #clan_schedule_lsitid {
-    background-color: #2e2e4b;
+    /*background-color: #、;*/
+    font-size: 18px;
   }
 
   table.table-hover {
-    color: #a2adde;
+    /*color: #FFF;*/
   }
 
   table.table-hover>tbody>tr>td,
@@ -404,7 +405,12 @@
   }
 
   table.table-hover thead {
-    background-color: #464670;
+    background-color: #959595;
+  }
+
+  table.table-hover thead>tr
+  {
+    height: 45px;
   }
 
   table.table-hover thead>tr>th {
@@ -432,7 +438,7 @@
   }
 
   .table-hover>tbody>tr:hover {
-    background-color: #2e2e4b;
+    background-color: transparent;
   }
 
 

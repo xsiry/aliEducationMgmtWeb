@@ -156,7 +156,7 @@ function provinceTabNetLstClick(proid) {
 function clanscheduleClick(page, proid) {
   $sHelper.AjaxPost("../tempalte/league/clanSchedule", {
     "page": page,
-    "pagesize": 9,
+    "pagesize": 8,
     "dtpr_id": proid
   }, function(msg) {
     $(".tab_prov").css('text-decoration', 'none').css('color', '#555');

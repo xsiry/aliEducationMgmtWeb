@@ -12,15 +12,15 @@
             </thead>
             <tbody>
             	<%
-				for(clan_sch in clan_sch_ls){
+        for(var i=0;i<clan_sch_ls.~size;i++){
 				%>
-              <tr>
-                <td class="text-center">${clan_sch.longtimes,dateFormat="yyyy年MM月dd日 HH:mm"}</td>
-                <td class="text-center">${clan_sch.category}</td>
-                <td class="text-right"><span>${clan_sch.clan_name_a}</span><span><img width="40" height="20" src="../${clan_sch.clan_logo_a}"/></span></td>
-                <td class="text-center">${clan_sch.a_score}-${clan_sch.b_score}</td>
-                <td class="text-left"><span><img width="40" height="20" src="../${clan_sch.clan_logo_b}"/></span><span>${clan_sch.clan_name_b}</span></td>
-                <td class="text-center"><a href="${clan_sch.live_url}" target="_blank">观看直播</a></td>
+              <tr ${i%2 == 0 ? 'style="background-color: #dcdcdc;"' : ''} >
+                <td class="text-center">${clan_sch_ls[i].longtimes,dateFormat="yyyy年MM月dd日 HH:mm"}</td>
+                <td class="text-center">${clan_sch_ls[i].category}</td>
+                <td class="text-right"><span>${clan_sch_ls[i].clan_name_a}</span><span><img width="40" height="20" src="../${clan_sch_ls[i].clan_logo_a}"/></span></td>
+                <td class="text-center">${clan_sch_ls[i].a_score}-${clan_sch_ls[i].b_score}</td>
+                <td class="text-left"><span><img width="40" height="20" src="../${clan_sch_ls[i].clan_logo_b}"/></span><span>${clan_sch_ls[i].clan_name_b}</span></td>
+                <td class="text-center"><a href="${clan_sch_ls[i].live_url}" target="_blank">观看直播</a></td>
               </tr>
                <%
 				}
