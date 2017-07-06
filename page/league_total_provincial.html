@@ -70,7 +70,7 @@
           </div>
         </div>
       </div>
-      <div class="row row_block venues_province" style="margin-top: 50px;">
+      <div class="row row_block venues_province">
         <ul id="province_netbar_lstid">
         </ul>
       </div>
@@ -78,7 +78,9 @@
       </div>
     </div>
   </section>
-  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1262564689'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1262564689%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  <span style="display: none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1262564689'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1262564689%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </span>
 </body>
 <!-- JQuery core JS -->
 <script src="lib/jquery/jquery-3.2.1.min.js"></script>
@@ -156,7 +158,7 @@ function provinceTabNetLstClick(proid) {
 function clanscheduleClick(page, proid) {
   $sHelper.AjaxPost("../tempalte/league/clanSchedule", {
     "page": page,
-    "pagesize": 8,
+    "pagesize": 7,
     "dtpr_id": proid
   }, function(msg) {
     $(".tab_prov").css('text-decoration', 'none').css('color', '#555');
