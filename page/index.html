@@ -76,9 +76,9 @@
       </div>
       <div class="row row_block league">
         <div class="col-md-6 league_title">
-          <p>E<sup>3</sup>联赛</p>
+          <p></p>
           <div class="league_wrapper">
-            <a href="league.html">
+            <a href="javascript:void(0);">
               <img src="" width='100%' height='400'>
             </a>
           </div>
@@ -158,6 +158,8 @@ $(document).ready(function() {
     },
     success : function(data) {
       if (data) {
+        $('.league_title p').text(data[0].title);
+        $('.league_wrapper a').prop('href', data[0].click);
         $('.league_wrapper img').prop('src', '../' + data[0].imgurl);
       }
     }

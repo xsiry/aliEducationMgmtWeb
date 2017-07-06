@@ -274,6 +274,8 @@ define(function(require, exports, module) {
                 $.each(val.split(';'), function(i, o) {
                   $('input[name="title_'+ (i+1) +'"]').val(o);
                 })
+              }else if (key == 'title' && type == 2) {
+                $('input[name="img_main_title"').val(val);
               }
             })
             $.each(imgs, function(i , url) {
@@ -443,6 +445,9 @@ define(function(require, exports, module) {
           })
           formVals['title'] = titleArr.join(';');
           formVals['click'] = urlArr.join(';');
+          imgurl = formVals['imgs'];
+        } else if(formVals['type'] == 2) {
+          formVals['title'] = formVals['img_main_title'];
           imgurl = formVals['imgs'];
         } else {
           imgurl = formVals['imgs'];

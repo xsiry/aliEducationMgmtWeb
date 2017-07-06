@@ -1,4 +1,16 @@
 define([{
+  display: '标题',
+  name: 'title',
+  minWidth: 140,
+  width: '10%',
+  render: function(rowdata, rowindex, value) {
+    var text = '无';
+    if (rowdata.type == 2 || rowdata.type == 0) {
+      text = value;
+    }
+    return text;
+  }
+}, {
   display: '类型',
   name: 'type',
   minWidth: 120,
