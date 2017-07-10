@@ -1,5 +1,9 @@
 /*赛事图片轮播*/
 
+.league {
+  padding: 10px;
+}
+
 .league_images {
   position: relative;
   overflow: hidden;
