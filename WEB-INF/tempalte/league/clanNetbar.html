@@ -4,10 +4,13 @@
           <thead>
             <tr>
               <th class="text-center">电竞馆名称</th>
+              <th class="text-center">图片</th>
+              <th class="text-center">介绍</th>
               <th class="text-center">城市</th>
               <th class="text-center">区域</th>
               <th class="text-center">详细地址</th>
               <th class="text-center">楼层</th>
+              <th class="text-center">电话</th>
             </tr>
           </thead>
           <tbody>
@@ -16,10 +19,13 @@
 				%>
             <tr class="text-center">
               <td>${clan_nb.wangba}</td>
+              <td><img src='../${clan_nb.imgs}' onerror="this.style.display='none'" width="40px"></td>
+              <td>${clan_nb.intro}</td>
               <td>${clan_nb.city}</td>
               <td>${clan_nb.address}</td>
               <td>${clan_nb.area}</td>
               <td>${clan_nb.floor}</td>
+              <td>${clan_nb.tel}</td>
             </tr>
                <%
 				}
