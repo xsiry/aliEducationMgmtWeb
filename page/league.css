@@ -313,6 +313,10 @@ caption {
   margin-left: 20px;
 }
 
+#clan_schedule_lsitid_prov table {
+    font-size: 18px;
+}
+
 @-webkit-keyframes img_act {
   0% {
     -webkit-opacity: 0;

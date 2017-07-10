@@ -433,7 +433,7 @@ function provinceLstClick(proid) {
 function clanscheduleProvClick(page) {
   $sHelper.AjaxPost("../tempalte/league/clanSchedule", {
     "page": page,
-    "pagesize": 8,
+    "pagesize": 7,
     "dtpr_id": _proid
   }, function(msg) {
     $(".tab_prov").css('text-decoration', 'none').css('color', '#555');
@@ -471,7 +471,7 @@ function choseImg(num, bool) {
 }
 
 function clanscheduleClick(page){
-  $sHelper.AjaxPost("../tempalte/league/clanSchedule",{"page":page, "pagesize": 8,"dtpr_id":""},function(msg){
+  $sHelper.AjaxPost("../tempalte/league/clanSchedule",{"page":page, "pagesize": 7,"dtpr_id":""},function(msg){
     $("#clan_schedule_lsitid").empty();
     $("#clan_schedule_lsitid").append(msg);
   });
