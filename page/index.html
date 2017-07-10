@@ -117,6 +117,9 @@ $(document).ready(function() {
         $('.deal_title').text(data.title);
         // $('.deal_title span').text(data.price);
         $('.deal_wrapper>img').prop('src', '../' + data.imgs);
+        if (!data.title) {
+          $('.deal_wrapper').css('height', '440px').css('margin-top', '0');
+        }
         // $('.deal_price img').prop('src', '../' + data.priceimg);
         // $('.deal_max span').text(data.number);
         // $('.deal_max button').text(parseInt(data.number) > 0 ? '马上抢' : '已抢光');
@@ -160,6 +163,10 @@ $(document).ready(function() {
         $('.league_title p').text(data[0].title);
         $('.league_wrapper a').prop('href', data[0].click);
         $('.league_wrapper img').prop('src', '../' + data[0].imgurl);
+        if (!data[0].title) {
+          $('.league_wrapper').css('height', '450px').css('margin-top', '0');
+          $('.league_wrapper img').css('height', '450px');
+        }
       }
     }
   })
