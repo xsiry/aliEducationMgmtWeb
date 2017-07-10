@@ -1,13 +1,7 @@
-	<!-- <li><a href="league_total_provincial.html" class="tab_prov tab_t_-1"><span>总赛程</span></a></li> -->
-<%
-for(pro in province_ls) {
-%>
-	<% if (pro.dtpr_id == -1) {%>
-	<li><a href="league_total_provincial.html" class="tab_prov tab_t_${pro.dtpr_id}"><span>${pro.province}</span></a></li>
-	<% }else {%>
-	<li><a href="league_provincial.html?proid=${pro.dtpr_id}" class="tab_prov tab_t_${pro.dtpr_id}"><span>${pro.province}</span></a></li>
-	<% }%>
-<%
-}
-%>
-<li><a href="league_corps.html">参赛队伍</a></li>
+<ul>
+  <%for(var i=0;i<province_ls.~size;i++){%>
+  	<% if (province_ls[i].dtpr_id != -1) {%>
+    <li><a href="javascript:void(0);" class="tab_prov tab_t_${province_ls[i].dtpr_id}" data-dtprid=${province_ls[i].dtpr_id}><span>${province_ls[i].province}</span></a></li>
+    <%}%>
+  <%}%>
+</ul>
