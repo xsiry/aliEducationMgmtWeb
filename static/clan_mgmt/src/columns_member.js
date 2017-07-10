@@ -17,7 +17,7 @@ define([{
     var imgLabel = "";
     var imgs = rowdata.photo ? rowdata.photo.split(';') : [];
     $.each(imgs, function(i, url) {
-      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 28px;" src="' + url + '">';
     })
     return imgLabel;
   }
@@ -30,7 +30,7 @@ define([{
     var imgLabel = "";
     var imgs = rowdata.avatar ? rowdata.avatar.split(';') : [];
     $.each(imgs, function(i, url) {
-      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 28px;" src="' + url + '">';
     })
     return imgLabel;
   }

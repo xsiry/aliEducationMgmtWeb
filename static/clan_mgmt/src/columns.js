@@ -17,7 +17,7 @@ define([{
     var imgLabel = "";
     var imgs = rowdata.clan_logo ? rowdata.clan_logo.split(';') : [];
     $.each(imgs, function(i, url) {
-      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 28px;" src="' + url + '">';
     })
     return imgLabel;
   }
@@ -30,7 +30,7 @@ define([{
     var imgLabel = "";
     var imgs = rowdata.clan_img ? rowdata.clan_img.split(';') : [];
     $.each(imgs, function(i, url) {
-      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 28px;" src="' + url + '">';
     })
     return imgLabel;
   }
@@ -43,7 +43,7 @@ define([{
     var imgLabel = "";
     var imgs = rowdata.videourl ? rowdata.videourl.split(';') : [];
     $.each(imgs, function(i, url) {
-      if (url != "" && url != []) imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+      if (url != "" && url != []) imgLabel += '<img style="margin-right:10px;width: 50px;height: 28px;" src="' + url + '">';
     })
     return imgLabel;
   }
@@ -61,7 +61,7 @@ define([{
     var imgLabel = "";
     var imgs = rowdata.imgurl ? rowdata.imgurl.split(';') : [];
     $.each(imgs, function(i, url) {
-      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+      if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 28px;" src="' + url + '">';
     })
     return imgLabel;
   }
@@ -97,7 +97,7 @@ define([{
   width: '5%'
 }, {
   display: '支持数',
-  name: 'slogan',
+  name: 'standby',
   minWidth: 30,
   width: '5%'
 }, {

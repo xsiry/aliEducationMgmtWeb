@@ -38,7 +38,7 @@ define([{
       var imgLabel = "";
       var imgs = rowdata.imgurl ? rowdata.imgurl.split(';') : [];
       $.each(imgs, function(i, url) {
-        if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 50px;" src="' + url + '">';
+        if (url != "") imgLabel += '<img style="margin-right:10px;width: 50px;height: 28px;" src="' + url + '">';
       })
       return imgLabel;
     }else {
