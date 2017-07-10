@@ -2,7 +2,7 @@ define([{
   display: '比赛时间',
   name: 'times',
   minWidth: 100,
-  width: '15%'
+  width: '20%'
 }, {
   display: '比赛省会',
   name: 'province',
@@ -38,15 +38,17 @@ define([{
   name: 'live_url',
   minWidth: 60,
   width: '15%'
-}, {
-  display: '是否统计',
-  name: 'status',
-  minWidth: 60,
-  width: '5%',
-  render: function(rowdata, rowindex, value) {
-    return value == 0 ? '否' : '是';
-  }
-}, {
+},
+// {
+//   display: '是否统计',
+//   name: 'status',
+//   minWidth: 60,
+//   width: '5%',
+//   render: function(rowdata, rowindex, value) {
+//     return value == 0 ? '否' : '是';
+//   }
+// },
+{
   display: '操作',
   isSort: false,
   minWidth: 120,
