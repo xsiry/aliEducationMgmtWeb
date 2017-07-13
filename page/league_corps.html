@@ -60,10 +60,10 @@ $(document).ready(function() {
 })
 
 function clancorpsClick(page){
-   $sHelper.AjaxPost("../tempalte/league/clanName",{"page":page, "pagesize":9},function(msg){
+   $sHelper.AjaxPost("../tempalte/league/clanName",{"page":page, "pagesize": 12},function(msg){
            $("#clan_name_lsitid").empty();
            $("#clan_name_lsitid").append(msg);
-    }) ;
+    });
 }
 
 </script>

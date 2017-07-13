@@ -7,6 +7,7 @@ define([{
   display: '比赛省会',
   name: 'province',
   minWidth: 60,
+  isSort: false,
   width: '10%'
 }, {
   display: '项目类别',
@@ -17,20 +18,24 @@ define([{
   display: '战队A',
   name: 'clan_name_a',
   minWidth: 140,
+  isSort: false,
   width: '10%'
 }, {
   display: '战队A比分',
   name: 'a_score',
   minWidth: 60,
+  isSort: false,
   width: '5%'
 }, {
   display: '战队B',
   name: 'clan_name_b',
+  isSort: false,
   minWidth: 140,
   width: '10%'
 }, {
   display: '战队B比分',
   name: 'b_score',
+  isSort: false,
   minWidth: 60,
   width: '5%'
 }, {

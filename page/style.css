@@ -363,7 +363,9 @@
   }
 
   .fc-event:hover {
-    width: 120px;
+    background-color: darkred;
+    width: 160px;
+    z-index: 100;
     transform: scale(1.5);
     -ms-transform: scale(1.5);
     /* IE 9 */

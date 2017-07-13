@@ -7,6 +7,7 @@ define([{
   display: '所属分组',
   name: 'groupname',
   minWidth: 60,
+  isSort: false,
   width: '5%'
 }, {
   display: '战队logo',

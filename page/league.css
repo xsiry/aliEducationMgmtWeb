@@ -317,6 +317,17 @@ caption {
     font-size: 18px;
 }
 
+.img_netbar:hover {
+	position: relative;
+    display: block;
+    left: 240px;
+	transform: scale(7.5);
+   -ms-transform: scale(7.5);
+   /* IE 9 */
+   -webkit-transform: scale(7.5);
+   /* Safari and Chrome */
+}
+
 @-webkit-keyframes img_act {
   0% {
     -webkit-opacity: 0;
