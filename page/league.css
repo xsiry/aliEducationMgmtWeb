@@ -227,7 +227,7 @@ caption {
   /*background-color: #2e2e4b;*/
 }
 
-.prov_top>div>div {
+.prov_top>div>div.group_menus {
   height: 45px;
   /*background-color: #2e2e4b;*/
   padding: 5px;
@@ -235,6 +235,25 @@ caption {
   display: -moz-box;
   display: -webkit-box;
   display: box;
+}
+
+.prov_top .group_thead {
+  background-color: #959595;
+  height: 45px;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 45px;
+  text-align: center;
+  margin: 5px 10px;
+}
+
+.prov_top .group_tbody{
+  font-size: 18px;
+  color: #525e71;
+  text-align: center;
+  line-height: 24px;
+  margin: 10px;
 }
 
 .prov_top>div:last-child {

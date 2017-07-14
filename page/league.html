@@ -248,7 +248,7 @@ $(document).ready(function() {
     }
   })
 
-  $('#pro_gourp_cln_ls').on('click', 'a', function(e) {
+  $('#pro_gourp_cln_ls').on('click', 'a.group_a', function(e) {
     var grpid = $(e.currentTarget).data("grpid");
     if(grpid < 3) {
       $('a.grpidAA').removeClass('actived');
@@ -419,7 +419,7 @@ function provinceLstClick(proid) {
             }else {
               url = 'new_detail.html?id='+ n.news_id;
             }
-            newTitle += '<li><a href="'+ url +'" target="_blank">'+ n.title.substring(0, 20) + (n.title.length > 19 ? '...' : '') +'</a></li>';
+            newTitle += '<li><a href="'+ url +'" target="_blank">'+ n.title.substring(0, 19) + (n.title.length > 18 ? '...' : '') +'</a></li>';
           });
           $('ul.news_list').append(newTitle);
         }
