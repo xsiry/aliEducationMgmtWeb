@@ -225,6 +225,8 @@ caption {
   box-flex: 1;
   font-size: 18px;
   /*background-color: #2e2e4b;*/
+  width: 30%\0;/* IE8 */
+  float: left\0;/* IE8 */
 }
 
 .prov_top>div>div.group_menus {
@@ -311,6 +313,8 @@ caption {
   line-height: 40px;
   margin-left: 5px;
   margin-right: 5px;
+  float: left\0;/* IE8 */
+  width: 47%\0;/* IE8 */
 }
 
 .prov_top>div>div>a:hover {
@@ -347,78 +351,116 @@ caption {
    /* Safari and Chrome */
 }
 
+
+.prov_top>div.x-news-block {
+  width: 280px;
+  width: 40%\0;/* IE8 */
+  height: 100%\0;/* IE8 */
+  background-color: #FFF;
+}
+
+.prov_top>div.x-news-block .x-news-title {
+  border-bottom: 4px solid #d9d9d9;
+  height: 50px;
+  background-color: #FFF;
+  padding: 0;
+  color: #313131;
+  margin-left: 5px;
+  font-size: 25px;
+  line-height: 40px;
+}
+
+.prov_top>div.x-news-block>ul {
+  list-style-type: disc;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.prov_top>div.x-news-block>ul>li {
+  line-height: 38px;
+  font-size: 18px;
+}
+
+.prov_top>div.x-news-block>ul>li a {
+  display: block;
+  color: #8d9499;
+}
+
+.prov_top>div.x-news-block>ul>li a:hover {
+  text-decoration: underline;
+}
+
+.prov_top>div.x-news-block>div>span {
+  border-bottom: 4px solid #aa1707;
+  padding: 11px 10px;
+}
+
 @-webkit-keyframes img_act {
   0% {
+    opacity: 0;
     -webkit-opacity: 0;
-    -webkit-filter: saturate(1) contrast(1) brightness(1);
   }
   50% {
+    opacity: 0.5;
     -webkit-opacity: 0.5;
-    -webkit-filter: saturate(1.1) contrast(1.1) brightness(1.1);
   }
   100% {
+    opacity: 1;
     -webkit-opacity: 1;
-    -webkit-filter: saturate(1.2) contrast(1.2) brightness(1.2);
   }
 }
 
 @-moz-keyframes img_act {
   0% {
+    opacity: 0;
     -moz-opacity: 0;
-    -moz-filter: saturate(1) contrast(1) brightness(1);
   }
   50% {
+    opacity: 0.5;
     -moz-opacity: 0.5;
-    -moz-filter: saturate(1.1) contrast(1.1) brightness(1.1);
   }
   100% {
+    opacity: 1;
     -moz-opacity: 1;
-    -moz-filter: saturate(1.2) contrast(1.2) brightness(1.2);
   }
 }
 
 @-o-keyframes img_act {
   0% {
+    opacity: 0;
     -o-opacity: 0;
-    -o-filter: saturate(1) contrast(1) brightness(1);
   }
   50% {
+    opacity: 0.5;
     -o-opacity: 0.5;
-    -o-filter: saturate(1.1) contrast(1.1) brightness(1.1);
   }
   100% {
+    opacity: 1;
     -o-opacity: 1;
-    -o-filter: saturate(1.2) contrast(1.2) brightness(1.2);
   }
 }
 
 @-ms-keyframes img_act {
   0% {
     -ms-opacity: 0;
-    -ms-filter: saturate(1) contrast(1) brightness(1);
   }
   50% {
     -ms-opacity: 0.5;
-    -ms-filter: saturate(1.1) contrast(1.1) brightness(1.1);
   }
   100% {
     -ms-opacity: 1;
-    -ms-filter: saturate(1.2) contrast(1.2) brightness(1.2);
   }
 }
 
 @keyframes img_act {
   0% {
     opacity: 0;
-    filter: saturate(1) contrast(1) brightness(1);
   }
   50% {
     opacity: 0.5;
-    filter: saturate(1.1) contrast(1.1) brightness(1.1);
   }
   100% {
     opacity: 1;
-    filter: saturate(1.2) contrast(1.2) brightness(1.2);
   }
 }
 

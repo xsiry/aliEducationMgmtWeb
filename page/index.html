@@ -29,9 +29,9 @@
       <nav class="x-navbar">
         <div class="x-menus">
           <ul>
-            <li class="active"><a href="index.html">专区首页</a></li>
-            <li><a href="league.html">E<sup>3</sup>联赛</a></li>
-            <li><a href="beauty_live.html">美女直播</a></li>
+            <li class="active"><a href="index.html">青铜电竞</a></li>
+            <li><a href="league.html">赛事活动</a></li>
+            <li><a href="beauty_live.html">热辣主播</a></li>
             <!-- <li><a href="beauty_live.html">影音特惠</a></li> -->
           </ul>
         </div>
@@ -93,13 +93,50 @@
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1262564689'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1262564689%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
   </span>
 </body>
+  <!--[if !IE]><!-->
+  <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+  <!--<![endif]-->
+  <!--[if lt IE 9]>
+  <script type='text/javascript' src='js/ie8/ie8-eventlistener.js'></script>
+  <script src="./lib/ie8/html5.min.js"></script>
+  <script src="./lib/ie8/selectivizr-min.js"></script>
+  <script src="./lib/ie8/respond.min.js"></script>
+  <script src="./lib/ie8/css3-mediaqueries.min.js"></script>
+  <script src="./lib/ie8/es5-shim.min.js"></script>
+  <script src="./lib/ie8/es5-sham.min.js"></script>
+  <script src="./lib/ie8/json3.min.js"></script>
+  <script src="./lib/ie8/jquery.min.js"></script>
+  <![endif]-->
+  <!--[if gte IE 8]>
+  <script type="text/javascript">
+    (function() {
+      var method;
+      var noop = function() {};
+      var methods = [
+        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error', 'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'
+      ];
+      var length = methods.length;
+      var console = (window.console = window.console || {});
+      while (length--) {
+        method = methods[length];
+        // Only stub undefined methods.
+        if (!console[method]) {
+          console[method] = noop;
+        }
+      }
+    }());
+  </script>
+  <script type="text/javascript" src="js/jquery/jquery-3.2.1.min.js"></script>
+  <![endif]-->
+  <!--[if IE 8]>
+<script type='text/javascript' src='js/ie8/excanvas.js'></script>
+<link rel="stylesheet" href="js/ie8/css/iefix.css" type="text/css" media="screen" />
+<![endif]-->
 <script type="text/javascript" src="lib/fullcalendar/moment.min.js"></script>
-<!-- JQuery core JS -->
-<script src="lib/jquery/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap core JS -->
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <!-- Fullcalendar core JS -->
-<script src="lib/fullcalendar/fullcalendar.min.js"></script>
+<script src="lib/fullcalendar/fullcalendar.js"></script>
 <script src="lib/fullcalendar/locale/zh-cn.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -187,7 +224,7 @@ $(document).ready(function() {
           var time = o.times.split(' ')[1].substring(0, 5);
           calendarData.push({
             title: o.clan_name_a + ' VS ' + o.clan_name_b + ' ' + time,
-            start: date,
+            start: '2012-07-03T00:00:00',//date,
             url: o.live_url
           });
         })
