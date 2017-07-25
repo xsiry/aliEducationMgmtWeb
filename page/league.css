@@ -225,8 +225,8 @@ caption {
   box-flex: 1;
   font-size: 18px;
   /*background-color: #2e2e4b;*/
-  width: 30%\9;/* IE8 */
-  float: left\9;/* IE8 */
+  width: 30%\0;/* IE8 */
+  float: left\0;/* IE8 */
 }
 
 .prov_top>div>div.group_menus {
@@ -313,8 +313,8 @@ caption {
   line-height: 40px;
   margin-left: 5px;
   margin-right: 5px;
-  float: left\9;/* IE8 */
-  width: 47%\9;/* IE8 */
+  float: left\0;/* IE8 */
+  width: 47%\0;/* IE8 */
 }
 
 .prov_top>div>div>a:hover {
@@ -354,8 +354,8 @@ caption {
 
 .prov_top>div.x-news-block {
   width: 280px;
-  width: 40%\9;/* IE8 */
-  height: 100%\9;/* IE8 */
+  width: 40%\0;/* IE8 */
+  height: 100%\0;/* IE8 */
   background-color: #FFF;
 }
 
