@@ -25,7 +25,9 @@
   .left_conten {
     width: 200px;
     border-right: 1px solid #d8d8d8;
-    height: 100%\0; /* IE8 */
+    height: 100%\0;/* IE8 */
+    z-index: 100\0;/* IE8 */
+    position: relative\0;/* IE8 */
   }
 
   .x-menus>ul {
@@ -72,11 +74,11 @@
     -webkit-box-flex: 1;
     box-flex: 1;
     overflow-y: auto;
-    position: absolute\0; /* IE8 */
-    top: 0\0; /* IE8 */
-    right: 0\0; /* IE8 */
-    width: 100%\0; /* IE8 */
-    padding-left: 220px\0 !important; /* IE8 */
+    position: absolute\0;/* IE8 */
+    top: 0\0;/* IE8 */
+    right: 0\0;/* IE8 */
+    width: 100%\0;/* IE8 */
+    padding-left: 220px\0 !important;/* IE8 */
     /*border: 1px solid #dddddd;*/
   }
 
@@ -316,7 +318,7 @@
     background-color: #fc1703;
     border: 1px solid #dd191d;
   }
-  
+
   .fc-time {
   	display:none;
   }

@@ -94,20 +94,19 @@
   </span>
 </body>
   <!--[if !IE]><!-->
-  <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="lib/jquery/jquery-3.2.1.min.js"></script>
   <!--<![endif]-->
   <!--[if lt IE 9]>
-  <script type='text/javascript' src='js/ie8/ie8-eventlistener.js'></script>
-  <script src="./lib/ie8/html5.min.js"></script>
-  <script src="./lib/ie8/selectivizr-min.js"></script>
-  <script src="./lib/ie8/respond.min.js"></script>
-  <script src="./lib/ie8/css3-mediaqueries.min.js"></script>
-  <script src="./lib/ie8/es5-shim.min.js"></script>
-  <script src="./lib/ie8/es5-sham.min.js"></script>
-  <script src="./lib/ie8/json3.min.js"></script>
-  <script src="./lib/ie8/jquery.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/html5.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/selectivizr-min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/respond.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/css3-mediaqueries.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/es5-shim.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/es5-sham.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/json3.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/jquery.min.js"></script>
   <![endif]-->
-  <!--[if gte IE 8]>
+  <!--[if gte IE 9]>
   <script type="text/javascript">
     (function() {
       var method;
@@ -117,7 +116,8 @@
       ];
       var length = methods.length;
       var console = (window.console = window.console || {});
-      while (length--) {
+      while (length) {
+        length = length - 1;
         method = methods[length];
         // Only stub undefined methods.
         if (!console[method]) {
@@ -126,11 +126,11 @@
       }
     }());
   </script>
-  <script type="text/javascript" src="js/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="lib/jquery/jquery-3.2.1.min.js"></script>
   <![endif]-->
   <!--[if IE 8]>
-<script type='text/javascript' src='js/ie8/excanvas.js'></script>
-<link rel="stylesheet" href="js/ie8/css/iefix.css" type="text/css" media="screen" />
+<script type='text/javascript' src='lib/ie8/excanvas.js'></script>
+<link rel="stylesheet" href="lib/ie8/css/iefix.css" type="text/css" media="screen" />
 <![endif]-->
 <script type="text/javascript" src="lib/fullcalendar/moment.min.js"></script>
 <!-- Bootstrap core JS -->

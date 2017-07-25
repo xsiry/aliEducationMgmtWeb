@@ -14,7 +14,7 @@
   <!-- Fullcalendar core CSS -->
   <link href="lib/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
   <link href="lib/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media='print' />
-  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="style.css"/>
   <link rel="stylesheet" type="text/css" href="league.css">
 </head>
 <svg class="txp_svg_sprite txp_svg_sprite_head" display="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -143,20 +143,19 @@
   </span>
 </body>
   <!--[if !IE]><!-->
-  <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="lib/jquery/jquery-3.2.1.min.js"></script>
   <!--<![endif]-->
   <!--[if lt IE 9]>
-  <script type='text/javascript' src='js/ie8/ie8-eventlistener.js'></script>
-  <script src="./lib/ie8/html5.min.js"></script>
-  <script src="./lib/ie8/selectivizr-min.js"></script>
-  <script src="./lib/ie8/respond.min.js"></script>
-  <script src="./lib/ie8/css3-mediaqueries.min.js"></script>
-  <script src="./lib/ie8/es5-shim.min.js"></script>
-  <script src="./lib/ie8/es5-sham.min.js"></script>
-  <script src="./lib/ie8/json3.min.js"></script>
-  <script src="./lib/ie8/jquery.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/html5.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/selectivizr-min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/respond.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/css3-mediaqueries.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/es5-shim.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/es5-sham.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/json3.min.js"></script>
+  <script type="text/javascript" src="./lib/ie8/jquery.min.js"></script>
   <![endif]-->
-  <!--[if gte IE 8]>
+  <!--[if gte IE 9]>
   <script type="text/javascript">
     (function() {
       var method;
@@ -166,7 +165,8 @@
       ];
       var length = methods.length;
       var console = (window.console = window.console || {});
-      while (length--) {
+      while (length) {
+        length = length - 1;
         method = methods[length];
         // Only stub undefined methods.
         if (!console[method]) {
@@ -175,27 +175,31 @@
       }
     }());
   </script>
-  <script type="text/javascript" src="js/jquery/jquery-3.2.1.min.js"></script>
   <![endif]-->
   <!--[if IE 8]>
-<script type='text/javascript' src='js/ie8/excanvas.js'></script>
-<link rel="stylesheet" href="js/ie8/css/iefix.css" type="text/css" media="screen" />
+<script type='text/javascript' src='lib/ie8/excanvas.js'></script>
+<link rel="stylesheet" href="lib/ie8/css/iefix.css" type="text/css" media="screen" />
 <![endif]-->
 <script type="text/javascript" src="lib/fullcalendar/moment.min.js"></script>
 <!-- Bootstrap core JS -->
-<script src="lib/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/bootstrap.min.js"></script>
 <!-- Fullcalendar core JS -->
-<script src="lib/fullcalendar/fullcalendar.js"></script>
-<script src="lib/fullcalendar/locale/zh-cn.js"></script>
-<script src="lib/ssofthelper.js"></script>
-<script type="text/javascript">
-var _proid;
-var sec = 3;
-var num = 0;
-var numTotal = 4;
-var interval;
+<script type="text/javascript" src="lib/fullcalendar/fullcalendar.js"></script>
+<script type="text/javascript" src="lib/fullcalendar/locale/zh-cn.js"></script>
+<script type="text/javascript" src="lib/ssofthelper.js"></script>
 
-$(document).ready(function() {
+<script type="text/javascript">
+  var _proid;
+  var sec = 3;
+  var num = 0;
+  var numTotal = 4;
+  var interval;
+
+  $(document).ready(function() {
+    initload();
+  });
+
+function initload() {
   clanscheduleClick(1);
   $('.left_btn').css('transform', 'translate(-60px,0px)');
   $('.right_btn').css('transform', 'translate(60px,0px)');
@@ -214,8 +218,7 @@ $(document).ready(function() {
         var calendarData = [];
         $.each(data, function(i, o) {
           var date = o.times.split(' ')[0];
-          var time = o.times.split(' ')[1].substring(0, 5);
-          console.log(date + time)
+        var time = o.times.split(' ')[1].substring(0, 5);
           calendarData.push({
             title: o.clan_name_a + ' VS ' + o.clan_name_b + ' ' + time,
             start: date + " " + time,
@@ -427,7 +430,7 @@ $(document).ready(function() {
       }
     })
   })
-});
+}
 
 function provinceLstClick(proid) {
   $sHelper.AjaxPost("../tempalte/league/proGroupCln", {
