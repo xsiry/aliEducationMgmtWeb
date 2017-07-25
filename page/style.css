@@ -316,6 +316,10 @@
     background-color: #fc1703;
     border: 1px solid #dd191d;
   }
+  
+  .fc-time {
+  	display:none;
+  }
 
   #calendar .fc-more-cell a.fc-more {
     color: #fc1703;

@@ -214,7 +214,9 @@ $(document).ready(function() {
     dataType : 'json',
     data : {
       source: 'clan_schedule',
-      qtype: 'select'
+      qtype: 'select',
+      sortname: 'times',
+      sortorder: 'ASC'
     },
     success : function(data) {
       if (data) {
@@ -224,7 +226,7 @@ $(document).ready(function() {
           var time = o.times.split(' ')[1].substring(0, 5);
           calendarData.push({
             title: o.clan_name_a + ' VS ' + o.clan_name_b + ' ' + time,
-            start: '2012-07-03T00:00:00',//date,
+            start: date + " " + time,
             url: o.live_url
           });
         })
