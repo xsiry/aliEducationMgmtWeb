@@ -3,27 +3,27 @@
        %>
           <div>
             <div class="center-block group_menus">
-              <a href="javascript:void(0);" class="group_a grpidAA actived" data-grpid="${grouplst[0].cln_grp_id}">${grouplst[0].groupname}</a>
-              <a href="javascript:void(0);" class="group_a grpidAA" data-grpid="${grouplst[1].cln_grp_id}">${grouplst[1].groupname}</a>
+              <a href="javascript:void(0);" class="group_a grpidAA actived left_abtn" data-grpid="${grouplst[0].cln_grp_id}">${grouplst[0].groupname}</a>
+              <a href="javascript:void(0);" class="group_a grpidAA right_abtn" data-grpid="${grouplst[1].cln_grp_id}">${grouplst[1].groupname}</a>
             </div>
             <div class="center-block grouplist_A" id="grouplist_${grouplst[0].cln_grp_id}">
             	<div class="row group_thead">
-            		<div class="col-md-2" style="min-width: 70px;">排名</div>
-            		<div class="col-md-3">战队</div>
-            		<div class="col-md-2">胜</div>
-            		<div class="col-md-2">负</div>
-            		<div class="col-md-2" style="min-width: 70px;">积分</div>
+            		<div class="col-md-2" style="padding:0;">排名</div>
+            		<div class="col-md-3" style="padding:0;">战队</div>
+            		<div class="col-md-2" style="padding:0;">胜</div>
+            		<div class="col-md-2" style="padding:0;">负</div>
+            		<div class="col-md-2" style="padding:0;">积分</div>
             	</div>
             	<%
 	                	index=1;
 					   for(clanname in clannamemp[grouplst[0].cln_grp_id]) {
 					%>
 	            	<div class="row group_tbody">
-	            		<div class="col-md-2" style="min-width: 70px;">${index++}</div>
-	            		<div class="col-md-3">${clanname.clan_name}</div>
-	            		<div class="col-md-2">${clanname.wins}</div>
-	            		<div class="col-md-2">${clanname.failure}</div>
-	            		<div class="col-md-2" style="min-width: 70px;">${clanname.integral}</div>
+	            		<div class="col-md-2" style="padding:0;">${index++}</div>
+	            		<div class="col-md-3" style="padding:0;">${clanname.clan_name}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.wins}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.failure}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.integral}</div>
 	            	</div>
              <%
 	                 }
@@ -31,22 +31,22 @@
 						</div>
             <div class="center-block grouplist_A" id="grouplist_${grouplst[1].cln_grp_id}" style="display: none;">
 	            <div class="row group_thead">
-            		<div class="col-md-2" style="min-width: 70px;">排名</div>
-            		<div class="col-md-3">战队</div>
-            		<div class="col-md-2">胜</div>
-            		<div class="col-md-2">负</div>
-            		<div class="col-md-2" style="min-width: 70px;">积分</div>
+            		<div class="col-md-2" style="padding:0;">排名</div>
+            		<div class="col-md-3" style="padding:0;">战队</div>
+            		<div class="col-md-2" style="padding:0;">胜</div>
+            		<div class="col-md-2" style="padding:0;">负</div>
+            		<div class="col-md-2" style="padding:0;">积分</div>
             	</div>
 	                <%
 	                	index=1;
 					   for(clanname in clannamemp[grouplst[1].cln_grp_id]) {
 					%>
 	               <div class="row group_tbody">
-	            		<div class="col-md-2" style="min-width: 70px;">${index++}</div>
-	            		<div class="col-md-3">${clanname.clan_name}</div>
-	            		<div class="col-md-2">${clanname.wins}</div>
-	            		<div class="col-md-2">${clanname.failure}</div>
-	            		<div class="col-md-2" style="min-width: 70px;">${clanname.integral}</div>
+	            		<div class="col-md-2" style="padding:0;">${index++}</div>
+	            		<div class="col-md-3" style="padding:0;">${clanname.clan_name}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.wins}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.failure}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.integral}</div>
 	            	</div>
 	                 <%
 	                 }
@@ -55,27 +55,27 @@
           </div>
           <div>
             <div class="center-block group_menus">
-              <a href="javascript:void(0);" class="group_a grpidAB actived" data-grpid="${grouplst[2].cln_grp_id}">${grouplst[2].groupname}</a>
-              <a href="javascript:void(0);" class="group_a grpidAB" data-grpid="${grouplst[3].cln_grp_id}">${grouplst[3].groupname}</a>
+              <a href="javascript:void(0);" class="group_a grpidAB actived left_abtn" data-grpid="${grouplst[2].cln_grp_id}">${grouplst[2].groupname}</a>
+              <a href="javascript:void(0);" class="group_a grpidAB right_abtn" data-grpid="${grouplst[3].cln_grp_id}">${grouplst[3].groupname}</a>
             </div>
              <div class="center-block grouplist_B" id="grouplist_${grouplst[2].cln_grp_id}">
 	            <div class="row group_thead">
-	            		<div class="col-md-2" style="min-width: 70px;">排名</div>
-	            		<div class="col-md-3">战队</div>
-	            		<div class="col-md-2">胜</div>
-	            		<div class="col-md-2">负</div>
-	            		<div class="col-md-2" style="min-width: 70px;">积分</div>
+	            		<div class="col-md-2" style="padding:0;">排名</div>
+	            		<div class="col-md-3" style="padding:0;">战队</div>
+	            		<div class="col-md-2" style="padding:0;">胜</div>
+	            		<div class="col-md-2" style="padding:0;">负</div>
+	            		<div class="col-md-2" style="padding:0;">积分</div>
 	            	</div>
                 <%
                 	   index=1;
 					   for(clanname in clannamemp[grouplst[2].cln_grp_id]) {
 					%>
 	             <div class="row group_tbody">
-	            		<div class="col-md-2" style="min-width: 70px;">${index++}</div>
-	            		<div class="col-md-3">${clanname.clan_name}</div>
-	            		<div class="col-md-2">${clanname.wins}</div>
-	            		<div class="col-md-2">${clanname.failure}</div>
-	            		<div class="col-md-2" style="min-width: 70px;">${clanname.integral}</div>
+	            		<div class="col-md-2" style="padding:0;">${index++}</div>
+	            		<div class="col-md-3" style="padding:0;">${clanname.clan_name}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.wins}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.failure}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.integral}</div>
 	            	</div>
 	                 <%
 	                 }
@@ -83,22 +83,22 @@
               </div>
              <div class="center-block grouplist_B" id="grouplist_${grouplst[3].cln_grp_id}" style="display: none;">
 	            <div class="row group_thead">
-            		<div class="col-md-2" style="min-width: 70px;">排名</div>
-            		<div class="col-md-3">战队</div>
-            		<div class="col-md-2">胜</div>
-            		<div class="col-md-2">负</div>
-            		<div class="col-md-2" style="min-width: 70px;">积分</div>
+            		<div class="col-md-2" style="padding:0;">排名</div>
+            		<div class="col-md-3" style="padding:0;">战队</div>
+            		<div class="col-md-2" style="padding:0;">胜</div>
+            		<div class="col-md-2" style="padding:0;">负</div>
+            		<div class="col-md-2" style="padding:0;">积分</div>
             	</div>
 	                <%
 	                	index=1;
 					   for(clanname in clannamemp[grouplst[3].cln_grp_id]) {
 					%>
 	               <div class="row group_tbody">
-	            		<div class="col-md-2" style="min-width: 70px;">${index++}</div>
-	            		<div class="col-md-3">${clanname.clan_name}</div>
-	            		<div class="col-md-2">${clanname.wins}</div>
-	            		<div class="col-md-2">${clanname.failure}</div>
-	            		<div class="col-md-2" style="min-width: 70px;">${clanname.integral}</div>
+	            		<div class="col-md-2" style="padding:0;">${index++}</div>
+	            		<div class="col-md-3" style="padding:0;">${clanname.clan_name}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.wins}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.failure}</div>
+	            		<div class="col-md-2" style="padding:0;">${clanname.integral}</div>
 	            	</div>
 	                 <%
 	                 }

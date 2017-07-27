@@ -122,7 +122,12 @@
                 更多
               </a>
             </div>
-            <div><a href="league_corps.html"><img class="cln_img" style="height: 250px;width: 90%;" src=""></a></div>
+            <div style="position:relative;">
+                <a href="league_corps.html"><img class="cln_img" style="height: 250px;width: 100%;" src=""></a>
+                <div class="cln_standby_btn">
+                  <button class="x-btn">支持(<span></span>)</button>
+                </div>
+              </div>
             <div class="cln_x_info" style="height:125px;overflow-y: auto;">
               <p>战队介绍: <span class="cln_intro"></span></p>
               <p>战术介绍: <span class="cln_tactics"></span></p>
@@ -130,9 +135,6 @@
             </div>
             <input type='hidden' class="cln_id" value=""/>
             <input type='hidden' class="cln_standby" value=""/>
-            <div class="cln_standby_btn">
-            <button class="x-btn">支持(<span></span>)</button>
-            </div>
           </div>
         </div>
       </div>
@@ -280,7 +282,7 @@ function initload() {
         numTotal = urlArry.length;
         runImgsPlay();
         $.each(urlArry, function(i, url){
-          var aBlock = '<a class="up_a img_a img_a_'+ i +'" href="'+ aUrlArry[i] +'"'+ ((i==0) ? 'style="z-index: 1;opacity: 1;-webkit-animation: img_act 1s linear forwards;"' : '') + 'target="_self">'
+          var aBlock = '<a class="up_a img_a img_a_'+ i +'" href="'+ aUrlArry[i] +'"'+ ((i==0) ? 'style="z-index: 1;opacity: 1;-webkit-animation: img_act 1s linear forwards;"' : '') + ' target="_blank">'
                + '<img class="up_img  img_'+ i +'" src="'+ '../' + url +'" alt="0">'
                + '<div class="i_title">'+ titleArry[i] +'</div></a>';
           $('div.img_list').append(aBlock);

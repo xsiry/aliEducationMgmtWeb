@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
   <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
   <meta name="description" content="">
@@ -78,7 +78,7 @@
         <div class="col-md-6 league_title">
           <p></p>
           <div class="league_wrapper">
-            <a href="javascript:void(0);">
+            <a href="javascript:void(0);" target="_blank">
               <img src="" width='100%' height='410px'>
             </a>
           </div>
@@ -103,10 +103,9 @@
   <script type="text/javascript" src="./lib/ie8/css3-mediaqueries.min.js"></script>
   <script type="text/javascript" src="./lib/ie8/es5-shim.min.js"></script>
   <script type="text/javascript" src="./lib/ie8/es5-sham.min.js"></script>
-  <script type="text/javascript" src="./lib/ie8/json3.min.js"></script>
   <script type="text/javascript" src="./lib/ie8/jquery.min.js"></script>
   <![endif]-->
-  <!--[if gte IE 9]>
+  <!--[if lte IE 9]>
   <script type="text/javascript">
     (function() {
       var method;
@@ -126,13 +125,14 @@
       }
     }());
   </script>
-  <script type="text/javascript" src="lib/jquery/jquery-3.2.1.min.js"></script>
   <![endif]-->
-  <!--[if IE 8]>
-<script type='text/javascript' src='lib/ie8/excanvas.js'></script>
-<link rel="stylesheet" href="lib/ie8/css/iefix.css" type="text/css" media="screen" />
-<![endif]-->
-<script type="text/javascript" src="lib/fullcalendar/moment.min.js"></script>
+  <!--[if gt IE 8]>
+    <script type="text/javascript" src="lib/jquery/jquery-3.2.1.min.js"></script>
+  <![endif]-->
+  <!--[if lt IE 9]>
+  <script src=src="lib/ie9.js"></script>
+  <![endif]-->
+<script type="text/javascript" src="lib/fullcalendar/moment.js"></script>
 <!-- Bootstrap core JS -->
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <!-- Fullcalendar core JS -->

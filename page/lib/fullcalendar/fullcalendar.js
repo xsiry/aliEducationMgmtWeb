@@ -1927,12 +1927,12 @@ function mixIntoClass(theClass, members) {
 ;;
 
 var Model = Class.extend(EmitterMixin, ListenerMixin, {
-
 	_props: null,
 	_watchers: null,
 	_globalWatchArgs: null,
 
 	constructor: function() {
+		console.log('inintttttttt')
 		this._watchers = {};
 		this._props = {};
 		this.applyGlobalWatchers();
@@ -1952,10 +1952,10 @@ var Model = Class.extend(EmitterMixin, ListenerMixin, {
 	},
 
 	get: function(name) {
+		var me = this;
 		if (name === undefined) {
 			return this._props;
 		}
-
 		return this._props[name];
 	},
 

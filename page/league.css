@@ -164,12 +164,15 @@ svg path {
 }
 .cln_standby_btn {
   position: absolute;
-  bottom: 25px;
-  right: 20px;
+  bottom: 0;
+  right: 0;
 }
 
 button.x-btn {
-  background-color: transparent;
+  color: #FFF;
+  background-color: rgba(255, 112, 67, 0.6);
+  background-color: #ff7043\0; /* ie8 */
+  border: 1px solid #FFF;
   line-height: 25px;
 }
 
@@ -225,12 +228,13 @@ caption {
   box-flex: 1;
   font-size: 18px;
   /*background-color: #2e2e4b;*/
-  width: 30%\0;/* IE8 */
+  width: 35%\0;/* IE8 */
   float: left\0;/* IE8 */
 }
 
 .prov_top>div>div.group_menus {
   height: 45px;
+  position: relative;
   /*background-color: #2e2e4b;*/
   padding: 5px;
   color: #525e71;
@@ -311,10 +315,18 @@ caption {
   text-align: center;
   font-size: 25px;
   line-height: 40px;
-  margin-left: 5px;
-  margin-right: 5px;
-  float: left\0;/* IE8 */
-  width: 47%\0;/* IE8 */
+}
+
+.prov_top>div>div>a.left_abtn {
+  position: absolute;
+  left: 10px;
+  width: 46.5%;
+}
+
+.prov_top>div>div>a.right_abtn {
+  position: absolute;
+  right: 10px;
+  width: 46.5%;
 }
 
 .prov_top>div>div>a:hover {
@@ -353,8 +365,8 @@ caption {
 
 
 .prov_top>div.x-news-block {
-  width: 280px;
-  width: 40%\0;/* IE8 */
+  width: 200px;
+  width: 30%\0;/* IE8 */
   height: 100%\0;/* IE8 */
   background-color: #FFF;
 }
@@ -384,6 +396,7 @@ caption {
 .prov_top>div.x-news-block>ul>li a {
   display: block;
   color: #8d9499;
+  white-space: nowrap;
 }
 
 .prov_top>div.x-news-block>ul>li a:hover {
